@@ -9,6 +9,7 @@ import { checkConfig, config } from "./config/index.js";
 import { q } from "./config/db.js";
 import { csrf, errors, wrap } from "./middleware/index.mjs";
 import { attachSockets } from "./socket.mjs";
+import { imageStore } from "./storage/profile-images.mjs";
 import { router as accounts } from "./modules/cuentas/router.mjs";
 import { router as learning } from "./modules/aprendizaje/router.mjs";
 import { router as community } from "./modules/comunidad/router.mjs";
@@ -42,18 +43,17 @@ app.get(
   "/api/salud",
   wrap(async (_request, response) => {
     await q("SELECT 1");
+    await imageStore.check();
     response.json({ ok: true, plataforma: "NoVibeJustCode" });
   }),
 );
 
-app.use(
-  "/uploads",
-  express.static(config.uploadDir, {
-    dotfiles: "deny",
-    maxAge: "7d",
-    fallthrough: false,
-  }),
-);
+app.get("/uploads/:name", wrap(async (request, response) => {
+  const bytes = await imageStore.read(request.params.name);
+  response.set("Cache-Control", "public, max-age=604800, immutable");
+  response.type("image/webp").send(bytes);
+}));
+app.use("/uploads", (_request, response) => response.status(404).json({ error: "Imagen no encontrada." }));
 
 app.use(
   "/api",

@@ -46,6 +46,10 @@ export class SettingsComponent extends Page implements OnInit, OnDestroy {
   async image(event: Event, type: string) {
     const f = (event.target as HTMLInputElement).files?.[0];
     if (!f) return;
+    if (f.size > 10 * 1024 * 1024) {
+      this.error.set("La imagen no debe superar los 10 MB.");
+      return;
+    }
     await this.task(async () => {
       await this.service.uploadProfileImage(type, f);
       await this.session.refresh();

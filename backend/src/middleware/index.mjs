@@ -69,7 +69,7 @@ export function errors(err, req, res, next) {
   if (err.code === "LIMIT_FILE_SIZE")
     return res
       .status(422)
-      .json({ error: "La imagen excede el tamaño permitido." });
+      .json({ error: "La imagen no debe superar los 10 MB." });
   res.status(err.status || 500).json({
     error: err.status
       ? err.message

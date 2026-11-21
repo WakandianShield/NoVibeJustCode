@@ -49,6 +49,25 @@ npm run build
 
 ## Servicios externos opcionales
 
+### Fotos y banners persistentes en Railway
+
+Las imágenes admiten JPEG, PNG y WebP de hasta 10 MB por archivo. El backend valida y convierte la imagen a WebP antes de guardarla. En Railway se utiliza un bucket privado S3; las imágenes se sirven desde `/uploads/:nombre` sin exponer credenciales al navegador.
+
+Configura estas variables en el servicio de la aplicación usando las referencias al bucket existente:
+
+```text
+S3_ENDPOINT=${{wrapped-chest.ENDPOINT}}
+S3_BUCKET=${{wrapped-chest.BUCKET}}
+S3_REGION=${{wrapped-chest.REGION}}
+S3_ACCESS_KEY_ID=${{wrapped-chest.ACCESS_KEY_ID}}
+S3_SECRET_ACCESS_KEY=${{wrapped-chest.SECRET_ACCESS_KEY}}
+S3_FORCE_PATH_STYLE=false
+```
+
+Las imágenes anteriores que todavía estén en `UPLOAD_DIR` se copian al bucket al consultarlas, conservando sus direcciones. Los archivos ya perdidos antes de esta configuración deben volver a subirse. Para desarrollo local, sin `S3_BUCKET`, se utiliza `UPLOAD_DIR`.
+
+Pruebas de imágenes: `node --test backend/test/profile-images.test.mjs`.
+
 La ejecución de prácticas de consola usa Judge0. Configura `JUDGE0_URL` y, si tu instancia lo requiere, `JUDGE0_KEY`, `JUDGE0_AUTH_HEADER`, `JUDGE0_HOST`, `JUDGE0_PYTHON_ID` y `JUDGE0_NODE_ID`.
 
 La validación de TypeScript y proyectos web requiere un servicio de evaluación independiente. Configura su dirección en `WORKER_URL` y comparte el mismo secreto en `WORKER_SECRET` en ambos servicios.

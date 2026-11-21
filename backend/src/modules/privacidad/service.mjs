@@ -3,9 +3,7 @@ import { privacyRepo as repo } from "./repository.mjs";
 import { subscriptions } from "../suscripciones/service.mjs";
 import { subscriptionsRepo } from "../suscripciones/repository.mjs";
 import { assert } from "../../domain.mjs";
-import { unlink } from "node:fs/promises";
-import { join, basename } from "node:path";
-import { config } from "../../config/index.js";
+import { imageStore } from "../../storage/profile-images.mjs";
 export const privacy = {
   async verify(user, password) {
     assert(
@@ -26,7 +24,7 @@ export const privacy = {
     await repo.erase(user.id_usuario);
     for (const path of [user.foto_url, user.banner_url])
       if (path)
-        await unlink(join(config.uploadDir, basename(path))).catch(() => {});
+        await imageStore.remove(path).catch(() => console.error("No se pudo limpiar una imagen de la cuenta eliminada."));
     return { eliminada: true };
   },
 };

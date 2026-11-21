@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { idSchema } from "../../domain.mjs";
 import multer from "multer";
+import { MAX_IMAGE_BYTES } from "../../storage/profile-images.mjs";
 import { accountController as c } from "./controller.mjs";
 import { auth, wrap, accessLimit } from "../../middleware/index.mjs";
 export const router = Router();
@@ -23,7 +24,7 @@ router.post(
   auth,
   multer({
     storage: multer.memoryStorage(),
-    limits: { fileSize: 5 * 1024 * 1024 },
+    limits: { fileSize: MAX_IMAGE_BYTES, files: 1 },
   }).single("imagen"),
   wrap(c.image),
 );

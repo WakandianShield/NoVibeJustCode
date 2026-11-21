@@ -1,9 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { randomUUID } from "node:crypto";
-import sharp from "sharp";
-import { mkdir, writeFile, unlink } from "node:fs/promises";
-import { join, basename } from "node:path";
+import { imageStore, normalizeProfileImage } from "../../storage/profile-images.mjs";
 import { accountRepo as repo } from "./repository.mjs";
 import { subscriptionsRepo } from "../suscripciones/repository.mjs";
 import {
@@ -25,39 +23,14 @@ export function publicAccount(u) {
 }
 export const accounts = {
   async image(user, type, file) {
-    assert(["foto", "banner"].includes(type), 422, "Tipo de imagen inválido.");
-    assert(
-      file && ["image/jpeg", "image/png", "image/webp"].includes(file.mimetype),
-      422,
-      "Selecciona una imagen JPEG, PNG o WebP.",
-    );
+    const bytes = await normalizeProfileImage(type, file);
     const banner = type === "banner";
-    assert(
-      file.size <= (banner ? 5 : 2) * 1024 * 1024,
-      422,
-      "La imagen excede el tamaño permitido.",
-    );
-    let bytes;
-    try {
-      bytes = await sharp(file.buffer, { limitInputPixels: 24000000 })
-        .rotate()
-        .resize(banner ? 1600 : 400, banner ? 500 : 400, { fit: "cover" })
-        .webp({ quality: 85 })
-        .toBuffer();
-    } catch {
-      assert(false, 422, "No se pudo leer la imagen.");
-    }
-    await mkdir(config.uploadDir, { recursive: true });
-    const name = randomUUID() + ".webp";
-    await writeFile(join(config.uploadDir, name), bytes);
+    const url = await imageStore.save(bytes);
     const old = banner ? user.banner_url : user.foto_url;
-    const updated = await repo.image(
-      user.id_usuario,
-      banner ? "banner" : "foto",
-      "/uploads/" + name,
-    );
-    if (old)
-      await unlink(join(config.uploadDir, basename(old))).catch(() => {});
+    let updated;
+    try { updated = await repo.image(user.id_usuario, banner ? "banner" : "foto", url); }
+    catch (error) { await imageStore.remove(url).catch(() => {}); throw error; }
+    if (old) await imageStore.remove(old).catch(() => console.error("No se pudo limpiar una imagen reemplazada."));
     return this.me(updated);
   },
   async session(user) {

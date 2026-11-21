@@ -1,0 +1,22 @@
+{
+  "name": "novibejustcode",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@nvjc/frontend",
+    "dev": "concurrently -n API,WEB \"npm run dev --workspace=@nvjc/backend\" \"npm run start --workspace=@nvjc/frontend\"",
+    "start": "npm run start --workspace=@nvjc/backend",
+    "db:init": "npm run db:init --workspace=@nvjc/backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

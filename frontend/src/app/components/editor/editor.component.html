@@ -1,0 +1,29 @@
+<section class="editor-shell">
+  <div class="file-tabs">
+    @for (name of names; track name) {
+      <button
+        type="button"
+        [class.selected]="active === name"
+        (click)="select(name)"
+      >
+        {{ name }}
+      </button>
+    }
+  </div>
+  <div #host class="monaco" [hidden]="!enhanced()"></div>
+  @if (!enhanced()) {
+    <label class="sr-only" for="codigo">Código de {{ active }}</label
+    ><textarea
+      id="codigo"
+      class="code-fallback"
+      spellcheck="false"
+      [readOnly]="readOnly"
+      [ngModel]="files[active] || ''"
+      (ngModelChange)="changed($event)"
+    ></textarea>
+  }
+  <span class="editor-label"
+    >{{ active }} ·
+    {{ enhanced() ? "Editor avanzado" : "Editor accesible" }}</span
+  >
+</section>

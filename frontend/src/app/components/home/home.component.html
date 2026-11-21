@@ -1,0 +1,36 @@
+<section class="hero">
+  <div class="hero-copy">
+    <h1>Tu próxima<br />gran <em>idea</em><br />empieza aquí.</h1>
+    <p>
+      Aprende programación, construye algo tuyo y encuentra a quienes también
+      están creando.
+    </p>
+    <div class="actions">
+      <nv-pixel-cta id="hero-pixel-start" route="/acceso"></nv-pixel-cta>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">RUTAS DE APRENDIZAJE</p>
+      <h2>Elige qué quieres aprender.</h2>
+    </div>
+  </div>
+  <div class="course-grid">
+    @for (c of languages; track c.id_curso) {
+      <a class="course-card" [routerLink]="['/curso', c.id_curso]"
+        ><div class="course-art" [class]="'course-art tech-' + c.id_curso">
+          <div class="course-logos" aria-hidden="true">
+            @for (logo of logos[c.id_curso - 1]; track logo) {
+              <img src="{{ logo }}" alt="" />
+            }
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>{{ c.titulo }}</h3>
+        </div></a
+      >
+    }
+  </div>
+</section>

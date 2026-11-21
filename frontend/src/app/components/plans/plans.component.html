@@ -1,0 +1,116 @@
+<section class="page-heading centered">
+  <p class="eyebrow">EMPIEZA HOY. LLEGA MÁS LEJOS.</p>
+  <h1>Tu próximo nivel<br />está en <em>tus manos.</em></h1>
+</section>
+<div class="pricing-grid">
+  <section class="panel plan">
+    <span class="tag">TU PUNTO DE PARTIDA</span>
+    <h2>Gratis</h2>
+    <p class="price">$0 <small>MXN</small></p>
+    <p>Una base para empezar a construir.</p>
+    <ul>
+      <li>Cinco secciones de cada tecnología</li>
+      <li>Teoría y prácticas progresivas</li>
+      <li>Insignia inicial de cada curso</li>
+      <li>Perfil, amigos y chat sin costo</li>
+    </ul>
+    <a
+      class="button secondary"
+      [routerLink]="session.user() ? '/aprendizaje' : '/registro'"
+      ><span class="pixel-button-label">Comenzar</span></a
+    >
+  </section>
+  <section class="panel plan pro-plan">
+    <span class="tag">CONSTRUYE ALGO MÁS GRANDE</span>
+    <h2>Pro <span>✦</span></h2>
+    <p class="price">$149 <small>MXN / mes</small></p>
+    <p>IVA incluido. Una suscripción, cinco cursos.</p>
+    <ul>
+      <li>Las diez secciones por tecnología</li>
+      <li>Prácticas aplicadas a sistemas</li>
+      <li>Proyecto libre y descarga ZIP</li>
+      <li>Insignia inicial + curso completo</li>
+      <li>Todas las funciones de la comunidad</li>
+    </ul>
+    @if (!session.user()) {
+      <a class="button" routerLink="/acceso"
+        ><span class="pixel-button-label">Pagar</span></a
+      >
+    } @else if (mine()?.activa) {
+      <span class="success"
+        >✓ Pro vigente hasta
+        {{ mine().activa.fin_periodo | date: "dd/MM/yyyy" }}</span
+      >
+    } @else {
+      <label class="consent"
+        ><input
+          type="checkbox"
+          [(ngModel)]="consent"
+          (ngModelChange)="renderButtons()"
+        />Acepto el cobro recurrente de $149 MXN mensuales, IVA incluido, hasta
+        cancelar.</label
+      >
+      <div id="paypal-buttons"></div>
+      @if (!config()?.clientId) {
+        <p class="fine">
+          La contratación estará disponible cuando se configure la cuenta de
+          cobro PayPal.
+        </p>
+      }
+    }
+  </section>
+</div>
+@if (mine(); as m) {
+  <section class="panel billing">
+    <h2>Mi suscripción</h2>
+    <p>{{ m.activa ? "Pro vigente" : "Plan Gratis" }}</p>
+    @if (m.activa?.renovacion_habilitada) {
+      <button class="secondary" (click)="cancel()" [disabled]="busy()">
+        Cancelar renovación
+      </button>
+    }
+    <h3>Historial de pagos</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Importe</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (p of m.pagos; track p.id_pago) {
+            <tr>
+              <td>{{ p.fecha | date: "dd/MM/yyyy" }}</td>
+              <td>{{ p.importe }} {{ p.moneda }}</td>
+              <td>{{ p.estado }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="3">No hay pagos registrados.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    @for (s of m.suscripciones; track s.id_suscripcion) {
+      <p class="fine">
+        {{ s.id_proveedor }} · {{ s.estado }}
+        <button
+          class="quiet"
+          (click)="sync(s.id_proveedor)"
+          [disabled]="busy()"
+        >
+          Actualizar con PayPal
+        </button>
+      </p>
+    }
+  </section>
+}
+@if (error()) {
+  <p class="alert">{{ error() }}</p>
+}
+@if (notice()) {
+  <p class="success">{{ notice() }}</p>
+}

@@ -1,0 +1,68 @@
+<section class="auth-layout">
+  <form class="panel auth-form" (ngSubmit)="submit()">
+    <h2>{{ register ? "Crea tu cuenta" : "Inicia sesión" }}</h2>
+    @if (register) {
+      <label
+        >Nombre público<input
+          name="nombre"
+          [(ngModel)]="form.nombre"
+          minlength="2"
+          maxlength="60"
+          required
+          autocomplete="name" /></label
+      ><label
+        >Nombre de usuario<input
+          name="usuario"
+          [(ngModel)]="form.nombre_usuario"
+          pattern="[A-Za-z0-9_]{3,24}"
+          required
+          autocomplete="username"
+      /></label>
+    }
+    <label
+      >Correo electrónico<input
+        type="email"
+        name="correo"
+        [(ngModel)]="form.correo"
+        required
+        autocomplete="email" /></label
+    ><label
+      >Contraseña
+      <div class="password-field">
+        <input
+          [type]="visible ? 'text' : 'password'"
+          name="clave"
+          aria-label="Contraseña"
+          [(ngModel)]="form.contrasena"
+          minlength="12"
+          maxlength="72"
+          required
+          [autocomplete]="register ? 'new-password' : 'current-password'"
+        /><button type="button" class="text-link" (click)="visible = !visible">
+          {{ visible ? "Ocultar" : "Mostrar" }}
+        </button>
+      </div></label
+    >
+    @if (error()) {
+      <p class="alert" role="alert">{{ error() }}</p>
+    }
+    <button [disabled]="busy()" type="submit">
+      <span class="pixel-button-label">{{
+        busy() ? "Un momento…" : register ? "Crear cuenta" : "Iniciar sesión"
+      }}</span>
+    </button>
+    @if (register) {
+      <p class="fine">
+        Al registrarte aceptas los
+        <a routerLink="/legal/terminos">términos</a> y el
+        <a routerLink="/legal/privacidad">aviso de privacidad</a>.
+      </p>
+    }
+    <p>
+      {{ register ? "¿Ya tienes cuenta?" : "¿Aún no tienes cuenta?" }}
+      <a [routerLink]="register ? '/acceso' : '/registro'">{{
+        register ? "Inicia sesión" : "Regístrate"
+      }}</a>
+    </p>
+  </form>
+</section>

@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <a class="brand" routerLink="/">&gt;_ NoVibeJustCode</a>
+  <p>{{ content.tagline }}</p>
+  <div>
+    @for (link of content.links; track link.path) {
+      <a [routerLink]="link.path">{{ link.label }}</a>
+    }
+  </div>
+  <small>{{ content.notice }}</small>
+</footer>

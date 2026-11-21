@@ -1,0 +1,48 @@
+<section class="page-heading">
+  <p class="eyebrow">COMUNIDAD</p>
+  <h1>Encuentra a tu equipo.</h1>
+  <form class="search-row" (ngSubmit)="search()">
+    <input
+      aria-label="Buscar perfiles"
+      [(ngModel)]="query"
+      name="buscar"
+      placeholder="Buscar nombre o @usuario…"
+    /><button>Buscar →</button>
+  </form>
+  <div class="actions">
+    <a class="pill" routerLink="/comunidad">Explorar</a
+    ><a class="pill" routerLink="/amigos">Amigos y solicitudes</a
+    ><a class="pill" routerLink="/mensajes">Mensajes</a>
+  </div>
+</section>
+@if (error()) {
+  <p class="alert">{{ error() }}</p>
+}
+<div class="people-grid">
+  @for (p of profiles(); track p.id_usuario) {
+    <article class="panel person">
+      <div
+        class="person-banner"
+        [style.background-image]="
+          p.banner_url ? 'url(' + p.banner_url + ')' : ''
+        "
+      ></div>
+      <img class="avatar" [src]="p.foto_url || '/avatar.svg'" alt="" />
+      <h3>{{ p.nombre }}</h3>
+      <a [routerLink]="['/perfil', p.nombre_usuario]"
+        >&#64;{{ p.nombre_usuario }}</a
+      >
+      <p>
+        {{ p.descripcion || "Aprendiendo algo nuevo, una línea a la vez." }}
+      </p>
+      <a class="button secondary" [routerLink]="['/perfil', p.nombre_usuario]"
+        >Ver perfil →</a
+      >
+    </article>
+  } @empty {
+    <div class="empty">
+      <h2>Aquí comienza la comunidad.</h2>
+      <p>No encontramos perfiles con esa búsqueda. Prueba con otro nombre.</p>
+    </div>
+  }
+</div>

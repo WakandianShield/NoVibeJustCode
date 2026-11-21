@@ -1,0 +1,84 @@
+<article class="panel legal">
+  <p class="eyebrow">INFORMACIÓN DE LA PLATAFORMA</p>
+  <h1>
+    {{
+      type === "privacidad"
+        ? "Aviso de privacidad"
+        : type === "cancelacion"
+          ? "Cancelaciones"
+          : "Términos de uso"
+    }}
+  </h1>
+  @if (type === "privacidad") {
+    <h2>Tus datos y tus decisiones</h2>
+    <p>
+      NoVibeJustCode utiliza nombre, usuario, correo, contraseña protegida,
+      imágenes de perfil, progreso, proyectos, amistades y mensajes para prestar
+      el servicio. El perfil público muestra únicamente nombre, usuario,
+      descripción, imágenes e insignias. Tu correo, mensajes, proyectos y pagos
+      son privados.
+    </p>
+    <p>
+      Las contraseñas se guardan mediante un resumen criptográfico. Los cobros
+      se realizan en PayPal; no almacenamos números de tarjeta. Judge0 y el
+      servicio aislado reciben el código necesario para su evaluación, sin
+      credenciales del estudiante.
+    </p>
+    <p>
+      Desde Configuración puedes exportar tus datos y solicitar la eliminación
+      verificando tu contraseña. Se eliminan proyectos, progreso e información
+      de perfil y se anonimiza el historial de mensajes. Los registros de pago
+      sujetos a obligaciones de conservación permanecen asociados a una cuenta
+      anonimizada.
+    </p>
+  } @else if (type === "cancelacion") {
+    <h2>Una suscripción para los cinco cursos</h2>
+    <p>
+      Gratis cuesta $0 MXN. Pro cuesta $149 MXN al mes, IVA incluido. El cobro
+      recurrente requiere aceptación expresa y autorización en PayPal.
+    </p>
+    <p>
+      Puedes cancelar la renovación desde Planes. La cancelación se confirma con
+      el proveedor y mantiene el acceso hasta terminar el periodo pagado. Un
+      vencimiento conserva tu progreso, insignias y la lectura y descarga de los
+      proyectos existentes. Las nuevas actividades Pro y la edición requieren
+      vigencia.
+    </p>
+    <p>
+      Si existe un error de cobro, consulta el historial y la referencia del
+      pago con el responsable del servicio. Los reembolsos deben tramitarse por
+      el canal de atención informado por el operador y PayPal.
+    </p>
+  } @else {
+    <h2>Aprende y comparte con respeto</h2>
+    <p>
+      El servicio ofrece cinco cursos de diez secciones. Las primeras cinco son
+      gratuitas y las siguientes requieren Pro. Las prácticas pueden tener
+      criterios de evaluación automáticos; el proyecto final es libre y solo
+      requiere compilación o sintaxis válida.
+    </p>
+    <p>
+      Las insignias representan progreso dentro de la plataforma. Los cursos son
+      capacitación no formal y no tienen RVOE ni equivalen a títulos oficiales.
+    </p>
+    <p>
+      Usa imágenes y código con derechos de uso, respeta la privacidad de otras
+      personas y evita mensajes abusivos. El chat individual requiere una
+      amistad aceptada y puede detenerse mediante bloqueo. Conservas la autoría
+      de tus proyectos y autorizas su almacenamiento y validación para prestar
+      el servicio.
+    </p>
+    <p>
+      La validez sintáctica de un proyecto no garantiza que funcione
+      correctamente. No subas secretos, datos de terceros sin permiso ni
+      programas destinados a afectar servicios externos.
+    </p>
+  }
+  <hr />
+  <p class="fine">
+    Documento operativo inicial. Antes de abrir el servicio al público, el
+    operador deberá completar su identidad, domicilio, medios de contacto y los
+    plazos aplicables de conservación y atención. Esos datos no fueron
+    proporcionados para este proyecto.
+  </p>
+</article>

@@ -1,0 +1,91 @@
+<section class="page-heading compact">
+  <p class="eyebrow">MENSAJES PRIVADOS</p>
+  <h1>Aprender también es conversar.</h1>
+  <span class="connection" [class.online]="chat.connected()"
+    >● {{ chat.connected() ? "Conectado" : "Reconectando" }}</span
+  >
+</section>
+<div class="chat-layout" [class.conversation-open]="current()">
+  <aside class="panel conversations">
+    <h2>Conversaciones</h2>
+    @for (f of friends(); track f.id_amistad) {
+      <button
+        class="conversation quiet"
+        [class.selected]="current()?.id_amistad === f.id_amistad"
+        (click)="open(f)"
+      >
+        <img
+          class="avatar small"
+          [src]="f.foto_url || '/avatar.svg'"
+          alt=""
+        /><span
+          ><strong>{{ f.nombre }}</strong
+          ><small>{{
+            f.no_leidos ? f.no_leidos + " sin leer" : "Amigos"
+          }}</small></span
+        >
+      </button>
+    } @empty {
+      <p>Añade un amigo para comenzar.</p>
+      <a routerLink="/comunidad">Explorar comunidad</a>
+    }
+  </aside>
+  <section class="panel chat-panel">
+    @if (current(); as f) {
+      <header>
+        <button class="quiet mobile-only" (click)="current.set(null)">
+          ← Atrás</button
+        ><img
+          class="avatar small"
+          [src]="f.foto_url || '/avatar.svg'"
+          alt=""
+        /><strong>{{ f.nombre }}</strong
+        ><a [routerLink]="['/perfil', f.nombre_usuario]">Ver perfil →</a>
+      </header>
+      <div class="message-history" aria-live="polite">
+        <button class="quiet" (click)="older()" [disabled]="!hasOlder()">
+          {{ hasOlder() ? "Cargar anteriores" : "Inicio de la conversación" }}
+        </button>
+        @for (m of messages(); track m.id_cliente) {
+          <article
+            class="message"
+            [class.mine]="m.id_emisor === session.user()?.id_usuario"
+          >
+            <p>{{ m.texto }}</p>
+            <small
+              >{{ m.creado_en | date: "HH:mm" }} ·
+              {{
+                m.pendiente ? "Pendiente" : m.leido_en ? "Leído" : "Enviado"
+              }}</small
+            >
+            @if (m.pendiente) {
+              <button class="quiet" (click)="retry(m)">Reintentar</button>
+            }
+          </article>
+        }
+      </div>
+      <form class="message-form" (ngSubmit)="send()">
+        <label class="sr-only" for="mensaje">Mensaje</label
+        ><textarea
+          id="mensaje"
+          [(ngModel)]="text"
+          name="mensaje"
+          maxlength="4000"
+          rows="2"
+          placeholder="Escribe un mensaje…"
+          required
+        ></textarea
+        ><button [disabled]="busy() || !text.trim()">Enviar ↑</button>
+      </form>
+    } @else {
+      <div class="empty">
+        <span class="pixel-star">✦</span>
+        <h2>Una conversación puede<br />encender una idea.</h2>
+        <p>Elige a un amigo para abrir el chat.</p>
+      </div>
+    }
+  </section>
+</div>
+@if (error()) {
+  <p class="alert" role="alert">{{ error() }}</p>
+}

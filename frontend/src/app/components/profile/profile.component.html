@@ -1,0 +1,111 @@
+@if (profile(); as p) {
+  <section class="profile-hero">
+    <div
+      class="profile-banner"
+      [style.background-image]="p.banner_url ? 'url(' + p.banner_url + ')' : ''"
+    ></div>
+    <div class="profile-info">
+      <img
+        class="avatar large"
+        [src]="p.foto_url || '/avatar.svg'"
+        alt="Foto de perfil"
+      />
+      <div>
+        <p class="eyebrow">PERFIL DE ESTUDIANTE</p>
+        <h1>{{ p.nombre }}</h1>
+        <span class="muted">&#64;{{ p.nombre_usuario }}</span>
+        <p>{{ p.descripcion || "Una nueva aventura de programación." }}</p>
+      </div>
+      <div class="profile-actions">
+        @if (own()) {
+          <a class="button secondary" routerLink="/configuracion"
+            >Editar perfil</a
+          >
+        } @else if (session.user()) {
+          @if (
+            !relation() ||
+            ["eliminada", "rechazada", "cancelada"].includes(relation().estado)
+          ) {
+            <button (click)="request()" [disabled]="busy()">
+              Agregar amigo +
+            </button>
+          } @else {
+            <span class="pill">{{ relation().estado }}</span>
+            @if (relation().estado === "aceptada") {
+              <a
+                class="button"
+                [routerLink]="['/mensajes', relation().id_amistad]"
+                >Chatear →</a
+              >
+            }
+            <a routerLink="/amigos">Gestionar amistad</a>
+          }
+        } @else {
+          <a class="button" routerLink="/registro">Únete a la comunidad</a>
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <p class="eyebrow">UNA META A LA VEZ</p>
+    <h2>Insignias y aprendizajes</h2>
+    <div class="badges-grid">
+      @for (b of p.metas; track b.id_logro) {
+        <button
+          class="badge-card"
+          [class.locked]="!earned(b.id_logro)"
+          (click)="detail.set(b)"
+        >
+          <span class="badge-icon" [class.pro-badge]="b.nivel === 'Completo'">{{
+            earned(b.id_logro) ? (b.nivel === "Completo" ? "★" : "✓") : "◇"
+          }}</span
+          ><strong>{{ b.tecnologia }}</strong
+          ><span>{{
+            b.nivel === "Completo" ? "Curso completo" : "Bloque Gratis"
+          }}</span
+          ><small>{{
+            earned(b.id_logro) ? "Obtenida" : "Meta pendiente"
+          }}</small>
+        </button>
+      }
+    </div>
+  </section>
+  @if (detail(); as b) {
+    <div class="modal-backdrop" (click)="detail.set(null)">
+      <section
+        class="panel modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Detalle de insignia"
+        (click)="$event.stopPropagation()"
+      >
+        <button
+          class="close quiet"
+          (click)="detail.set(null)"
+          aria-label="Cerrar"
+        >
+          ×</button
+        ><span class="badge-icon">{{
+          b.nivel === "Completo" ? "★" : "✓"
+        }}</span>
+        <h2>{{ b.nombre }}</h2>
+        <p>{{ b.descripcion }}</p>
+        <p>
+          Requisito: completar {{ b.seccion_meta }} secciones de
+          {{ b.tecnologia }}.
+        </p>
+        <p>
+          {{
+            earned(b.id_logro)
+              ? "Obtenida el " +
+                (earned(b.id_logro).obtenido_en | date: "dd/MM/yyyy")
+              : "Todavía no obtenida."
+          }}
+        </p>
+      </section>
+    </div>
+  }
+}
+@if (error()) {
+  <p class="alert">{{ error() }}</p>
+}

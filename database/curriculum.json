@@ -1,0 +1,2086 @@
+[
+  {
+    "id": 1,
+    "titulo": "Python",
+    "tecnologia": "Python",
+    "descripcion": "De fundamentos a aplicaciones con Python. Cinco secciones Gratis y cinco Pro.",
+    "secciones": [
+      {
+        "id": 101,
+        "numero": 1,
+        "titulo": "Introducción teórica",
+        "objetivo": "Entorno, sintaxis, variables, tipos y lectura de ejemplos; sin práctica obligatoria.",
+        "tipo": "teoria",
+        "leccion": {
+          "id": 1010,
+          "titulo": "Introducción teórica",
+          "contenido": "Introducción teórica\n\nObjetivo\nEntorno, sintaxis, variables, tipos y lectura de ejemplos; sin práctica obligatoria.\n\n¿Qué aprenderás?\nPython permite expresar instrucciones y construir aplicaciones. Un programa recibe datos, los transforma y produce un resultado. En este curso primero dominarás las estructuras fundamentales y después las aplicarás a sistemas con persistencia, servicios o interfaces.\n\nRuta\n1. Lee la teoría y consulta los ejemplos.\n2. En las secciones 2 a 5 escribe soluciones pequeñas y observa los errores.\n3. Con Pro, las secciones 6 a 9 conectan esas ideas con aplicaciones.\n4. En la sección 10 elige un proyecto propio: basta que su código compile o tenga sintaxis válida.\n\nCómo practicar\nEl editor integra archivos y permite restablecer una plantilla. Ejecutar permite explorar; Evaluar comprueba los criterios de una práctica. Una práctica equivocada no borra tu avance. Lee el diagnóstico, modifica una sola causa y vuelve a ejecutar.\n\nEjemplo inicial\nprint(\"Mi proyecto\")\n\n\nLas secciones se habilitan en orden. El bloque Gratis acredita 5/5 y equivale a 50% del curso. Cada curso tiene dos insignias acumulables. Esta introducción solo requiere confirmar la lectura.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 102,
+        "numero": 2,
+        "titulo": "Primera práctica",
+        "objetivo": "Mostrar un saludo y solicitar el nombre del usuario.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 1020,
+          "titulo": "Primera práctica",
+          "contenido": "Primera práctica\n\nObjetivo\nMostrar un saludo y solicitar el nombre del usuario.\n\nConceptos\nVariables, tipos, print e input.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nLee el nombre y devuelve un saludo. La función recibe un objeto con la propiedad nombre y devuelve un texto.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": {
+          "id": 1020,
+          "enunciado": "Saludo con entradas\n\nLee el nombre y devuelve un saludo. La función recibe un objeto con la propiedad nombre y devuelve un texto.",
+          "plantilla": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "solucion_referencia": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return \"Hola, \" + datos[\"nombre\"]\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"nombre\":\"Ana\"}",
+              "salida_esperada": "\"Hola, Ana\"",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"nombre\":\"Luis\"}",
+              "salida_esperada": "\"Hola, Luis\"",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 103,
+        "numero": 3,
+        "titulo": "Práctica guiada",
+        "objetivo": "Calculadora de precios con funciones, entradas y validaciones.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 1030,
+          "titulo": "Práctica guiada",
+          "contenido": "Práctica guiada\n\nObjetivo\nCalculadora de precios con funciones, entradas y validaciones.\n\nConceptos\nFunciones, operadores y redondeo.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe precio, cantidad y descuento (fracción entre 0 y 1). Devuelve el importe con descuento, redondeado a dos decimales.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": {
+          "id": 1030,
+          "enunciado": "Calculadora de precios\n\nRecibe precio, cantidad y descuento (fracción entre 0 y 1). Devuelve el importe con descuento, redondeado a dos decimales.",
+          "plantilla": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "solucion_referencia": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return round(datos[\"precio\"] * datos[\"cantidad\"] * (1-datos[\"descuento\"]), 2)\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"precio\":100,\"cantidad\":3,\"descuento\":0.1}",
+              "salida_esperada": "270.0",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"precio\":25,\"cantidad\":2,\"descuento\":0}",
+              "salida_esperada": "50",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 104,
+        "numero": 4,
+        "titulo": "Práctica intermedia",
+        "objetivo": "Organizador de tareas en memoria con listas y diccionarios.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 1040,
+          "titulo": "Práctica intermedia",
+          "contenido": "Práctica intermedia\n\nObjetivo\nOrganizador de tareas en memoria con listas y diccionarios.\n\nConceptos\nListas, diccionarios y comprensiones.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe tareas con titulo y completada. Devuelve los títulos de las tareas pendientes, en el orden original.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": {
+          "id": 1040,
+          "enunciado": "Organizador de tareas\n\nRecibe tareas con titulo y completada. Devuelve los títulos de las tareas pendientes, en el orden original.",
+          "plantilla": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "solucion_referencia": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return [t[\"titulo\"] for t in datos[\"tareas\"] if not t[\"completada\"]]\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"tareas\":[{\"titulo\":\"Estudiar\",\"completada\":false},{\"titulo\":\"Comer\",\"completada\":true}]}",
+              "salida_esperada": "[\"Estudiar\"]",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"tareas\":[]}",
+              "salida_esperada": "[]",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 105,
+        "numero": 5,
+        "titulo": "Reto complejo de fundamentos",
+        "objetivo": "Control de inventario en consola con búsqueda, actualización y manejo de errores.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 1050,
+          "titulo": "Reto complejo de fundamentos",
+          "contenido": "Reto complejo de fundamentos\n\nObjetivo\nControl de inventario en consola con búsqueda, actualización y manejo de errores.\n\nConceptos\nBúsqueda, funciones y valores predeterminados.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe productos (nombre, cantidad) y una consulta. Devuelve la cantidad correspondiente o 0 si no existe.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": {
+          "id": 1050,
+          "enunciado": "Inventario por nombre\n\nRecibe productos (nombre, cantidad) y una consulta. Devuelve la cantidad correspondiente o 0 si no existe.",
+          "plantilla": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "solucion_referencia": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return next((p[\"cantidad\"] for p in datos[\"productos\"] if p[\"nombre\"] == datos[\"consulta\"]), 0)\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"productos\":[{\"nombre\":\"pan\",\"cantidad\":3}],\"consulta\":\"pan\"}",
+              "salida_esperada": "3",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"productos\":[],\"consulta\":\"leche\"}",
+              "salida_esperada": "0",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 106,
+        "numero": 6,
+        "titulo": "Persistencia aplicada",
+        "objetivo": "Transformar el inventario en una aplicación con archivos, modelos y módulos.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 1060,
+          "titulo": "Persistencia aplicada",
+          "contenido": "Persistencia aplicada\n\nObjetivo\nTransformar el inventario en una aplicación con archivos, modelos y módulos.\n\nConceptos\nSerialización JSON y separación de responsabilidades.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe registros. Conviértelos a texto JSON, recupéralos con json.loads y devuelve cuántos registros fueron recuperados. Conserva caracteres de texto al serializar.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": {
+          "id": 1060,
+          "enunciado": "Persistencia JSON\n\nRecibe registros. Conviértelos a texto JSON, recupéralos con json.loads y devuelve cuántos registros fueron recuperados. Conserva caracteres de texto al serializar.",
+          "plantilla": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "solucion_referencia": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    texto = json.dumps(datos[\"registros\"], ensure_ascii=False)\n    recuperados = json.loads(texto)\n    return len(recuperados)\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"registros\":[{\"id\":1},{\"id\":2}]}",
+              "salida_esperada": "2",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"registros\":[]}",
+              "salida_esperada": "0",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 107,
+        "numero": 7,
+        "titulo": "Aplicación con datos",
+        "objetivo": "Gestionar registros con SQLite desde Python y probar las operaciones.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 1070,
+          "titulo": "Aplicación con datos",
+          "contenido": "Aplicación con datos\n\nObjetivo\nGestionar registros con SQLite desde Python y probar las operaciones.\n\nConceptos\nConexiones, tablas, consultas y parámetros SQL.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea SQLite en memoria con tabla clientes(id INTEGER, nombre TEXT), inserta los nombres con parámetros y devuelve sus nombres ordenados alfabéticamente. Usa sqlite3 de la biblioteca estándar.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": {
+          "id": 1070,
+          "enunciado": "Registros con SQLite\n\nCrea SQLite en memoria con tabla clientes(id INTEGER, nombre TEXT), inserta los nombres con parámetros y devuelve sus nombres ordenados alfabéticamente. Usa sqlite3 de la biblioteca estándar.",
+          "plantilla": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "solucion_referencia": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    import sqlite3\n    with sqlite3.connect(\":memory:\") as db:\n        db.execute(\"CREATE TABLE clientes(id INTEGER PRIMARY KEY, nombre TEXT)\")\n        db.executemany(\"INSERT INTO clientes(nombre) VALUES(?)\", [(n,) for n in datos[\"nombres\"]])\n        return [r[0] for r in db.execute(\"SELECT nombre FROM clientes ORDER BY nombre\")]\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"nombres\":[\"Zoe\",\"Ana\"]}",
+              "salida_esperada": "[\"Ana\",\"Zoe\"]",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"nombres\":[]}",
+              "salida_esperada": "[]",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 108,
+        "numero": 8,
+        "titulo": "Integración de servicios",
+        "objetivo": "Consumir un servicio web con datos de ejemplo y tratar errores de respuesta.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 1080,
+          "titulo": "Integración de servicios",
+          "contenido": "Integración de servicios\n\nObjetivo\nConsumir un servicio web con datos de ejemplo y tratar errores de respuesta.\n\nConceptos\nAdaptadores, estados de respuesta y tratamiento de errores.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nModela el consumo de un servicio sin conexión real: recibe estado y cuerpo. Si estado es 200, devuelve cuerpo.items; ante otro estado, devuelve una lista vacía.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": {
+          "id": 1080,
+          "enunciado": "Adaptador de respuestas\n\nModela el consumo de un servicio sin conexión real: recibe estado y cuerpo. Si estado es 200, devuelve cuerpo.items; ante otro estado, devuelve una lista vacía.",
+          "plantilla": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "solucion_referencia": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return datos[\"cuerpo\"].get(\"items\", []) if datos[\"estado\"] == 200 else []\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"estado\":200,\"cuerpo\":{\"items\":[1,2]}}",
+              "salida_esperada": "[1,2]",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"estado\":503,\"cuerpo\":{}}",
+              "salida_esperada": "[]",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 109,
+        "numero": 9,
+        "titulo": "Sistema integrador",
+        "objetivo": "Desarrollar un sistema modular con persistencia, validaciones y pruebas.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 1090,
+          "titulo": "Sistema integrador",
+          "contenido": "Sistema integrador\n\nObjetivo\nDesarrollar un sistema modular con persistencia, validaciones y pruebas.\n\nConceptos\nServicios, validaciones y operaciones consistentes.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nIntegra validación y cálculo: recibe productos con precio y cantidad. Si alguno es negativo, devuelve {\"error\":\"datos invalidos\"}; si todo es válido devuelve {\"total\": importe}.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": {
+          "id": 1090,
+          "enunciado": "Servicio de pedidos\n\nIntegra validación y cálculo: recibe productos con precio y cantidad. Si alguno es negativo, devuelve {\"error\":\"datos invalidos\"}; si todo es válido devuelve {\"total\": importe}.",
+          "plantilla": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "solucion_referencia": {
+            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    if any(p[\"precio\"] < 0 or p[\"cantidad\"] < 0 for p in datos[\"productos\"]):\n        return {\"error\": \"datos invalidos\"}\n    return {\"total\": round(sum(p[\"precio\"] * p[\"cantidad\"] for p in datos[\"productos\"]), 2)}\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"productos\":[{\"precio\":10,\"cantidad\":3}]}",
+              "salida_esperada": "{\"total\":30}",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"productos\":[{\"precio\":-1,\"cantidad\":2}]}",
+              "salida_esperada": "{\"error\":\"datos invalidos\"}",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 110,
+        "numero": 10,
+        "titulo": "Proyecto libre",
+        "objetivo": "Construir una aplicación propia en Python, documentarla, entregarla y descargar sus archivos en ZIP.",
+        "tipo": "proyecto",
+        "leccion": {
+          "id": 1100,
+          "titulo": "Proyecto libre",
+          "contenido": "Proyecto libre\n\nObjetivo\nConstruir una aplicación propia en Python, documentarla, entregarla y descargar sus archivos en ZIP.\n\nElige un problema o una idea que te interese. No hay rúbrica, nota ni complejidad mínima. Crea archivos, añade instrucciones en README.md y guarda borradores. Al finalizar se conserva una copia de esa versión y se comprueba compilación o sintaxis; los errores deben corregirse para completar la sección.\n\nPuedes descargar el borrador o la copia final en ZIP. La descarga no instala dependencias ni incluye claves de la plataforma. No añadas contraseñas, archivos .env ni node_modules.\n\nSi Pro vence conservarás tu progreso, tus insignias y la lectura y descarga de los archivos ya guardados. Para modificar o finalizar una nueva versión necesitas Pro vigente. Compilar correctamente no garantiza que una aplicación funcione: prueba tu trabajo por tu cuenta.",
+          "recurso": {
+            "direccion": "https://docs.python.org/es/3/tutorial/",
+            "autor": "Documentación oficial de Python",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://docs.python.org/es/3/tutorial/"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": {
+          "entrada": "main.py",
+          "archivos": {
+            "main.py": "print(\"Mi proyecto\")\n",
+            "README.md": "# Mi proyecto libre\n\nDescribe tu idea, los archivos y cómo ejecutar el proyecto.\n"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "titulo": "JavaScript",
+    "tecnologia": "JavaScript",
+    "descripcion": "De fundamentos a aplicaciones con JavaScript. Cinco secciones Gratis y cinco Pro.",
+    "secciones": [
+      {
+        "id": 201,
+        "numero": 1,
+        "titulo": "Introducción teórica",
+        "objetivo": "JavaScript, navegador, variables, tipos, funciones y eventos; lectura sin práctica obligatoria.",
+        "tipo": "teoria",
+        "leccion": {
+          "id": 2010,
+          "titulo": "Introducción teórica",
+          "contenido": "Introducción teórica\n\nObjetivo\nJavaScript, navegador, variables, tipos, funciones y eventos; lectura sin práctica obligatoria.\n\n¿Qué aprenderás?\nJavaScript permite expresar instrucciones y construir aplicaciones. Un programa recibe datos, los transforma y produce un resultado. En este curso primero dominarás las estructuras fundamentales y después las aplicarás a sistemas con persistencia, servicios o interfaces.\n\nRuta\n1. Lee la teoría y consulta los ejemplos.\n2. En las secciones 2 a 5 escribe soluciones pequeñas y observa los errores.\n3. Con Pro, las secciones 6 a 9 conectan esas ideas con aplicaciones.\n4. En la sección 10 elige un proyecto propio: basta que su código compile o tenga sintaxis válida.\n\nCómo practicar\nEl editor integra archivos y permite restablecer una plantilla. Ejecutar permite explorar; Evaluar comprueba los criterios de una práctica. Una práctica equivocada no borra tu avance. Lee el diagnóstico, modifica una sola causa y vuelve a ejecutar.\n\nEjemplo inicial\nconsole.log(\"Mi proyecto\");\n\n\nLas secciones se habilitan en orden. El bloque Gratis acredita 5/5 y equivale a 50% del curso. Cada curso tiene dos insignias acumulables. Esta introducción solo requiere confirmar la lectura.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 202,
+        "numero": 2,
+        "titulo": "Primera práctica",
+        "objetivo": "Crear un contador mediante un botón y mostrar su valor.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 2020,
+          "titulo": "Primera práctica",
+          "contenido": "Primera práctica\n\nObjetivo\nCrear un contador mediante un botón y mostrar su valor.\n\nConceptos\nSelección del DOM, eventos y estado.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea button#sumar y output#valor con valor inicial 0. Al pulsar sumar incrementa a 1.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": {
+          "id": 2020,
+          "enunciado": "Contador con eventos\n\nCrea button#sumar y output#valor con valor inicial 0. Al pulsar sumar incrementa a 1.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Contador con eventos</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
+            "estilos.css": "/* Escribe los estilos */",
+            "app.js": "// Escribe tus eventos y funciones\n",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Contador con eventos</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"sumar\">Sumar</button><output id=\"valor\">0</output><script src=\"app.js\"></script></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}",
+            "app.js": "let n=0; document.querySelector(\"#sumar\").addEventListener(\"click\",()=>{document.querySelector(\"#valor\").textContent=String(++n);});",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"#valor\", \"click\": \"#sumar\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "texto",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 203,
+        "numero": 3,
+        "titulo": "Práctica guiada",
+        "objetivo": "Crear un formulario con validaciones y mensajes claros.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 2030,
+          "titulo": "Práctica guiada",
+          "contenido": "Práctica guiada\n\nObjetivo\nCrear un formulario con validaciones y mensajes claros.\n\nConceptos\nFormularios, validación y texto seguro.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea input#nombre, button#validar y p#resultado. Si el campo está vacío al pulsar validar muestra \"Nombre requerido\".\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": {
+          "id": 2030,
+          "enunciado": "Validación de formulario\n\nCrea input#nombre, button#validar y p#resultado. Si el campo está vacío al pulsar validar muestra \"Nombre requerido\".",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Validación de formulario</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
+            "estilos.css": "/* Escribe los estilos */",
+            "app.js": "// Escribe tus eventos y funciones\n",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Validación de formulario</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><input id=\"nombre\"><button id=\"validar\">Validar</button><p id=\"resultado\"></p><script src=\"app.js\"></script></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}",
+            "app.js": "document.querySelector(\"#validar\").addEventListener(\"click\",()=>{document.querySelector(\"#resultado\").textContent=document.querySelector(\"#nombre\").value.trim()?\"Correcto\":\"Nombre requerido\";});",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"#resultado\", \"click\": \"#validar\"}",
+              "salida_esperada": "Nombre requerido",
+              "tipo_criterio": "texto",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 204,
+        "numero": 4,
+        "titulo": "Práctica intermedia",
+        "objetivo": "Construir una lista de tareas con creación, edición, eliminación y filtros.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 2040,
+          "titulo": "Práctica intermedia",
+          "contenido": "Práctica intermedia\n\nObjetivo\nConstruir una lista de tareas con creación, edición, eliminación y filtros.\n\nConceptos\nCreación de nodos y colecciones.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea input#tarea, button#agregar y ul#tareas. Al escribir Estudiar y pulsar agregar aparece un li con ese texto.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": {
+          "id": 2040,
+          "enunciado": "Lista de tareas\n\nCrea input#tarea, button#agregar y ul#tareas. Al escribir Estudiar y pulsar agregar aparece un li con ese texto.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Lista de tareas</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
+            "estilos.css": "/* Escribe los estilos */",
+            "app.js": "// Escribe tus eventos y funciones\n",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Lista de tareas</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><input id=\"tarea\"><button id=\"agregar\">Agregar</button><ul id=\"tareas\"></ul><script src=\"app.js\"></script></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}",
+            "app.js": "document.querySelector(\"#agregar\").addEventListener(\"click\",()=>{const li=document.createElement(\"li\");li.textContent=document.querySelector(\"#tarea\").value;document.querySelector(\"#tareas\").append(li);});",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"#tareas li\", \"fill\": {\"selector\": \"#tarea\", \"value\": \"Estudiar\"}, \"click\": \"#agregar\"}",
+              "salida_esperada": "Estudiar",
+              "tipo_criterio": "texto",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 205,
+        "numero": 5,
+        "titulo": "Reto complejo de fundamentos",
+        "objetivo": "Crear un catálogo interactivo con búsqueda, filtros y ordenamiento.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 2050,
+          "titulo": "Reto complejo de fundamentos",
+          "contenido": "Reto complejo de fundamentos\n\nObjetivo\nCrear un catálogo interactivo con búsqueda, filtros y ordenamiento.\n\nConceptos\nfilter, map y orden de presentación.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea button#filtrar y ul#productos. Al pulsarlo muestra solo productos con precio menor a 100 de [{nombre:\"Libro\",precio:80},{nombre:\"Teclado\",precio:200}].\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": {
+          "id": 2050,
+          "enunciado": "Catálogo filtrable\n\nCrea button#filtrar y ul#productos. Al pulsarlo muestra solo productos con precio menor a 100 de [{nombre:\"Libro\",precio:80},{nombre:\"Teclado\",precio:200}].",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Catálogo filtrable</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
+            "estilos.css": "/* Escribe los estilos */",
+            "app.js": "// Escribe tus eventos y funciones\n",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Catálogo filtrable</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"filtrar\">Menos de $100</button><ul id=\"productos\"></ul><script src=\"app.js\"></script></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}",
+            "app.js": "const datos=[{nombre:\"Libro\",precio:80},{nombre:\"Teclado\",precio:200}]; document.querySelector(\"#filtrar\").onclick=()=>{document.querySelector(\"#productos\").replaceChildren(...datos.filter(p=>p.precio<100).map(p=>{const li=document.createElement(\"li\");li.textContent=p.nombre;return li;}));};",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"#productos\", \"click\": \"#filtrar\"}",
+              "salida_esperada": "Libro",
+              "tipo_criterio": "texto",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \"#productos li\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 206,
+        "numero": 6,
+        "titulo": "Persistencia aplicada",
+        "objetivo": "Añadir almacenamiento local y recuperación de estado a una aplicación.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 2060,
+          "titulo": "Persistencia aplicada",
+          "contenido": "Persistencia aplicada\n\nObjetivo\nAñadir almacenamiento local y recuperación de estado a una aplicación.\n\nConceptos\nlocalStorage y reconstrucción del estado.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea button#guardar y p#estado. Al pulsar guarda tema=oscuro en localStorage y muestra \"Guardado: oscuro\" usando el valor recuperado.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": {
+          "id": 2060,
+          "enunciado": "Persistencia de preferencias\n\nCrea button#guardar y p#estado. Al pulsar guarda tema=oscuro en localStorage y muestra \"Guardado: oscuro\" usando el valor recuperado.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Persistencia de preferencias</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
+            "estilos.css": "/* Escribe los estilos */",
+            "app.js": "// Escribe tus eventos y funciones\n",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Persistencia de preferencias</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"guardar\">Guardar tema</button><p id=\"estado\"></p><script src=\"app.js\"></script></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}",
+            "app.js": "document.querySelector(\"#guardar\").onclick=()=>{localStorage.setItem(\"tema\",\"oscuro\");document.querySelector(\"#estado\").textContent=\"Guardado: \"+localStorage.getItem(\"tema\");};",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"#estado\", \"click\": \"#guardar\"}",
+              "salida_esperada": "Guardado: oscuro",
+              "tipo_criterio": "texto",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 207,
+        "numero": 7,
+        "titulo": "Datos y asincronía",
+        "objetivo": "Consumir datos de ejemplo desde un servicio y controlar carga, errores y reintentos.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 2070,
+          "titulo": "Datos y asincronía",
+          "contenido": "Datos y asincronía\n\nObjetivo\nConsumir datos de ejemplo desde un servicio y controlar carga, errores y reintentos.\n\nConceptos\nasync, await, fetch y captura de errores.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea button#cargar y p#estado. Consume datos.json y muestra su propiedad mensaje. Maneja errores con texto \"Sin conexión\". El archivo de datos forma parte del proyecto.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": {
+          "id": 2070,
+          "enunciado": "Servicio asíncrono\n\nCrea button#cargar y p#estado. Consume datos.json y muestra su propiedad mensaje. Maneja errores con texto \"Sin conexión\". El archivo de datos forma parte del proyecto.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Servicio asíncrono</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
+            "estilos.css": "/* Escribe los estilos */",
+            "app.js": "// Escribe tus eventos y funciones\n",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Servicio asíncrono</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"cargar\">Cargar datos</button><p id=\"estado\"></p><script src=\"app.js\"></script></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}",
+            "app.js": "document.querySelector(\"#cargar\").onclick=async()=>{try{const r=await fetch(\"datos.json\");if(!r.ok)throw Error();const d=await r.json();document.querySelector(\"#estado\").textContent=d.mensaje;}catch{document.querySelector(\"#estado\").textContent=\"Sin conexión\";}};",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"#estado\", \"click\": \"#cargar\"}",
+              "salida_esperada": "Datos listos",
+              "tipo_criterio": "texto",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 208,
+        "numero": 8,
+        "titulo": "Organización de aplicaciones",
+        "objetivo": "Separar módulos, componentes de interfaz y servicios de datos.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 2080,
+          "titulo": "Organización de aplicaciones",
+          "contenido": "Organización de aplicaciones\n\nObjetivo\nSeparar módulos, componentes de interfaz y servicios de datos.\n\nConceptos\nClases, componentes y separación del servicio.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nDefine class Servicio con listar() que devuelve [\"Ana\",\"Luis\"]. Crea button#cargar y ul#clientes que renderice los dos nombres sin usar innerHTML con datos externos.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": {
+          "id": 2080,
+          "enunciado": "Componente y servicio\n\nDefine class Servicio con listar() que devuelve [\"Ana\",\"Luis\"]. Crea button#cargar y ul#clientes que renderice los dos nombres sin usar innerHTML con datos externos.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Componente y servicio</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
+            "estilos.css": "/* Escribe los estilos */",
+            "app.js": "// Escribe tus eventos y funciones\n",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Componente y servicio</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"cargar\">Clientes</button><ul id=\"clientes\"></ul><script src=\"app.js\"></script></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}",
+            "app.js": "class Servicio{listar(){return [\"Ana\",\"Luis\"];}} document.querySelector(\"#cargar\").onclick=()=>{document.querySelector(\"#clientes\").replaceChildren(...new Servicio().listar().map(n=>{const li=document.createElement(\"li\");li.textContent=n;return li;}));};",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"#clientes li\", \"click\": \"#cargar\"}",
+              "salida_esperada": "2",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 209,
+        "numero": 9,
+        "titulo": "Sistema integrador",
+        "objetivo": "Construir un tablero con formularios, datos, navegación y pruebas.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 2090,
+          "titulo": "Sistema integrador",
+          "contenido": "Sistema integrador\n\nObjetivo\nConstruir un tablero con formularios, datos, navegación y pruebas.\n\nConceptos\nFormularios, cálculo y estados de error.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea input#cantidad con type=number, button#calcular y output#total. El precio es 25; al ingresar 3 y calcular debe verse 75. Rechaza cantidades negativas con \"Cantidad inválida\".\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": {
+          "id": 2090,
+          "enunciado": "Tablero de pedidos\n\nCrea input#cantidad con type=number, button#calcular y output#total. El precio es 25; al ingresar 3 y calcular debe verse 75. Rechaza cantidades negativas con \"Cantidad inválida\".",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Tablero de pedidos</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
+            "estilos.css": "/* Escribe los estilos */",
+            "app.js": "// Escribe tus eventos y funciones\n",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Tablero de pedidos</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><input id=\"cantidad\" type=\"number\"><button id=\"calcular\">Calcular</button><output id=\"total\"></output><script src=\"app.js\"></script></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}",
+            "app.js": "document.querySelector(\"#calcular\").onclick=()=>{const n=Number(document.querySelector(\"#cantidad\").value);document.querySelector(\"#total\").textContent=n<0?\"Cantidad inválida\":String(n*25);};",
+            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"#total\", \"fill\": {\"selector\": \"#cantidad\", \"value\": \"3\"}, \"click\": \"#calcular\"}",
+              "salida_esperada": "75",
+              "tipo_criterio": "texto",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \"#total\", \"fill\": {\"selector\": \"#cantidad\", \"value\": \"-1\"}, \"click\": \"#calcular\"}",
+              "salida_esperada": "Cantidad inválida",
+              "tipo_criterio": "texto",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 210,
+        "numero": 10,
+        "titulo": "Proyecto libre",
+        "objetivo": "Crear una aplicación web propia, documentarla, entregarla y descargarla en ZIP.",
+        "tipo": "proyecto",
+        "leccion": {
+          "id": 2100,
+          "titulo": "Proyecto libre",
+          "contenido": "Proyecto libre\n\nObjetivo\nCrear una aplicación web propia, documentarla, entregarla y descargarla en ZIP.\n\nElige un problema o una idea que te interese. No hay rúbrica, nota ni complejidad mínima. Crea archivos, añade instrucciones en README.md y guarda borradores. Al finalizar se conserva una copia de esa versión y se comprueba compilación o sintaxis; los errores deben corregirse para completar la sección.\n\nPuedes descargar el borrador o la copia final en ZIP. La descarga no instala dependencias ni incluye claves de la plataforma. No añadas contraseñas, archivos .env ni node_modules.\n\nSi Pro vence conservarás tu progreso, tus insignias y la lectura y descarga de los archivos ya guardados. Para modificar o finalizar una nueva versión necesitas Pro vigente. Compilar correctamente no garantiza que una aplicación funcione: prueba tu trabajo por tu cuenta.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
+            "autor": "Documentación oficial de JavaScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": {
+          "entrada": "main.js",
+          "archivos": {
+            "main.js": "console.log(\"Mi proyecto\");\n",
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Mi proyecto</title></head><body><h1>Mi proyecto</h1><script src=\"main.js\"></script></body></html>",
+            "README.md": "# Mi proyecto libre\n\nDescribe tu idea, los archivos y cómo ejecutar el proyecto.\n"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "titulo": "HTML y CSS",
+    "tecnologia": "HTML y CSS",
+    "descripcion": "De fundamentos a aplicaciones con HTML y CSS. Cinco secciones Gratis y cinco Pro.",
+    "secciones": [
+      {
+        "id": 301,
+        "numero": 1,
+        "titulo": "Introducción teórica",
+        "objetivo": "Estructura de documentos, etiquetas semánticas, selectores y modelo de caja; solo teoría.",
+        "tipo": "teoria",
+        "leccion": {
+          "id": 3010,
+          "titulo": "Introducción teórica",
+          "contenido": "Introducción teórica\n\nObjetivo\nEstructura de documentos, etiquetas semánticas, selectores y modelo de caja; solo teoría.\n\n¿Qué aprenderás?\nHTML y CSS permite expresar instrucciones y construir aplicaciones. Un programa recibe datos, los transforma y produce un resultado. En este curso primero dominarás las estructuras fundamentales y después las aplicarás a sistemas con persistencia, servicios o interfaces.\n\nRuta\n1. Lee la teoría y consulta los ejemplos.\n2. En las secciones 2 a 5 escribe soluciones pequeñas y observa los errores.\n3. Con Pro, las secciones 6 a 9 conectan esas ideas con aplicaciones.\n4. En la sección 10 elige un proyecto propio: basta que su código compile o tenga sintaxis válida.\n\nCómo practicar\nEl editor integra archivos y permite restablecer una plantilla. Ejecutar permite explorar; Evaluar comprueba los criterios de una práctica. Una práctica equivocada no borra tu avance. Lee el diagnóstico, modifica una sola causa y vuelve a ejecutar.\n\nEjemplo inicial\n<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Mi proyecto</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><h1>Mi proyecto libre</h1></body></html>\n\nLas secciones se habilitan en orden. El bloque Gratis acredita 5/5 y equivale a 50% del curso. Cada curso tiene dos insignias acumulables. Esta introducción solo requiere confirmar la lectura.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 302,
+        "numero": 2,
+        "titulo": "Primera práctica",
+        "objetivo": "Crear una tarjeta de presentación con título, texto e imagen.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 3020,
+          "titulo": "Primera práctica",
+          "contenido": "Primera práctica\n\nObjetivo\nCrear una tarjeta de presentación con título, texto e imagen.\n\nConceptos\nSemántica, etiquetas y estilos.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea un article.tarjeta con un h1 que contenga \"Mi perfil\" y un p. Añade fondo azul a la tarjeta.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": {
+          "id": 3020,
+          "enunciado": "Tarjeta de presentación\n\nCrea un article.tarjeta con un h1 que contenga \"Mi perfil\" y un p. Añade fondo azul a la tarjeta.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Tarjeta de presentación</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
+            "estilos.css": "/* Escribe los estilos */"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Tarjeta de presentación</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><article class=\"tarjeta\"><h1>Mi perfil</h1><p>Aprendo creando.</p></article></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"article.tarjeta\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \"h1\"}",
+              "salida_esperada": "Mi perfil",
+              "tipo_criterio": "texto",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 303,
+        "numero": 3,
+        "titulo": "Práctica guiada",
+        "objetivo": "Crear una página con cabecera, secciones, enlaces y formulario.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 3030,
+          "titulo": "Práctica guiada",
+          "contenido": "Práctica guiada\n\nObjetivo\nCrear una página con cabecera, secciones, enlaces y formulario.\n\nConceptos\nEstructura de página y formularios.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea header, nav, main y footer. Dentro de main añade un formulario con label y un input con id nombre.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": {
+          "id": 3030,
+          "enunciado": "Estructura semántica\n\nCrea header, nav, main y footer. Dentro de main añade un formulario con label y un input con id nombre.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Estructura semántica</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
+            "estilos.css": "/* Escribe los estilos */"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Estructura semántica</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><header><nav><a href=\"#contenido\">Inicio</a></nav></header><main id=\"contenido\"><form><label for=\"nombre\">Nombre</label><input id=\"nombre\"></form></main><footer>Contacto</footer></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"header nav\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \"main form label[for=\\\"nombre\\\"]\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 304,
+        "numero": 4,
+        "titulo": "Práctica intermedia",
+        "objetivo": "Construir una página adaptable con Flexbox y rejilla de CSS.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 3040,
+          "titulo": "Práctica intermedia",
+          "contenido": "Práctica intermedia\n\nObjetivo\nConstruir una página adaptable con Flexbox y rejilla de CSS.\n\nConceptos\nFlexbox, Grid y consultas de medios.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea .rejilla con tres article y aplica display:grid. Añade una regla para una columna en móviles.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": {
+          "id": 3040,
+          "enunciado": "Distribución flexible\n\nCrea .rejilla con tres article y aplica display:grid. Añade una regla para una columna en móviles.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Distribución flexible</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
+            "estilos.css": "/* Escribe los estilos */"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Distribución flexible</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main class=\"rejilla\"><article>Uno</article><article>Dos</article><article>Tres</article></main></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \".rejilla article\"}",
+              "salida_esperada": "3",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \".rejilla\", \"property\": \"display\"}",
+              "salida_esperada": "grid",
+              "tipo_criterio": "estilo",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 305,
+        "numero": 5,
+        "titulo": "Reto complejo de fundamentos",
+        "objetivo": "Diseñar un sitio de varias páginas con navegación y componentes visuales coherentes.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 3050,
+          "titulo": "Reto complejo de fundamentos",
+          "contenido": "Reto complejo de fundamentos\n\nObjetivo\nDiseñar un sitio de varias páginas con navegación y componentes visuales coherentes.\n\nConceptos\nRutas relativas y navegación.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea nav con tres enlaces a inicio.html, cursos.html y contacto.html. Todas las páginas compartirán el estilo visual. En esta práctica valida la portada.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": {
+          "id": 3050,
+          "enunciado": "Navegación de un sitio\n\nCrea nav con tres enlaces a inicio.html, cursos.html y contacto.html. Todas las páginas compartirán el estilo visual. En esta práctica valida la portada.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Navegación de un sitio</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
+            "estilos.css": "/* Escribe los estilos */"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Navegación de un sitio</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><nav><a href=\"inicio.html\">Inicio</a><a href=\"cursos.html\">Cursos</a><a href=\"contacto.html\">Contacto</a></nav><main><h1>Mi sitio</h1></main></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"nav a\"}",
+              "salida_esperada": "3",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \"main h1\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 306,
+        "numero": 6,
+        "titulo": "Sistema visual aplicado",
+        "objetivo": "Definir variables de diseño, componentes reutilizables y estados de interacción.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 3060,
+          "titulo": "Sistema visual aplicado",
+          "contenido": "Sistema visual aplicado\n\nObjetivo\nDefinir variables de diseño, componentes reutilizables y estados de interacción.\n\nConceptos\nVariables, componentes y estados de foco.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nDefine variable --accion en :root y crea button.primario. Usa padding de 16px y borde visible.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": {
+          "id": 3060,
+          "enunciado": "Sistema de componentes\n\nDefine variable --accion en :root y crea button.primario. Usa padding de 16px y borde visible.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Sistema de componentes</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
+            "estilos.css": "/* Escribe los estilos */"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Sistema de componentes</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button class=\"primario\">Guardar</button></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"button.primario\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \".primario\", \"property\": \"padding-top\"}",
+              "salida_esperada": "16px",
+              "tipo_criterio": "estilo",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 307,
+        "numero": 7,
+        "titulo": "Formularios accesibles",
+        "objetivo": "Construir formularios y navegación utilizables con teclado y distintos dispositivos.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 3070,
+          "titulo": "Formularios accesibles",
+          "contenido": "Formularios accesibles\n\nObjetivo\nConstruir formularios y navegación utilizables con teclado y distintos dispositivos.\n\nConceptos\nEtiquetas, teclado y validación del navegador.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea un formulario con email requerido y label asociado. Incluye botón submit y un enlace para saltar a main.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": {
+          "id": 3070,
+          "enunciado": "Formulario accesible\n\nCrea un formulario con email requerido y label asociado. Incluye botón submit y un enlace para saltar a main.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Formulario accesible</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
+            "estilos.css": "/* Escribe los estilos */"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Formulario accesible</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><a href=\"#contenido\">Saltar al contenido</a><main id=\"contenido\"><form><label for=\"correo\">Correo</label><input id=\"correo\" type=\"email\" required><button type=\"submit\">Enviar</button></form></main></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"label[for=\\\"correo\\\"]\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \"input[type=\\\"email\\\"][required]\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \"button[type=\\\"submit\\\"]\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 308,
+        "numero": 8,
+        "titulo": "Interfaz de un sistema",
+        "objetivo": "Maquetar tablas, filtros, formularios y paneles para una aplicación administrativa.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 3080,
+          "titulo": "Interfaz de un sistema",
+          "contenido": "Interfaz de un sistema\n\nObjetivo\nMaquetar tablas, filtros, formularios y paneles para una aplicación administrativa.\n\nConceptos\nTablas, paneles y jerarquía visual.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nCrea aside con navegación, main con h1 y una tabla con thead, tbody y dos filas de datos.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": {
+          "id": 3080,
+          "enunciado": "Panel de registros\n\nCrea aside con navegación, main con h1 y una tabla con thead, tbody y dos filas de datos.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Panel de registros</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
+            "estilos.css": "/* Escribe los estilos */"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Panel de registros</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><aside><nav>Registros</nav></aside><main><h1>Clientes</h1><table><thead><tr><th>Nombre</th></tr></thead><tbody><tr><td>Ana</td></tr><tr><td>Luis</td></tr></tbody></table></main></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \"aside nav\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \"tbody tr\"}",
+              "salida_esperada": "2",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 309,
+        "numero": 9,
+        "titulo": "Sistema integrador",
+        "objetivo": "Construir una interfaz completa con vistas conectadas, accesibilidad y adaptación.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 3090,
+          "titulo": "Sistema integrador",
+          "contenido": "Sistema integrador\n\nObjetivo\nConstruir una interfaz completa con vistas conectadas, accesibilidad y adaptación.\n\nConceptos\nReutilización, adaptación y accesibilidad.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nIntegra nav, main, section.resumen con tres article y un formulario con input buscador. Usa display:grid en resumen.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": {
+          "id": 3090,
+          "enunciado": "Interfaz integradora\n\nIntegra nav, main, section.resumen con tres article y un formulario con input buscador. Usa display:grid en resumen.",
+          "plantilla": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Interfaz integradora</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
+            "estilos.css": "/* Escribe los estilos */"
+          },
+          "solucion_referencia": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Interfaz integradora</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><nav><a href=\"#resumen\">Resumen</a></nav><main><section id=\"resumen\" class=\"resumen\"><article>Ventas</article><article>Clientes</article><article>Pedidos</article></section><form><label for=\"buscador\">Buscar</label><input id=\"buscador\"></form></main></body></html>",
+            "estilos.css": ":root { --accion: #ffcf3e; } body { font-family: sans-serif; } .rejilla, .resumen { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; } .primario { padding:16px; border:2px solid black; background:var(--accion); } @media(max-width:600px){.rejilla,.resumen{grid-template-columns:1fr}}"
+          },
+          "modo_evaluacion": "web",
+          "casos": [
+            {
+              "entrada": "{\"selector\": \".resumen article\"}",
+              "salida_esperada": "3",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \"#buscador\"}",
+              "salida_esperada": "1",
+              "tipo_criterio": "selector",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"selector\": \".resumen\", \"property\": \"display\"}",
+              "salida_esperada": "grid",
+              "tipo_criterio": "estilo",
+              "es_publico": true
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 310,
+        "numero": 10,
+        "titulo": "Proyecto libre",
+        "objetivo": "Diseñar un sitio o interfaz propia en HTML y CSS, documentarla, entregarla y descargarla en ZIP.",
+        "tipo": "proyecto",
+        "leccion": {
+          "id": 3100,
+          "titulo": "Proyecto libre",
+          "contenido": "Proyecto libre\n\nObjetivo\nDiseñar un sitio o interfaz propia en HTML y CSS, documentarla, entregarla y descargarla en ZIP.\n\nElige un problema o una idea que te interese. No hay rúbrica, nota ni complejidad mínima. Crea archivos, añade instrucciones en README.md y guarda borradores. Al finalizar se conserva una copia de esa versión y se comprueba compilación o sintaxis; los errores deben corregirse para completar la sección.\n\nPuedes descargar el borrador o la copia final en ZIP. La descarga no instala dependencias ni incluye claves de la plataforma. No añadas contraseñas, archivos .env ni node_modules.\n\nSi Pro vence conservarás tu progreso, tus insignias y la lectura y descarga de los archivos ya guardados. Para modificar o finalizar una nueva versión necesitas Pro vigente. Compilar correctamente no garantiza que una aplicación funcione: prueba tu trabajo por tu cuenta.",
+          "recurso": {
+            "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
+            "autor": "Documentación oficial de HTML y CSS",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://developer.mozilla.org/es/docs/Learn_web_development"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": {
+          "entrada": "index.html",
+          "archivos": {
+            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Mi proyecto</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><h1>Mi proyecto libre</h1></body></html>",
+            "estilos.css": "body { font-family: sans-serif; }",
+            "README.md": "# Mi proyecto libre\n\nDescribe tu idea, los archivos y cómo ejecutar el proyecto.\n"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "titulo": "TypeScript",
+    "tecnologia": "TypeScript",
+    "descripcion": "De fundamentos a aplicaciones con TypeScript. Cinco secciones Gratis y cinco Pro.",
+    "secciones": [
+      {
+        "id": 401,
+        "numero": 1,
+        "titulo": "Introducción teórica",
+        "objetivo": "Relación con JavaScript, compilación, tipos e interfaces; lectura sin práctica obligatoria.",
+        "tipo": "teoria",
+        "leccion": {
+          "id": 4010,
+          "titulo": "Introducción teórica",
+          "contenido": "Introducción teórica\n\nObjetivo\nRelación con JavaScript, compilación, tipos e interfaces; lectura sin práctica obligatoria.\n\n¿Qué aprenderás?\nTypeScript permite expresar instrucciones y construir aplicaciones. Un programa recibe datos, los transforma y produce un resultado. En este curso primero dominarás las estructuras fundamentales y después las aplicarás a sistemas con persistencia, servicios o interfaces.\n\nRuta\n1. Lee la teoría y consulta los ejemplos.\n2. En las secciones 2 a 5 escribe soluciones pequeñas y observa los errores.\n3. Con Pro, las secciones 6 a 9 conectan esas ideas con aplicaciones.\n4. En la sección 10 elige un proyecto propio: basta que su código compile o tenga sintaxis válida.\n\nCómo practicar\nEl editor integra archivos y permite restablecer una plantilla. Ejecutar permite explorar; Evaluar comprueba los criterios de una práctica. Una práctica equivocada no borra tu avance. Lee el diagnóstico, modifica una sola causa y vuelve a ejecutar.\n\nEjemplo inicial\nconst mensaje: string = \"Mi proyecto\";\nconsole.log(mensaje);\n\n\nLas secciones se habilitan en orden. El bloque Gratis acredita 5/5 y equivale a 50% del curso. Cada curso tiene dos insignias acumulables. Esta introducción solo requiere confirmar la lectura.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 402,
+        "numero": 2,
+        "titulo": "Primera práctica",
+        "objetivo": "Crear funciones tipadas para mostrar un saludo y operar con números.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 4020,
+          "titulo": "Primera práctica",
+          "contenido": "Primera práctica\n\nObjetivo\nCrear funciones tipadas para mostrar un saludo y operar con números.\n\nConceptos\nTipos primitivos y firmas de funciones.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe a y b numéricos. Devuelve su suma y define una interfaz Entrada con esos campos.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": {
+          "id": 4020,
+          "enunciado": "Funciones tipadas\n\nRecibe a y b numéricos. Devuelve su suma y define una interfaz Entrada con esos campos.",
+          "plantilla": {
+            "main.ts": "interface Entrada { a: number; b: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.ts": "interface Entrada { a: number; b: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.a + datos.b;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"a\":3,\"b\":4}",
+              "salida_esperada": "7",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"a\":-1,\"b\":5}",
+              "salida_esperada": "4",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 403,
+        "numero": 3,
+        "titulo": "Práctica guiada",
+        "objetivo": "Modelar un formulario mediante interfaces y validaciones.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 4030,
+          "titulo": "Práctica guiada",
+          "contenido": "Práctica guiada\n\nObjetivo\nModelar un formulario mediante interfaces y validaciones.\n\nConceptos\nInterfaces y validaciones.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe nombre y edad. Devuelve true si nombre no está vacío y edad es al menos 18. Usa una interfaz para el contrato.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": {
+          "id": 4030,
+          "enunciado": "Contrato de formulario\n\nRecibe nombre y edad. Devuelve true si nombre no está vacío y edad es al menos 18. Usa una interfaz para el contrato.",
+          "plantilla": {
+            "main.ts": "interface Entrada { nombre: string; edad: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.ts": "interface Entrada { nombre: string; edad: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.nombre.trim().length > 0 && datos.edad >= 18;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"nombre\":\"Ana\",\"edad\":20}",
+              "salida_esperada": "true",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"nombre\":\"\",\"edad\":18}",
+              "salida_esperada": "false",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 404,
+        "numero": 4,
+        "titulo": "Práctica intermedia",
+        "objetivo": "Construir un gestor de registros tipados con búsqueda y modificación.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 4040,
+          "titulo": "Práctica intermedia",
+          "contenido": "Práctica intermedia\n\nObjetivo\nConstruir un gestor de registros tipados con búsqueda y modificación.\n\nConceptos\nColecciones tipadas y valores opcionales.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe registros tipados e id. Devuelve el nombre correspondiente o null.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": {
+          "id": 4040,
+          "enunciado": "Gestor de registros\n\nRecibe registros tipados e id. Devuelve el nombre correspondiente o null.",
+          "plantilla": {
+            "main.ts": "interface Registro { id: number; nombre: string }\ninterface Entrada { registros: Registro[]; id: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.ts": "interface Registro { id: number; nombre: string }\ninterface Entrada { registros: Registro[]; id: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.registros.find(x => x.id === datos.id)?.nombre ?? null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"registros\":[{\"id\":1,\"nombre\":\"Ana\"}],\"id\":1}",
+              "salida_esperada": "\"Ana\"",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"registros\":[],\"id\":7}",
+              "salida_esperada": "null",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 405,
+        "numero": 5,
+        "titulo": "Reto complejo de fundamentos",
+        "objetivo": "Crear un catálogo con uniones de tipos, genéricos y manejo explícito de errores.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 4050,
+          "titulo": "Reto complejo de fundamentos",
+          "contenido": "Reto complejo de fundamentos\n\nObjetivo\nCrear un catálogo con uniones de tipos, genéricos y manejo explícito de errores.\n\nConceptos\nFunciones genéricas y contratos reutilizables.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe valores numéricos y devuelve una lista sin repetidos conservando orden. Implementa una función genérica unicos<T>.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": {
+          "id": 4050,
+          "enunciado": "Genéricos y resultados\n\nRecibe valores numéricos y devuelve una lista sin repetidos conservando orden. Implementa una función genérica unicos<T>.",
+          "plantilla": {
+            "main.ts": "interface Entrada { valores: number[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.ts": "interface Entrada { valores: number[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  function unicos<T>(items: T[]): T[] { return [...new Set(items)]; }\n  return unicos(datos.valores);\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"valores\":[1,2,1]}",
+              "salida_esperada": "[1,2]",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"valores\":[]}",
+              "salida_esperada": "[]",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 406,
+        "numero": 6,
+        "titulo": "Arquitectura tipada",
+        "objetivo": "Separar contratos, modelos, servicios y componentes de una aplicación.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 4060,
+          "titulo": "Arquitectura tipada",
+          "contenido": "Arquitectura tipada\n\nObjetivo\nSeparar contratos, modelos, servicios y componentes de una aplicación.\n\nConceptos\nClases y servicios con contratos.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe pedidos con importe. Devuelve la suma; separa el cálculo en una clase ServicioPedidos con método total.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": {
+          "id": 4060,
+          "enunciado": "Contrato de servicio\n\nRecibe pedidos con importe. Devuelve la suma; separa el cálculo en una clase ServicioPedidos con método total.",
+          "plantilla": {
+            "main.ts": "interface Entrada { pedidos: {importe:number}[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.ts": "interface Entrada { pedidos: {importe:number}[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  class ServicioPedidos { total(items: {importe:number}[]):number { return items.reduce((s,x)=>s+x.importe,0); } }\n  return new ServicioPedidos().total(datos.pedidos);\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"pedidos\":[{\"importe\":3},{\"importe\":8}]}",
+              "salida_esperada": "11",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"pedidos\":[]}",
+              "salida_esperada": "0",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 407,
+        "numero": 7,
+        "titulo": "Servicios y asincronía",
+        "objetivo": "Consumir datos de ejemplo con contratos tipados y validación de respuestas.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 4070,
+          "titulo": "Servicios y asincronía",
+          "contenido": "Servicios y asincronía\n\nObjetivo\nConsumir datos de ejemplo con contratos tipados y validación de respuestas.\n\nConceptos\nPromesas y propiedades opcionales.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe ok y datos opcional con items. Devuelve items si ok y están presentes; si no, devuelve una lista vacía. Valida el contrato con tipos opcionales.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": {
+          "id": 4070,
+          "enunciado": "Respuesta de un adaptador\n\nRecibe ok y datos opcional con items. Devuelve items si ok y están presentes; si no, devuelve una lista vacía. Valida el contrato con tipos opcionales.",
+          "plantilla": {
+            "main.ts": "interface Entrada { ok: boolean; datos?: {items:string[]} }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.ts": "interface Entrada { ok: boolean; datos?: {items:string[]} }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.ok ? datos.datos?.items ?? [] : [];\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"ok\":true,\"datos\":{\"items\":[\"a\"]}}",
+              "salida_esperada": "[\"a\"]",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"ok\":false}",
+              "salida_esperada": "[]",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 408,
+        "numero": 8,
+        "titulo": "Estado y pruebas",
+        "objetivo": "Gestionar estado, pruebas y errores manteniendo el modo estricto del compilador.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 4080,
+          "titulo": "Estado y pruebas",
+          "contenido": "Estado y pruebas\n\nObjetivo\nGestionar estado, pruebas y errores manteniendo el modo estricto del compilador.\n\nConceptos\nUniones, estado y comprobación exhaustiva.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe estado y mensaje. Devuelve el texto del mensaje solo si estado es error; si estado es listo devuelve \"Listo\"; en carga devuelve \"Cargando\".\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": {
+          "id": 4080,
+          "enunciado": "Estado con uniones\n\nRecibe estado y mensaje. Devuelve el texto del mensaje solo si estado es error; si estado es listo devuelve \"Listo\"; en carga devuelve \"Cargando\".",
+          "plantilla": {
+            "main.ts": "interface Entrada { estado: \"carga\" | \"listo\" | \"error\"; mensaje?: string }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.ts": "interface Entrada { estado: \"carga\" | \"listo\" | \"error\"; mensaje?: string }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.estado === \"error\" ? datos.mensaje ?? \"Error\" : datos.estado === \"listo\" ? \"Listo\" : \"Cargando\";\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"estado\":\"error\",\"mensaje\":\"Sin conexión\"}",
+              "salida_esperada": "\"Sin conexión\"",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"estado\":\"listo\"}",
+              "salida_esperada": "\"Listo\"",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            },
+            {
+              "entrada": "{\"estado\":\"carga\"}",
+              "salida_esperada": "\"Cargando\"",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 409,
+        "numero": 9,
+        "titulo": "Sistema integrador",
+        "objetivo": "Construir una aplicación modular con persistencia y contratos verificables.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 4090,
+          "titulo": "Sistema integrador",
+          "contenido": "Sistema integrador\n\nObjetivo\nConstruir una aplicación modular con persistencia y contratos verificables.\n\nConceptos\nComposición de servicios y persistencia tipada.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe productos (id,precio) y carrito (id,cantidad). Devuelve el total de productos existentes; ignora ids desconocidos. Mantén comprobación estricta.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": {
+          "id": 4090,
+          "enunciado": "Aplicación tipada\n\nRecibe productos (id,precio) y carrito (id,cantidad). Devuelve el total de productos existentes; ignora ids desconocidos. Mantén comprobación estricta.",
+          "plantilla": {
+            "main.ts": "interface Entrada { productos:{id:number;precio:number}[]; carrito:{id:number;cantidad:number}[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.ts": "interface Entrada { productos:{id:number;precio:number}[]; carrito:{id:number;cantidad:number}[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.carrito.reduce((s,item) => s + (datos.productos.find(p=>p.id===item.id)?.precio ?? 0) * item.cantidad, 0);\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"productos\":[{\"id\":1,\"precio\":5}],\"carrito\":[{\"id\":1,\"cantidad\":3}]}",
+              "salida_esperada": "15",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"productos\":[],\"carrito\":[{\"id\":9,\"cantidad\":1}]}",
+              "salida_esperada": "0",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 410,
+        "numero": 10,
+        "titulo": "Proyecto libre",
+        "objetivo": "Desarrollar una aplicación propia con TypeScript, incluir su configuración y descargarla en ZIP.",
+        "tipo": "proyecto",
+        "leccion": {
+          "id": 4100,
+          "titulo": "Proyecto libre",
+          "contenido": "Proyecto libre\n\nObjetivo\nDesarrollar una aplicación propia con TypeScript, incluir su configuración y descargarla en ZIP.\n\nElige un problema o una idea que te interese. No hay rúbrica, nota ni complejidad mínima. Crea archivos, añade instrucciones en README.md y guarda borradores. Al finalizar se conserva una copia de esa versión y se comprueba compilación o sintaxis; los errores deben corregirse para completar la sección.\n\nPuedes descargar el borrador o la copia final en ZIP. La descarga no instala dependencias ni incluye claves de la plataforma. No añadas contraseñas, archivos .env ni node_modules.\n\nSi Pro vence conservarás tu progreso, tus insignias y la lectura y descarga de los archivos ya guardados. Para modificar o finalizar una nueva versión necesitas Pro vigente. Compilar correctamente no garantiza que una aplicación funcione: prueba tu trabajo por tu cuenta.",
+          "recurso": {
+            "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "autor": "Documentación oficial de TypeScript",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://www.typescriptlang.org/docs/handbook/intro.html"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": {
+          "entrada": "main.ts",
+          "archivos": {
+            "main.ts": "const mensaje: string = \"Mi proyecto\";\nconsole.log(mensaje);\n",
+            "README.md": "# Mi proyecto libre\n\nDescribe tu idea, los archivos y cómo ejecutar el proyecto.\n"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "titulo": "Node.js",
+    "tecnologia": "Node.js",
+    "descripcion": "De fundamentos a aplicaciones con Node.js. Cinco secciones Gratis y cinco Pro.",
+    "secciones": [
+      {
+        "id": 501,
+        "numero": 1,
+        "titulo": "Introducción teórica",
+        "objetivo": "Entorno de ejecución, módulos, paquetes, asincronía y servidor web; solo teoría.",
+        "tipo": "teoria",
+        "leccion": {
+          "id": 5010,
+          "titulo": "Introducción teórica",
+          "contenido": "Introducción teórica\n\nObjetivo\nEntorno de ejecución, módulos, paquetes, asincronía y servidor web; solo teoría.\n\n¿Qué aprenderás?\nNode.js permite expresar instrucciones y construir aplicaciones. Un programa recibe datos, los transforma y produce un resultado. En este curso primero dominarás las estructuras fundamentales y después las aplicarás a sistemas con persistencia, servicios o interfaces.\n\nRuta\n1. Lee la teoría y consulta los ejemplos.\n2. En las secciones 2 a 5 escribe soluciones pequeñas y observa los errores.\n3. Con Pro, las secciones 6 a 9 conectan esas ideas con aplicaciones.\n4. En la sección 10 elige un proyecto propio: basta que su código compile o tenga sintaxis válida.\n\nCómo practicar\nEl editor integra archivos y permite restablecer una plantilla. Ejecutar permite explorar; Evaluar comprueba los criterios de una práctica. Una práctica equivocada no borra tu avance. Lee el diagnóstico, modifica una sola causa y vuelve a ejecutar.\n\nEjemplo inicial\nconsole.log(\"Mi proyecto\");\n\n\nLas secciones se habilitan en orden. El bloque Gratis acredita 5/5 y equivale a 50% del curso. Cada curso tiene dos insignias acumulables. Esta introducción solo requiere confirmar la lectura.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 502,
+        "numero": 2,
+        "titulo": "Primera práctica",
+        "objetivo": "Crear y ejecutar un programa de consola con argumentos.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 5020,
+          "titulo": "Primera práctica",
+          "contenido": "Primera práctica\n\nObjetivo\nCrear y ejecutar un programa de consola con argumentos.\n\nConceptos\nProceso, entrada estándar y funciones.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe nombre y devuelve un saludo utilizando una función. El adaptador de entrada convierte el JSON de consola en datos.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": {
+          "id": 5020,
+          "enunciado": "Argumentos de una utilidad\n\nRecibe nombre y devuelve un saludo utilizando una función. El adaptador de entrada convierte el JSON de consola en datos.",
+          "plantilla": {
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.js": "function resolver(datos) {\n  return \"Hola, \" + datos.nombre;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"nombre\":\"Ana\"}",
+              "salida_esperada": "\"Hola, Ana\"",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"nombre\":\"Luis\"}",
+              "salida_esperada": "\"Hola, Luis\"",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 503,
+        "numero": 3,
+        "titulo": "Práctica guiada",
+        "objetivo": "Organizar funciones en módulos y procesar entradas.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 5030,
+          "titulo": "Práctica guiada",
+          "contenido": "Práctica guiada\n\nObjetivo\nOrganizar funciones en módulos y procesar entradas.\n\nConceptos\nMódulos y contrato de validación.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe una lista de correos y devuelve únicamente los que contienen @ y un punto después de @. Esta validación es una primera aproximación didáctica.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": {
+          "id": 5030,
+          "enunciado": "Módulo de validación\n\nRecibe una lista de correos y devuelve únicamente los que contienen @ y un punto después de @. Esta validación es una primera aproximación didáctica.",
+          "plantilla": {
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.js": "function resolver(datos) {\n  return datos.correos.filter(x => /^[^@]+@[^@]+\\.[^@]+$/.test(x));\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"correos\":[\"a@b.com\",\"mal\",\"c@d.mx\"]}",
+              "salida_esperada": "[\"a@b.com\",\"c@d.mx\"]",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"correos\":[]}",
+              "salida_esperada": "[]",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 504,
+        "numero": 4,
+        "titulo": "Práctica intermedia",
+        "objetivo": "Leer y escribir archivos de datos con validación y tratamiento de errores.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 5040,
+          "titulo": "Práctica intermedia",
+          "contenido": "Práctica intermedia\n\nObjetivo\nLeer y escribir archivos de datos con validación y tratamiento de errores.\n\nConceptos\nfs/promises, JSON y excepciones.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe textoJSON con una lista. Analiza JSON y devuelve su longitud; si el JSON es inválido devuelve -1. El siguiente paso del curso conecta este análisis con fs.readFile.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": {
+          "id": 5040,
+          "enunciado": "Lectura de datos\n\nRecibe textoJSON con una lista. Analiza JSON y devuelve su longitud; si el JSON es inválido devuelve -1. El siguiente paso del curso conecta este análisis con fs.readFile.",
+          "plantilla": {
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.js": "function resolver(datos) {\n  try { return JSON.parse(datos.textoJSON).length; } catch { return -1; }\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"textoJSON\":\"[1,2,3]\"}",
+              "salida_esperada": "3",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"textoJSON\":\"no es json\"}",
+              "salida_esperada": "-1",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 505,
+        "numero": 5,
+        "titulo": "Reto complejo de fundamentos",
+        "objetivo": "Construir una utilidad de consola modular con operaciones sobre registros.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 5050,
+          "titulo": "Reto complejo de fundamentos",
+          "contenido": "Reto complejo de fundamentos\n\nObjetivo\nConstruir una utilidad de consola modular con operaciones sobre registros.\n\nConceptos\nRegistros y utilidades de consola.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe registros (id,nombre) y un id. Devuelve el registro coincidente, o null cuando no existe.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": {
+          "id": 5050,
+          "enunciado": "Registros de consola\n\nRecibe registros (id,nombre) y un id. Devuelve el registro coincidente, o null cuando no existe.",
+          "plantilla": {
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.js": "function resolver(datos) {\n  return datos.registros.find(x => x.id === datos.id) ?? null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"registros\":[{\"id\":1,\"nombre\":\"Ana\"}],\"id\":1}",
+              "salida_esperada": "{\"id\":1,\"nombre\":\"Ana\"}",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"registros\":[],\"id\":9}",
+              "salida_esperada": "null",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 506,
+        "numero": 6,
+        "titulo": "Servidor aplicado",
+        "objetivo": "Construir un servicio HTTP con Express y rutas organizadas.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 5060,
+          "titulo": "Servidor aplicado",
+          "contenido": "Servidor aplicado\n\nObjetivo\nConstruir un servicio HTTP con Express y rutas organizadas.\n\nConceptos\nHTTP, Express, rutas y respuestas.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nModela una petición a un servicio Express: recibe metodo y ruta. GET /salud produce {status:200,body:\"ok\"}; las demás rutas producen {status:404,body:\"no encontrado\"}. Se valida el contrato del router sin dejar un servidor abierto.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": {
+          "id": 5060,
+          "enunciado": "Router de servicio HTTP\n\nModela una petición a un servicio Express: recibe metodo y ruta. GET /salud produce {status:200,body:\"ok\"}; las demás rutas producen {status:404,body:\"no encontrado\"}. Se valida el contrato del router sin dejar un servidor abierto.",
+          "plantilla": {
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.js": "function resolver(datos) {\n  return datos.metodo === \"GET\" && datos.ruta === \"/salud\" ? {status:200,body:\"ok\"} : {status:404,body:\"no encontrado\"};\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"metodo\":\"GET\",\"ruta\":\"/salud\"}",
+              "salida_esperada": "{\"status\":200,\"body\":\"ok\"}",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"metodo\":\"POST\",\"ruta\":\"/\"}",
+              "salida_esperada": "{\"status\":404,\"body\":\"no encontrado\"}",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 507,
+        "numero": 7,
+        "titulo": "Persistencia de un sistema",
+        "objetivo": "Conectar un servicio con una base de datos y gestionar operaciones de registros.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 5070,
+          "titulo": "Persistencia de un sistema",
+          "contenido": "Persistencia de un sistema\n\nObjetivo\nConectar un servicio con una base de datos y gestionar operaciones de registros.\n\nConceptos\nConsultas parametrizadas y repositorios.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe filas devueltas por un repositorio y activo. Devuelve las filas cuyo valor activo coincide. Usa funciones puras para separar la consulta del servicio.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": {
+          "id": 5070,
+          "enunciado": "Repositorio de clientes\n\nRecibe filas devueltas por un repositorio y activo. Devuelve las filas cuyo valor activo coincide. Usa funciones puras para separar la consulta del servicio.",
+          "plantilla": {
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.js": "function resolver(datos) {\n  return datos.filas.filter(x => x.activo === datos.activo);\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"filas\":[{\"id\":1,\"activo\":true},{\"id\":2,\"activo\":false}],\"activo\":true}",
+              "salida_esperada": "[{\"id\":1,\"activo\":true}]",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"filas\":[],\"activo\":false}",
+              "salida_esperada": "[]",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 508,
+        "numero": 8,
+        "titulo": "Acceso y validaciones",
+        "objetivo": "Añadir autenticación, permisos, validaciones y manejo central de errores.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 5080,
+          "titulo": "Acceso y validaciones",
+          "contenido": "Acceso y validaciones\n\nObjetivo\nAñadir autenticación, permisos, validaciones y manejo central de errores.\n\nConceptos\nAutenticación, middleware y autorización.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe autenticado, propietario e idSolicitado. Devuelve 401 si no hay identidad, 403 si los identificadores no coinciden y 200 cuando corresponde al propietario.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": {
+          "id": 5080,
+          "enunciado": "Política de acceso\n\nRecibe autenticado, propietario e idSolicitado. Devuelve 401 si no hay identidad, 403 si los identificadores no coinciden y 200 cuando corresponde al propietario.",
+          "plantilla": {
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.js": "function resolver(datos) {\n  if (!datos.autenticado) return 401; return datos.propietario === datos.idSolicitado ? 200 : 403;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"autenticado\":false,\"propietario\":1,\"idSolicitado\":1}",
+              "salida_esperada": "401",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"autenticado\":true,\"propietario\":1,\"idSolicitado\":2}",
+              "salida_esperada": "403",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            },
+            {
+              "entrada": "{\"autenticado\":true,\"propietario\":1,\"idSolicitado\":1}",
+              "salida_esperada": "200",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 509,
+        "numero": 9,
+        "titulo": "Sistema integrador",
+        "objetivo": "Integrar rutas, servicios, persistencia y pruebas en una aplicación de servidor.",
+        "tipo": "practica",
+        "leccion": {
+          "id": 5090,
+          "titulo": "Sistema integrador",
+          "contenido": "Sistema integrador\n\nObjetivo\nIntegrar rutas, servicios, persistencia y pruebas en una aplicación de servidor.\n\nConceptos\nRouter, controller, service y repository.\n\nDel concepto a un sistema\nUna aplicación separa entradas, reglas y resultados. Antes de programar identifica qué datos son obligatorios, qué ocurre si faltan y qué debe devolver la operación. Mantén los cálculos separados de la presentación y utiliza nombres que expresen su propósito.\n\nActividad\nRecibe items (precio,cantidad). Valida que las cantidades sean positivas y devuelve {status:422} si falla; en otro caso devuelve {status:201,total: importe}.\n\nPasos de trabajo\n1. Lee el contrato y el caso público.\n2. Conserva la entrada y salida de la plantilla y completa la función o los archivos solicitados.\n3. Ejecuta y compara el resultado con lo esperado.\n4. Evalúa; si un criterio falla, revisa el diagnóstico y corrige.\n\nConsejos\nComprueba listas vacías, valores ausentes y errores de formato. No conviertas un error de servicio en una respuesta exitosa. En una interfaz usa textContent para datos de personas; en una base de datos utiliza parámetros. En las etapas aplicadas, separa componentes, servicios y persistencia.\n\nPuedes consultar la documentación oficial enlazada antes de resolver. La solución se conserva al registrar tu intento y una aprobación completa la lección. El caso público explica el contrato; puede haber otros casos para comprobar límites.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": {
+          "id": 5090,
+          "enunciado": "Controller de pedidos\n\nRecibe items (precio,cantidad). Valida que las cantidades sean positivas y devuelve {status:422} si falla; en otro caso devuelve {status:201,total: importe}.",
+          "plantilla": {
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "solucion_referencia": {
+            "main.js": "function resolver(datos) {\n  if (datos.items.some(x => x.cantidad <= 0 || x.precio < 0)) return {status:422}; return {status:201,total:datos.items.reduce((s,x)=>s+x.precio*x.cantidad,0)};\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+          },
+          "modo_evaluacion": "consola",
+          "casos": [
+            {
+              "entrada": "{\"items\":[{\"precio\":20,\"cantidad\":2}]}",
+              "salida_esperada": "{\"status\":201,\"total\":40}",
+              "tipo_criterio": "consola",
+              "es_publico": true
+            },
+            {
+              "entrada": "{\"items\":[{\"precio\":20,\"cantidad\":0}]}",
+              "salida_esperada": "{\"status\":422}",
+              "tipo_criterio": "consola",
+              "es_publico": false
+            }
+          ]
+        },
+        "configuracion_proyecto": null
+      },
+      {
+        "id": 510,
+        "numero": 10,
+        "titulo": "Proyecto libre",
+        "objetivo": "Crear un servicio o sistema propio en Node.js, incluir instrucciones de instalación y descargarlo en ZIP.",
+        "tipo": "proyecto",
+        "leccion": {
+          "id": 5100,
+          "titulo": "Proyecto libre",
+          "contenido": "Proyecto libre\n\nObjetivo\nCrear un servicio o sistema propio en Node.js, incluir instrucciones de instalación y descargarlo en ZIP.\n\nElige un problema o una idea que te interese. No hay rúbrica, nota ni complejidad mínima. Crea archivos, añade instrucciones en README.md y guarda borradores. Al finalizar se conserva una copia de esa versión y se comprueba compilación o sintaxis; los errores deben corregirse para completar la sección.\n\nPuedes descargar el borrador o la copia final en ZIP. La descarga no instala dependencias ni incluye claves de la plataforma. No añadas contraseñas, archivos .env ni node_modules.\n\nSi Pro vence conservarás tu progreso, tus insignias y la lectura y descarga de los archivos ya guardados. Para modificar o finalizar una nueva versión necesitas Pro vigente. Compilar correctamente no garantiza que una aplicación funcione: prueba tu trabajo por tu cuenta.",
+          "recurso": {
+            "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+            "autor": "Documentación oficial de Node.js",
+            "licencia": "Enlace a documentación; contenido no redistribuido",
+            "fuente": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+          }
+        },
+        "ejercicio": null,
+        "configuracion_proyecto": {
+          "entrada": "main.js",
+          "archivos": {
+            "main.js": "console.log(\"Mi proyecto\");\n",
+            "README.md": "# Mi proyecto libre\n\nDescribe tu idea, los archivos y cómo ejecutar el proyecto.\n"
+          }
+        }
+      }
+    ]
+  }
+]

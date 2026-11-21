@@ -1,0 +1,110 @@
+@if (project(); as p) {
+  <section class="page-heading compact">
+    <a class="back" routerLink="/proyectos">← Mis proyectos</a>
+    <p class="eyebrow">{{ p.tecnologia }} · PROYECTO LIBRE</p>
+    <h1>Tu idea. Tu proyecto.</h1>
+    <p>
+      Sin calificación ni rúbrica. Se completa cuando todos sus archivos
+      compilan o validan su sintaxis.
+    </p>
+  </section>
+  <section class="project-toolbar panel">
+    <label
+      >Nombre<input
+        [(ngModel)]="title"
+        maxlength="100"
+        [disabled]="!session.user()?.pro" /></label
+    ><span class="pill"
+      >{{ dirty() ? "Cambios sin guardar" : p.estado }} · v{{ p.version }}</span
+    >
+    <div class="actions">
+      <button (click)="save()" [disabled]="busy() || !session.user()?.pro">
+        Guardar</button
+      ><button
+        class="secondary"
+        (click)="finalize()"
+        [disabled]="busy() || !session.user()?.pro"
+      >
+        {{ busy() ? "Procesando…" : "Finalizar proyecto" }}</button
+      ><a
+        class="button secondary"
+        [href]="'/api/proyectos/' + p.id_proyecto + '/zip'"
+        >Descargar ZIP</a
+      >
+      @if (p.archivos_entregados) {
+        <a [href]="'/api/proyectos/' + p.id_proyecto + '/zip?version=final'"
+          >ZIP de versión final</a
+        >
+      }
+    </div>
+  </section>
+  @if (!session.user()?.pro) {
+    <p class="alert">
+      Conservas la lectura y descarga de tu proyecto. Para editar o finalizar
+      otra versión necesitas Pro vigente.
+    </p>
+  }
+  <div class="project-workspace">
+    <aside class="panel file-tree">
+      <h3>ARCHIVOS</h3>
+      @for (file of names(); track file) {
+        <div class="tree-row">
+          <span>{{ file }}</span>
+          @if (session.user()?.pro) {
+            <button
+              class="quiet"
+              (click)="rename(file)"
+              [disabled]="busy()"
+              [attr.aria-label]="'Renombrar ' + file"
+            >
+              ✎</button
+            ><button
+              class="quiet danger"
+              (click)="remove(file)"
+              [disabled]="busy()"
+              [attr.aria-label]="'Eliminar ' + file"
+            >
+              ×
+            </button>
+          }
+        </div>
+      }
+      <button
+        class="quiet"
+        (click)="add()"
+        [disabled]="!session.user()?.pro || busy()"
+      >
+        + Archivo o carpeta
+      </button>
+      <p class="fine">
+        Para crear una carpeta escribe una ruta como src/main.js. Máximo 100
+        archivos y 10 MB; no incluyas secretos.
+      </p>
+    </aside>
+    <div class="project-editor" [class.readonly]="!session.user()?.pro">
+      <nv-editor
+        [readOnly]="!session.user()?.pro"
+        [files]="files()"
+        (filesChange)="changed($event)"
+      ></nv-editor>
+      <section class="panel result" aria-live="polite">
+        <h3>Compilación o sintaxis</h3>
+        <pre>{{
+          p.diagnostico_compilacion ||
+            "Guarda tus archivos y finaliza para comprobarlos."
+        }}</pre>
+        @if (p.estado_compilacion === "valido") {
+          <p class="success">
+            ✓ Curso completado. La insignia completa se añadió a tu perfil.
+          </p>
+        }
+      </section>
+    </div>
+  </div>
+}
+@if (error()) {
+  <p class="alert">{{ error() }}</p>
+}
+@if (notice()) {
+  <p class="success">{{ notice() }}</p>
+}

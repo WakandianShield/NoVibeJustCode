@@ -1,0 +1,49 @@
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
+<header class="site-header">
+  <a class="brand" routerLink="/" aria-label="NoVibeJustCode, inicio"
+    ><span>NoVibe<span class="brand-highlight">JustCode</span></span></a
+  >
+  <nv-pixel-cta
+    class="menu-toggle-pixel"
+    id="menu-pixel-toggle"
+    [menuIcon]="true"
+    [checked]="menu()"
+    (checkedChange)="menu.set($event)"
+    [attr.aria-expanded]="menu()"
+    aria-label="Abrir navegación"
+  ></nv-pixel-cta>
+  <nav
+    [class.open]="menu()"
+    aria-label="Navegación principal"
+    (click)="menu.set(false)"
+  >
+    <a routerLink="/cursos" routerLinkActive="active">Cursos</a>
+    <a routerLink="/comunidad" routerLinkActive="active">Comunidad</a>
+    <a routerLink="/planes" routerLinkActive="active">Planes</a>
+    @if (!session.user()) {
+      <a class="mobile-login" routerLink="/acceso" routerLinkActive="active"
+        >Acceder</a
+      >
+    }
+    @if (session.user()) {
+      <a routerLink="/aprendizaje" routerLinkActive="active">Mi aprendizaje</a>
+      <a routerLink="/proyectos" routerLinkActive="active">Proyectos</a>
+      <a routerLink="/amigos" routerLinkActive="active">Amigos</a>
+      <a routerLink="/mensajes" routerLinkActive="active">Mensajes</a>
+    }
+  </nav>
+  <div class="account-nav">
+    @if (session.user(); as user) {
+      <a class="nav-avatar" [routerLink]="['/perfil', user.nombre_usuario]"
+        ><img [src]="user.foto_url || '/avatar.svg'" alt="Mi perfil" /><span>{{
+          user.nombre_usuario
+        }}</span></a
+      >
+      <button class="quiet logout" (click)="session.logout()">Salir</button>
+    } @else {
+      @if (!isLoginPage()) {
+        <nv-pixel-cta id="header-pixel-start" route="/acceso"></nv-pixel-cta>
+      }
+    }
+  </div>
+</header>

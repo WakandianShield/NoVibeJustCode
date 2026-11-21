@@ -1,0 +1,54 @@
+@if (course(); as c) {
+  <section class="page-heading">
+    <a routerLink="/cursos" class="back">← Todas las tecnologías</a>
+    <p class="eyebrow">TU RUTA · {{ c.tecnologia }}</p>
+    <h1>{{ c.titulo }}<span class="dot">.</span></h1>
+    <div class="progress-summary">
+      <strong>{{ c.total }}/10 <small>secciones</small></strong
+      ><progress [value]="c.total" max="10"></progress
+      ><span>Gratis {{ c.gratis }}/5</span>
+    </div>
+  </section>
+  <div class="route-grid">
+    @for (block of [0, 1]; track block) {
+      <section>
+        <h2>{{ block ? "PRO · 06—10" : "GRATIS · 01—05" }}</h2>
+        @for (
+          s of c.secciones.slice(block * 5, block * 5 + 5);
+          track s.id_seccion
+        ) {
+          <article class="section-card" [class.completed]="s.completada">
+            <span class="section-number">{{
+              s.numero.toString().padStart(2, "0")
+            }}</span>
+            <div>
+              <small>{{
+                s.completada
+                  ? "✓ Completada"
+                  : s.accesible
+                    ? "Disponible"
+                    : s.plan === "Pro" && !session.user()?.pro
+                      ? "Requiere Pro"
+                      : "Pendiente"
+              }}</small>
+              <h3>{{ s.titulo }}</h3>
+              <p>{{ s.objetivo }}</p>
+              @if (s.accesible) {
+                <a class="text-link" [routerLink]="['/seccion', s.id_seccion]"
+                  >{{ s.completada ? "Repasar" : "Entrar" }} →</a
+                >
+              } @else if (!session.user()) {
+                <a routerLink="/registro">Crear cuenta gratis →</a>
+              } @else if (s.plan === "Pro" && !session.user()?.pro) {
+                <a routerLink="/planes">Conocer Pro →</a>
+              }
+            </div>
+          </article>
+        }
+      </section>
+    }
+  </div>
+}
+@if (error()) {
+  <p class="alert">{{ error() }}</p>
+}

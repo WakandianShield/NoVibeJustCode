@@ -1,0 +1,109 @@
+@if (section(); as s) {
+  <section class="page-heading compact">
+    <a class="back" [routerLink]="['/curso', s.id_curso]"
+      >← Ruta de {{ s.tecnologia }}</a
+    >
+    <p class="eyebrow">
+      {{ s.tecnologia }} · SECCIÓN {{ s.numero }} ·
+      {{ s.numero <= 5 ? "GRATIS" : "PRO" }}
+    </p>
+    <h1>{{ s.titulo }}</h1>
+  </section>
+  <div class="study-layout">
+    <aside class="panel study-index">
+      <h3>En esta sección</h3>
+      @for (l of s.lecciones; track l.id_leccion) {
+        <button class="quiet" (click)="open(l.id_leccion)">
+          {{ l.titulo }}
+        </button>
+      }
+      <p>{{ s.objetivo }}</p>
+    </aside>
+    <div>
+      @if (lesson(); as l) {
+        <article class="panel reading">
+          <h2>{{ l.titulo }}</h2>
+          <div class="lesson-content">{{ l.contenido }}</div>
+          <div class="resources">
+            @for (r of l.recursos; track r.id_recurso) {
+              <a [href]="r.direccion" target="_blank" rel="noopener"
+                >Documentación oficial →</a
+              >
+            }
+          </div>
+          @if (s.numero === 10) {
+            <button (click)="createProject()" [disabled]="busy()">
+              Abrir mi proyecto libre →
+            </button>
+          } @else if (!l.ejercicios.length) {
+            <button (click)="markRead()" [disabled]="busy()">
+              Confirmar lectura y completar ✓
+            </button>
+          }
+        </article>
+        @for (e of l.ejercicios; track e.id_ejercicio) {
+          <section class="practice">
+            <h2>Tu práctica</h2>
+            <pre class="instructions">{{ e.enunciado }}</pre>
+            <details>
+              <summary>Casos públicos</summary>
+              @for (c of e.casos; track $index) {
+                <pre>{{ c.entrada }} → {{ c.salida_esperada }}</pre>
+              }
+            </details>
+            @if (files()) {
+              <nv-editor
+                [files]="files()!"
+                (filesChange)="setFiles($event)"
+              ></nv-editor>
+            }
+            <label
+              >Entrada de consola (opcional)<textarea
+                [(ngModel)]="stdin"
+                rows="2"
+                placeholder="JSON de entrada del caso público"
+              ></textarea>
+            </label>
+            <div class="actions">
+              <button (click)="run(e.id_ejercicio, false)" [disabled]="busy()">
+                {{
+                  e.modo_evaluacion === "web" ? "Evaluar vista web" : "Ejecutar"
+                }}</button
+              ><button
+                class="secondary"
+                (click)="run(e.id_ejercicio, true)"
+                [disabled]="busy()"
+              >
+                Evaluar práctica</button
+              ><button class="quiet" (click)="reset(e)">Restablecer</button>
+              @if (e.modo_evaluacion === "web") {
+                <button class="quiet" (click)="preview()">Vista previa</button>
+              }
+            </div>
+            @if (previewDoc()) {
+              <iframe
+                title="Vista previa aislada"
+                sandbox="allow-scripts"
+                [srcdoc]="previewDoc()"
+                class="preview"
+              ></iframe>
+            }
+            <div class="panel result" aria-live="polite">
+              <h3>Resultados</h3>
+              <pre>{{
+                result() ||
+                  "Ejecuta o evalúa tu solución para ver los resultados."
+              }}</pre>
+            </div>
+          </section>
+        }
+      }
+    </div>
+  </div>
+}
+@if (error()) {
+  <p class="alert" role="alert">{{ error() }}</p>
+}
+@if (notice()) {
+  <p class="success" role="status">{{ notice() }}</p>
+}

@@ -1,0 +1,69 @@
+<section class="page-heading">
+  <p class="eyebrow">MI CUENTA</p>
+  <h1>Hazlo tuyo.</h1>
+  <p>Tu nombre, tus ideas y el aspecto de tu perfil.</p>
+</section>
+<div class="settings-grid">
+  <form class="panel" (ngSubmit)="save()">
+    <h2>Información pública</h2>
+    <label
+      >Nombre público<input
+        [(ngModel)]="form.nombre"
+        name="nombre"
+        minlength="2"
+        maxlength="60"
+        required /></label
+    ><label
+      >Nombre de usuario<input
+        [(ngModel)]="form.nombre_usuario"
+        name="usuario"
+        pattern="[A-Za-z0-9_]{3,24}"
+        required /></label
+    ><label
+      >Descripción<textarea
+        [(ngModel)]="form.descripcion"
+        name="descripcion"
+        maxlength="300"
+        rows="4"
+      ></textarea></label
+    ><button [disabled]="busy()">Guardar cambios</button>
+  </form>
+  <section class="panel">
+    <h2>Tu imagen</h2>
+    <label
+      >Fotografía (máximo 2 MB)<input
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        (change)="image($event, 'foto')" /></label
+    ><label
+      >Banner (máximo 5 MB)<input
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        (change)="image($event, 'banner')" /></label
+    ><a [routerLink]="['/perfil', session.user()?.nombre_usuario]"
+      >Ver mi perfil →</a
+    >
+    <hr />
+    <h2>Datos y privacidad</h2>
+    <label
+      >Confirma tu contraseña<input
+        type="password"
+        [(ngModel)]="password"
+        autocomplete="current-password" /></label
+    ><button class="secondary" (click)="exportData()" [disabled]="busy()">
+      Descargar mis datos</button
+    ><button class="quiet danger" (click)="erase()" [disabled]="busy()">
+      Eliminar mi cuenta
+    </button>
+    <p class="fine">
+      La eliminación cancela la renovación y conserva únicamente registros
+      necesarios según el aviso de privacidad.
+    </p>
+  </section>
+</div>
+@if (error()) {
+  <p class="alert">{{ error() }}</p>
+}
+@if (notice()) {
+  <p class="success">{{ notice() }}</p>
+}

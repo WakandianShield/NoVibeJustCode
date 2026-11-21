@@ -1,0 +1,30 @@
+<section class="page-heading">
+  <p class="eyebrow">MIS PROYECTOS</p>
+  <h1>Ideas hechas código.</h1>
+  <p>Abre la sección diez de una tecnología para comenzar un proyecto libre.</p>
+  <a routerLink="/aprendizaje">Continuar aprendiendo →</a>
+</section>
+<div class="people-grid">
+  @for (p of projects(); track p.id_proyecto) {
+    <a class="panel project-card" [routerLink]="['/proyecto', p.id_proyecto]"
+      ><span class="folder-icon">▰</span
+      ><span class="tag">{{ p.tecnologia }}</span>
+      <h2>{{ p.titulo }}</h2>
+      <p>{{ p.estado }} · Versión {{ p.version }}</p>
+      <small
+        >Actualizado {{ p.actualizado_en | date: "dd/MM/yyyy HH:mm" }}</small
+      ></a
+    >
+  } @empty {
+    <div class="empty">
+      <h2>Tu primer proyecto está por venir.</h2>
+      <p>
+        Completa las secciones anteriores de un curso para acceder a tu proyecto
+        libre.
+      </p>
+    </div>
+  }
+</div>
+@if (error()) {
+  <p class="alert">{{ error() }}</p>
+}

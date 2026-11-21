@@ -1,1 +1,3 @@
-/* Component styles are kept in src/styles.css to preserve the current shared design. */
+.settings-grid {
+  margin-top: 32px;
+}

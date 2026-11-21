@@ -3184,13 +3184,6 @@ progress::-webkit-progress-value {
   box-shadow: none;
   color: var(--text);
   font-family: "VT323", monospace;
-  transition:
-    transform 0.18s ease,
-    border-color 0.18s ease;
-}
-.badge-card:hover {
-  border-color: rgba(100, 255, 218, 0.4);
-  transform: translateY(-3px);
 }
 .badge-card span:not(.badge-icon) {
   font-size: 17px;
@@ -3209,22 +3202,11 @@ progress::-webkit-progress-value {
   aspect-ratio: 1;
   object-fit: cover;
   image-rendering: pixelated;
-  backface-visibility: hidden;
-  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.badge-card:hover .badge-art,
-.badge-card:focus-visible .badge-art {
-  transform: perspective(500px) rotateY(360deg);
 }
 .badge-card.locked .badge-art {
   filter: grayscale(1);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .badge-art {
-    transition: none;
-  }
-}
 .pro-badge {
   color: #ffd977;
 }

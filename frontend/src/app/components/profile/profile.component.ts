@@ -19,7 +19,6 @@ export class ProfileComponent extends Page implements OnInit {
   route = inject(ActivatedRoute);
   profile = signal<any>(null);
   relation = signal<any>(null);
-  detail = signal<any>(null);
   own() {
     return this.profile()?.id_usuario === this.session.user()?.id_usuario;
   }

@@ -61,55 +61,19 @@
     <h2>Insignias y aprendizajes</h2>
     <div class="badges-grid">
       @for (b of p.metas; track b.id_logro) {
-        <button
+        <div
           class="badge-card"
           [class.locked]="!earned(b.id_logro)"
-          (click)="detail.set(b)"
         >
           <img
             class="badge-art"
             [src]="badgeImage(b)"
             [alt]="'Insignia de ' + b.tecnologia + (b.nivel === 'Completo' ? ', experto' : ', fundamentos')"
           />
-        </button>
+        </div>
       }
     </div>
   </section>
-  @if (detail(); as b) {
-    <div class="modal-backdrop" (click)="detail.set(null)">
-      <section
-        class="panel modal"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Detalle de insignia"
-        (click)="$event.stopPropagation()"
-      >
-        <button
-          class="close quiet"
-          (click)="detail.set(null)"
-          aria-label="Cerrar"
-        >
-          ×</button
-        ><span class="badge-icon">{{
-          b.nivel === "Completo" ? "★" : "✓"
-        }}</span>
-        <h2>{{ b.nombre }}</h2>
-        <p>{{ b.descripcion }}</p>
-        <p>
-          Requisito: completar {{ b.seccion_meta }} secciones de
-          {{ b.tecnologia }}.
-        </p>
-        <p>
-          {{
-            earned(b.id_logro)
-              ? "Obtenida el " +
-                (earned(b.id_logro).obtenido_en | date: "dd/MM/yyyy")
-              : "Todavía no obtenida."
-          }}
-        </p>
-      </section>
-    </div>
-  }
 }
 @if (error()) {
   <p class="alert">{{ error() }}</p>

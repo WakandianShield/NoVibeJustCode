@@ -13,7 +13,7 @@
   "scripts": {
     "build": "npm run build --workspace=@nvjc/frontend",
     "dev": "concurrently -n API,WEB \"npm run dev --workspace=@nvjc/backend\" \"npm run start --workspace=@nvjc/frontend\"",
-    "start": "npm run start --workspace=@nvjc/backend",
+    "start": "npm run db:init && npm run start --workspace=@nvjc/backend",
     "db:init": "npm run db:init --workspace=@nvjc/backend"
   },
   "devDependencies": {

@@ -1,1 +1,193 @@
-/* Component styles are kept in src/styles.css to preserve the current shared design. */
+.course-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.course-grid .course-card {
+  aspect-ratio: 1;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(100, 255, 218, 0.12);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #1e1e1eb3, #141414e6);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.course-grid .course-card:hover {
+  border-color: rgba(57, 197, 207, 0.6);
+  box-shadow:
+    0 20px 42px rgba(0, 0, 0, 0.48),
+    0 0 24px rgba(57, 197, 207, 0.2);
+  text-decoration: none;
+  transform: translateY(-4px);
+}
+
+.course-grid .course-card:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.course-grid .course-art {
+  display: grid;
+  width: 100%;
+  height: 58px;
+  min-height: 58px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.course-grid .course-art::after {
+  content: none;
+}
+
+.course-grid .course-logos {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.course-grid .course-logos img {
+  display: block;
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.3));
+}
+
+.course-grid .course-logo-fallback {
+  color: var(--cyan);
+  font: 12px/1.6 "Press Start 2P", monospace;
+  text-transform: uppercase;
+}
+
+.course-grid .card-body {
+  display: flex;
+  width: 100%;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  text-align: center;
+}
+
+.course-grid .card-body h3 {
+  margin: 0;
+  font-size: clamp(10px, 1vw, 13px);
+  line-height: 1.8;
+}
+
+.course-grid .exercise-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border: 1px solid rgba(57, 197, 207, 0.28);
+  border-radius: 24px;
+  background: rgba(57, 197, 207, 0.08);
+  color: var(--cyan);
+  font: 8px/1.6 "Press Start 2P", monospace;
+  text-transform: uppercase;
+}
+
+.course-grid .card-body progress {
+  width: min(220px, 100%);
+}
+
+.course-grid .card-body > small {
+  color: var(--text-secondary, #bdbdbd);
+  font-size: 16px;
+}
+
+@media (max-width: 599px) {
+  .course-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .course-grid .course-card {
+    aspect-ratio: auto;
+    width: 100%;
+    min-height: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .course-grid .course-art {
+    width: 64px;
+    min-width: 64px;
+    height: 64px;
+    min-height: 64px;
+  }
+
+  .course-grid .course-logos img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .course-grid .card-body {
+    width: auto;
+    min-width: 0;
+    flex: 1;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .course-grid .card-body h3 {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+}
+
+@media (min-width: 600px) and (max-width: 729px) {
+  .course-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .course-grid .course-card:nth-child(-n + 3) {
+    grid-column: span 2;
+  }
+
+  .course-grid .course-card:nth-last-child(2) {
+    grid-column: 2 / span 2;
+  }
+
+  .course-grid .course-card:last-child {
+    grid-column: 4 / span 2;
+  }
+}
+
+@media (min-width: 730px) and (max-width: 1099px) {
+  .course-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .course-grid .course-card:nth-child(-n + 4) {
+    grid-column: span 2;
+  }
+
+  .course-grid .course-card:last-child {
+    grid-column: 4 / span 2;
+  }
+}

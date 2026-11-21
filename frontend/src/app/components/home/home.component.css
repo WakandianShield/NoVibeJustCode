@@ -1,1 +1,14 @@
-/* Component styles are kept in src/styles.css to preserve the current shared design. */
+/* The hero content is centered in the viewport; the navbar overlays it. */
+.hero {
+  padding-block: clamp(24px, 4vh, 40px);
+}
+
+@media (max-width: 599px) {
+  .hero .hero-copy h1 {
+    font-size: clamp(2.15rem, 9.6vw, 3.15rem);
+  }
+
+  .hero .hero-copy > p:not(.eyebrow) {
+    display: none;
+  }
+}

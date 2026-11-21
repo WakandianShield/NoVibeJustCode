@@ -26,7 +26,6 @@
       >
     }
     @if (session.user()) {
-      <a routerLink="/aprendizaje" routerLinkActive="active">Mi aprendizaje</a>
       <a routerLink="/proyectos" routerLinkActive="active">Proyectos</a>
       <a routerLink="/amigos" routerLinkActive="active">Amigos</a>
       <a routerLink="/mensajes" routerLinkActive="active">Mensajes</a>
@@ -35,11 +34,8 @@
   <div class="account-nav">
     @if (session.user(); as user) {
       <a class="nav-avatar" [routerLink]="['/perfil', user.nombre_usuario]"
-        ><img [src]="user.foto_url || '/avatar.svg'" alt="Mi perfil" /><span>{{
-          user.nombre_usuario
-        }}</span></a
+        ><img [src]="user.foto_url || '/avatar.svg'" alt="Mi perfil" /></a
       >
-      <button class="quiet logout" (click)="session.logout()">Salir</button>
     } @else {
       @if (!isLoginPage()) {
         <nv-pixel-cta id="header-pixel-start" route="/acceso"></nv-pixel-cta>

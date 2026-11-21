@@ -7,13 +7,8 @@
       [(ngModel)]="query"
       name="buscar"
       placeholder="Buscar nombre o @usuario…"
-    /><button>Buscar →</button>
+    /><button class="community-search-cta"><span class="pixel-button-label">Buscar</span></button>
   </form>
-  <div class="actions">
-    <a class="pill" routerLink="/comunidad">Explorar</a
-    ><a class="pill" routerLink="/amigos">Amigos y solicitudes</a
-    ><a class="pill" routerLink="/mensajes">Mensajes</a>
-  </div>
 </section>
 @if (error()) {
   <p class="alert">{{ error() }}</p>
@@ -32,17 +27,11 @@
       <a [routerLink]="['/perfil', p.nombre_usuario]"
         >&#64;{{ p.nombre_usuario }}</a
       >
-      <p>
-        {{ p.descripcion || "Aprendiendo algo nuevo, una línea a la vez." }}
-      </p>
-      <a class="button secondary" [routerLink]="['/perfil', p.nombre_usuario]"
-        >Ver perfil →</a
-      >
+      <a class="button community-profile-cta" [routerLink]="['/perfil', p.nombre_usuario]"><span class="pixel-button-label">Ver perfil</span></a>
     </article>
   } @empty {
     <div class="empty">
-      <h2>Aquí comienza la comunidad.</h2>
-      <p>No encontramos perfiles con esa búsqueda. Prueba con otro nombre.</p>
+      <h2>No se encontraron resultados.</h2>
     </div>
   }
 </div>

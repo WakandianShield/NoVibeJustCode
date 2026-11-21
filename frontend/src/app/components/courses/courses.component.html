@@ -1,32 +1,30 @@
 <section class="page-heading">
-  <p class="eyebrow">{{ mine ? "MI APRENDIZAJE" : "EXPLORA LAS RUTAS" }}</p>
-  <h1>{{ mine ? "Tu siguiente paso." : "Elige qué construir." }}</h1>
-  <input
-    class="search"
-    aria-label="Buscar tecnología"
-    placeholder="Buscar tecnología…"
-    [(ngModel)]="query"
-  />
+  <p class="eyebrow">EXPLORA LAS RUTAS</p>
+  <h1>Elige qué construir.</h1>
   @if (error()) {
     <p class="alert">{{ error() }}</p>
   }
 </section>
 <div class="course-grid">
-  @for (c of filtered(); track c.id_curso) {
-    <a class="course-card" [routerLink]="['/curso', c.id_curso]"
-      ><div [class]="'course-art tech-' + c.id_curso">
-        <span>{{ icons[c.id_curso - 1] }}</span
-        ><small>RUTA 0{{ c.id_curso }}</small>
+  @for (c of courses(); track c.id_curso) {
+    <a class="course-card" [routerLink]="['/curso', c.id_curso]">
+      <div class="course-art">
+        @if (logosFor(c).length) {
+          <div class="course-logos" aria-hidden="true">
+            @for (logo of logosFor(c); track logo) {
+              <img src="{{ logo }}" alt="" loading="lazy" />
+            }
+          </div>
+        } @else {
+          <span class="course-logo-fallback" aria-hidden="true">
+            {{ c.tecnologia || c.titulo }}
+          </span>
+        }
       </div>
       <div class="card-body">
-        <span class="tag">10 SECCIONES</span>
         <h3>{{ c.titulo }}</h3>
-        @if (mine) {
-          <progress [value]="c.total" max="10"></progress
-          ><small>Gratis {{ c.gratis }}/5 · Total {{ c.total }}/10</small>
-        }
-        <span class="course-link">{{ mine ? "Continuar" : "Ver ruta" }} →</span>
-      </div></a
-    >
+        <span class="exercise-badge">10 secciones</span>
+      </div>
+    </a>
   }
 </div>

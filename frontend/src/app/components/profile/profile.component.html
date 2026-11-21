@@ -18,27 +18,36 @@
       </div>
       <div class="profile-actions">
         @if (own()) {
-          <a class="button secondary" routerLink="/configuracion"
-            >Editar perfil</a
+          <a class="pixel-profile-cta" routerLink="/configuracion"
+            ><span class="pixel-button-label">Editar perfil</span></a
           >
         } @else if (session.user()) {
           @if (
             !relation() ||
             ["eliminada", "rechazada", "cancelada"].includes(relation().estado)
           ) {
-            <button (click)="request()" [disabled]="busy()">
-              Agregar amigo +
+            <button
+              class="pixel-profile-cta"
+              (click)="request()"
+              [disabled]="busy()"
+            >
+              <span class="pixel-button-label">Agregar +</span>
             </button>
           } @else {
-            <span class="pill">{{ relation().estado }}</span>
+            @if (relation().estado !== "aceptada") {
+              <span class="pill">{{
+                relation().estado === "pendiente"
+                  ? "Pendiente"
+                  : relation().estado
+              }}</span>
+            }
             @if (relation().estado === "aceptada") {
               <a
-                class="button"
+                class="pixel-profile-cta"
                 [routerLink]="['/mensajes', relation().id_amistad]"
-                >Chatear →</a
+                ><span class="pixel-button-label">Chatear</span></a
               >
             }
-            <a routerLink="/amigos">Gestionar amistad</a>
           }
         } @else {
           <a class="button" routerLink="/registro">Únete a la comunidad</a>
@@ -47,7 +56,6 @@
     </div>
   </section>
   <section class="section">
-    <p class="eyebrow">UNA META A LA VEZ</p>
     <h2>Insignias y aprendizajes</h2>
     <div class="badges-grid">
       @for (b of p.metas; track b.id_logro) {
@@ -56,16 +64,11 @@
           [class.locked]="!earned(b.id_logro)"
           (click)="detail.set(b)"
         >
-          <span class="badge-icon" [class.pro-badge]="b.nivel === 'Completo'">{{
-            earned(b.id_logro) ? (b.nivel === "Completo" ? "★" : "✓") : "◇"
-          }}</span
-          ><strong>{{ b.tecnologia }}</strong
-          ><span>{{
-            b.nivel === "Completo" ? "Curso completo" : "Bloque Gratis"
-          }}</span
-          ><small>{{
-            earned(b.id_logro) ? "Obtenida" : "Meta pendiente"
-          }}</small>
+          <img
+            class="badge-art"
+            [src]="badgeImage(b)"
+            [alt]="'Insignia de ' + b.tecnologia + (b.nivel === 'Completo' ? ', experto' : ', fundamentos')"
+          />
         </button>
       }
     </div>

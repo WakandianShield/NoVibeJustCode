@@ -1,26 +1,12 @@
 @if (section(); as s) {
   <section class="page-heading compact">
-    <a class="back" [routerLink]="['/curso', s.id_curso]"
-      >← Ruta de {{ s.tecnologia }}</a
-    >
-    <p class="eyebrow">
-      {{ s.tecnologia }} · SECCIÓN {{ s.numero }} ·
-      {{ s.numero <= 5 ? "GRATIS" : "PRO" }}
-    </p>
-    <h1>{{ s.titulo }}</h1>
+    <a class="back" [routerLink]="['/curso', s.id_curso]">Volver</a>
   </section>
-  <div class="study-layout">
-    <aside class="panel study-index">
-      <h3>En esta sección</h3>
-      @for (l of s.lecciones; track l.id_leccion) {
-        <button class="quiet" (click)="open(l.id_leccion)">
-          {{ l.titulo }}
-        </button>
-      }
-      <p>{{ s.objetivo }}</p>
-    </aside>
-    <div>
-      @if (lesson(); as l) {
+  <div
+    class="study-layout lesson-workspace"
+    [class.with-practice]="!!lesson()?.ejercicios?.length"
+  >
+    @if (lesson(); as l) {
         <article class="panel reading">
           <h2>{{ l.titulo }}</h2>
           <div class="lesson-content">{{ l.contenido }}</div>
@@ -36,46 +22,44 @@
               Abrir mi proyecto libre →
             </button>
           } @else if (!l.ejercicios.length) {
-            <button (click)="markRead()" [disabled]="busy()">
-              Confirmar lectura y completar ✓
+            <button
+              class="button"
+              (click)="markRead()"
+            >
+              <span class="pixel-button-label">Completar</span>
             </button>
           }
         </article>
-        @for (e of l.ejercicios; track e.id_ejercicio) {
+        @if (l.ejercicios.length) {
+          <div class="practice-column">
+            @for (e of l.ejercicios; track e.id_ejercicio) {
           <section class="practice">
             <h2>Tu práctica</h2>
-            <pre class="instructions">{{ e.enunciado }}</pre>
-            <details>
-              <summary>Casos públicos</summary>
-              @for (c of e.casos; track $index) {
-                <pre>{{ c.entrada }} → {{ c.salida_esperada }}</pre>
-              }
-            </details>
             @if (files()) {
               <nv-editor
                 [files]="files()!"
                 (filesChange)="setFiles($event)"
               ></nv-editor>
             }
-            <label
-              >Entrada de consola (opcional)<textarea
-                [(ngModel)]="stdin"
-                rows="2"
-                placeholder="JSON de entrada del caso público"
-              ></textarea>
-            </label>
             <div class="actions">
-              <button (click)="run(e.id_ejercicio, false)" [disabled]="busy()">
-                {{
+              <button
+                class="pixel-practice-cta"
+                (click)="run(e.id_ejercicio, false)"
+                [disabled]="busy()"
+              >
+                <span class="pixel-button-label">{{
                   e.modo_evaluacion === "web" ? "Evaluar vista web" : "Ejecutar"
-                }}</button
+                }}</span></button
               ><button
-                class="secondary"
+                class="pixel-practice-cta"
                 (click)="run(e.id_ejercicio, true)"
                 [disabled]="busy()"
               >
-                Evaluar práctica</button
-              ><button class="quiet" (click)="reset(e)">Restablecer</button>
+                <span class="pixel-button-label">Evaluar</span></button
+              ><button
+                class="pixel-practice-cta"
+                (click)="reset(e)"
+              ><span class="pixel-button-label">Restablecer</span></button>
               @if (e.modo_evaluacion === "web") {
                 <button class="quiet" (click)="preview()">Vista previa</button>
               }
@@ -96,9 +80,10 @@
               }}</pre>
             </div>
           </section>
+            }
+          </div>
         }
       }
-    </div>
   </div>
 }
 @if (error()) {

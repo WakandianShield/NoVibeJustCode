@@ -1,7 +1,6 @@
 <section class="page-heading">
   <p class="eyebrow">TUS CONEXIONES</p>
   <h1>Amigos y solicitudes.</h1>
-  <a routerLink="/comunidad">Buscar personas →</a>
 </section>
 @if (error()) {
   <p class="alert">{{ error() }}</p>
@@ -14,35 +13,38 @@
         <a [routerLink]="['/perfil', f.nombre_usuario]"
           ><strong>{{ f.nombre }}</strong></a
         >
-        <p>&#64;{{ f.nombre_usuario }} · {{ f.estado }}</p>
+        <p>
+          &#64;{{ f.nombre_usuario }} ·
+          {{ f.estado === "aceptada" ? "Amigos" : f.estado }}
+        </p>
       </div>
       <div class="actions">
         @if (f.estado === "aceptada") {
-          <a class="button secondary" [routerLink]="['/mensajes', f.id_amistad]"
-            >Chatear {{ f.no_leidos ? "(" + f.no_leidos + ")" : "" }}</a
+          <a class="button secondary friend-action-cta" [routerLink]="['/mensajes', f.id_amistad]"
+            ><span class="pixel-button-label">Chatear {{ f.no_leidos ? "(" + f.no_leidos + ")" : "" }}</span></a
           ><button class="quiet" (click)="action(f, 'eliminar')">
-            Eliminar amistad
+            <span class="pixel-button-label">Eliminar</span>
           </button>
         }
         @if (f.estado === "pendiente") {
           @if (f.id_solicitante !== session.user()?.id_usuario) {
-            <button (click)="action(f, 'aceptar')">Aceptar</button
+            <button (click)="action(f, 'aceptar')"><span class="pixel-button-label">Aceptar</span></button
             ><button class="secondary" (click)="action(f, 'rechazar')">
-              Rechazar
+              <span class="pixel-button-label">Rechazar</span>
             </button>
           } @else {
             <button class="secondary" (click)="action(f, 'cancelar')">
-              Cancelar solicitud
+              <span class="pixel-button-label">Cancelar</span>
             </button>
           }
         }
         @if (f.estado !== "bloqueada") {
           <button class="quiet danger" (click)="action(f, 'bloquear')">
-            Bloquear
+            <span class="pixel-button-label">Bloquear</span>
           </button>
         } @else if (f.bloqueado_por === session.user()?.id_usuario) {
           <button class="secondary" (click)="action(f, 'desbloquear')">
-            Desbloquear
+            <span class="pixel-button-label">Desbloquear</span>
           </button>
         }
       </div>

@@ -26,6 +26,18 @@ export class ProfileComponent extends Page implements OnInit {
   earned(id: number) {
     return this.profile()?.insignias.find((x: any) => x.id_logro === id);
   }
+  badgeImage(badge: any): string {
+    const technologyImages: Record<string, string> = {
+      python: "python",
+      javascript: "javascript",
+      "html y css": "css_html",
+      typescript: "typescript",
+      "node.js": "nodejs",
+    };
+    const prefix = technologyImages[String(badge.tecnologia).toLowerCase()];
+    const level = badge.nivel === "Completo" ? "experto" : "fundamentos";
+    return prefix ? `/${prefix}_${level}.png` : "/avatar.svg";
+  }
   async ngOnInit() {
     await this.session.ready;
     const name =

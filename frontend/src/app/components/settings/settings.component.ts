@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterLink, Router } from "@angular/router";
@@ -13,12 +13,26 @@ const common = [CommonModule, FormsModule, RouterLink];
   templateUrl: "./settings.component.html",
   styleUrl: "./settings.component.css",
 })
-export class SettingsComponent extends Page implements OnInit {
+export class SettingsComponent extends Page implements OnInit, OnDestroy {
   service = inject(SettingsService);
   session = inject(AuthService);
   router = inject(Router);
   form = { nombre: "", nombre_usuario: "", descripcion: "" };
-  password = "";
+  private noticeTimer?: ReturnType<typeof setTimeout>;
+
+  private showNotice(message: string) {
+    if (this.noticeTimer) clearTimeout(this.noticeTimer);
+    this.notice.set(message);
+    this.noticeTimer = setTimeout(() => {
+      this.notice.set("");
+      this.noticeTimer = undefined;
+    }, 5000);
+  }
+
+  ngOnDestroy() {
+    if (this.noticeTimer) clearTimeout(this.noticeTimer);
+  }
+
   ngOnInit() {
     this.form = { ...this.session.user() };
   }
@@ -26,7 +40,7 @@ export class SettingsComponent extends Page implements OnInit {
     await this.task(async () => {
       await this.service.saveProfile(this.form);
       await this.session.refresh();
-      this.notice.set("Perfil actualizado.");
+      this.showNotice("Perfil actualizado.");
     });
   }
   async image(event: Event, type: string) {
@@ -35,21 +49,7 @@ export class SettingsComponent extends Page implements OnInit {
     await this.task(async () => {
       await this.service.uploadProfileImage(type, f);
       await this.session.refresh();
-      this.notice.set("Imagen actualizada.");
-    });
-  }
-  async exportData() {
-    await this.task(async () => {
-      const r = await this.service.exportData(this.password);
-      const url = URL.createObjectURL(
-        new Blob([JSON.stringify(r, null, 2)], { type: "application/json" }),
-      );
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Mis-datos-NoVibeJustCode.json";
-      a.click();
-      URL.revokeObjectURL(url);
-      this.password = "";
+      this.showNotice("Imagen actualizada.");
     });
   }
   async erase() {
@@ -59,8 +59,10 @@ export class SettingsComponent extends Page implements OnInit {
       )
     )
       return;
+    const password = window.prompt("Confirma tu contraseña para eliminar tu cuenta.");
+    if (password === null || !password.trim()) return;
     await this.task(async () => {
-      await this.service.deleteAccount(this.password);
+      await this.service.deleteAccount(password);
       this.session.user.set(null);
       await this.router.navigateByUrl("/");
     });

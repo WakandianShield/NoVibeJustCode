@@ -26,12 +26,7 @@ export const appRoutes: Routes = [
     component: LessonComponent,
     canActivate: [sectionGuard],
   },
-  {
-    path: "aprendizaje",
-    component: CoursesComponent,
-    canActivate: [sessionGuard],
-    data: { mine: true },
-  },
+  { path: "aprendizaje", redirectTo: "cursos", pathMatch: "full" },
   { path: "comunidad", component: CommunityComponent },
   { path: "perfil/:usuario", component: ProfileComponent },
   { path: "amigos", component: FriendsComponent, canActivate: [sessionGuard] },

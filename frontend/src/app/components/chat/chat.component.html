@@ -1,9 +1,6 @@
 <section class="page-heading compact">
   <p class="eyebrow">MENSAJES PRIVADOS</p>
   <h1>Aprender también es conversar.</h1>
-  <span class="connection" [class.online]="chat.connected()"
-    >● {{ chat.connected() ? "Conectado" : "Reconectando" }}</span
-  >
 </section>
 <div class="chat-layout" [class.conversation-open]="current()">
   <aside class="panel conversations">
@@ -34,13 +31,12 @@
     @if (current(); as f) {
       <header>
         <button class="quiet mobile-only" (click)="current.set(null)">
-          ← Atrás</button
+          ←</button
         ><img
           class="avatar small"
           [src]="f.foto_url || '/avatar.svg'"
           alt=""
-        /><strong>{{ f.nombre }}</strong
-        ><a [routerLink]="['/perfil', f.nombre_usuario]">Ver perfil →</a>
+        /><strong>{{ f.nombre }}</strong>
       </header>
       <div class="message-history" aria-live="polite">
         <button class="quiet" (click)="older()" [disabled]="!hasOlder()">
@@ -66,21 +62,21 @@
       </div>
       <form class="message-form" (ngSubmit)="send()">
         <label class="sr-only" for="mensaje">Mensaje</label
-        ><textarea
+        ><input
           id="mensaje"
           [(ngModel)]="text"
           name="mensaje"
           maxlength="4000"
-          rows="2"
+          type="text"
           placeholder="Escribe un mensaje…"
           required
-        ></textarea
-        ><button [disabled]="busy() || !text.trim()">Enviar ↑</button>
+        />
+        <button class="message-send-cta" [disabled]="busy() || !text.trim()">
+          <span class="pixel-button-label">Enviar</span>
+        </button>
       </form>
     } @else {
       <div class="empty">
-        <span class="pixel-star">✦</span>
-        <h2>Una conversación puede<br />encender una idea.</h2>
         <p>Elige a un amigo para abrir el chat.</p>
       </div>
     }

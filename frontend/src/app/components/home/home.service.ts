@@ -12,7 +12,7 @@ export class HomeService {
   readonly logos = [
     ["/python-logo.webp"],
     ["/js-logo.webp"],
-    ["/html-logo.webp", "/css-logo.webp"],
+    ["/html-css-logo.png"],
     ["/ts-logo.webp"],
     ["/nodejs-logo.webp"],
   ];

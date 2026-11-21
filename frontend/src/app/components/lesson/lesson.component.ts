@@ -1,13 +1,13 @@
-import { Component, inject, signal, OnInit } from "@angular/core";
+import { Component, inject, signal, OnInit, DestroyRef } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { EditorComponent } from "../editor/editor.component";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { LessonService } from "./lesson.service";
 import { AuthService } from "../auth/auth.service";
 import { Page } from "../../shared/page-state";
-const common = [CommonModule, FormsModule, RouterLink];
+const common = [CommonModule, RouterLink];
 
 @Component({
   standalone: true,
@@ -17,6 +17,7 @@ const common = [CommonModule, FormsModule, RouterLink];
 })
 export class LessonComponent extends Page implements OnInit {
   service = inject(LessonService);
+  destroyRef = inject(DestroyRef);
   route = inject(ActivatedRoute);
   router = inject(Router);
   section = signal<any>(null);
@@ -28,10 +29,18 @@ export class LessonComponent extends Page implements OnInit {
   previewDoc = signal<SafeHtml | null>(null);
   stdin = "";
   key = "";
-  async ngOnInit() {
-    const s = await this.task(() =>
-      this.service.getSection(this.route.snapshot.paramMap.get("id")!),
-    );
+  ngOnInit() {
+    this.route.paramMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((params) => {
+        const id = params.get("id");
+        if (id) void this.loadSection(id);
+      });
+  }
+  private async loadSection(id: string) {
+    this.section.set(null);
+    this.lesson.set(null);
+    const s = await this.task(() => this.service.getSection(id));
     if (s) {
       this.section.set(s);
       if (s.lecciones.length) await this.open(s.lecciones[0].id_leccion);
@@ -87,10 +96,20 @@ export class LessonComponent extends Page implements OnInit {
     }
   }
   async markRead() {
-    await this.task(async () => {
-      await this.service.markRead(this.lesson().id_leccion);
-      this.notice.set("Sección completada. Ya puedes continuar en la ruta.");
-    });
+    if (this.busy()) return;
+    const completion = await this.task(() =>
+      this.service.markRead(this.lesson().id_leccion),
+    );
+    if (!completion) return;
+
+    if (completion.id_siguiente_seccion) {
+      await this.router.navigate([
+        "/seccion",
+        completion.id_siguiente_seccion,
+      ]);
+      return;
+    }
+    await this.router.navigate(["/curso", this.section().id_curso]);
   }
   async createProject() {
     await this.task(async () => {

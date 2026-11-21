@@ -24,7 +24,7 @@ export class AuthComponent extends Page {
       await this.auth.login(this.form, this.register);
       const back = this.route.snapshot.queryParamMap.get("volver");
       await this.router.navigateByUrl(
-        back?.startsWith("/") && !back.startsWith("//") ? back : "/aprendizaje",
+        back?.startsWith("/") && !back.startsWith("//") ? back : "/cursos",
       );
     });
   }

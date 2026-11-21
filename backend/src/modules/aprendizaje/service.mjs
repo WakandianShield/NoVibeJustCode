@@ -93,8 +93,20 @@ export const learning = {
         "Aprueba la práctica de esta lección antes de completarla.",
       );
     await repo.completeLesson(user.id_usuario, id);
-    await this.refresh(user.id_usuario, l.id_curso);
-    return { completada: true };
+    const complete = await this.refresh(user.id_usuario, l.id_curso);
+    const next = complete.some((number) => Number(number) === Number(l.numero))
+      ? (await repo.sections(l.id_curso)).find(
+          (section) => Number(section.numero) === Number(l.numero) + 1,
+        )
+      : null;
+    const nextIsAccessible =
+      next &&
+      (Number(next.numero) <= 5 ||
+        (await subscriptionsRepo.active(user.id_usuario)));
+    return {
+      completada: true,
+      id_siguiente_seccion: nextIsAccessible ? next.id_seccion : null,
+    };
   },
   async evaluate(user, id, body, runOnly = false) {
     const e = await repo.exercise(id);

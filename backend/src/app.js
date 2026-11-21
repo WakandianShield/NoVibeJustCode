@@ -2,6 +2,9 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import { checkConfig, config } from "./config/index.js";
 import { q } from "./config/db.js";
 import { csrf, errors, wrap } from "./middleware/index.mjs";
@@ -17,6 +20,7 @@ import { router as privacy } from "./modules/privacidad/router.mjs";
 export const app = express();
 
 app.disable("x-powered-by");
+if (process.env.NODE_ENV === "production") app.set("trust proxy", 1);
 
 app.use(
   helmet({
@@ -64,6 +68,11 @@ app.use(
 app.use("/api", (_request, response) =>
   response.status(404).json({ error: "Ruta no encontrada." }),
 );
+const frontendDir = fileURLToPath(new URL("../../frontend/dist/web/browser/", import.meta.url));
+if (existsSync(join(frontendDir, "index.html"))) {
+  app.use(express.static(frontendDir));
+  app.get("/{*path}", (_request, response) => response.sendFile(join(frontendDir, "index.html")));
+}
 app.use(errors);
 
 checkConfig();

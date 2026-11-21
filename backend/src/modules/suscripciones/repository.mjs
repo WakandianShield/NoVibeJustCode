@@ -8,7 +8,7 @@ export const subscriptionsRepo = {
     ),
   all: (user) =>
     q(
-      "SELECT * FROM suscripciones WHERE id_usuario=? ORDER BY id_suscripcion DESC",
+      "SELECT s.* FROM suscripciones s WHERE s.id_usuario=? AND (s.estado='CANCELLED' OR EXISTS(SELECT 1 FROM pagos p WHERE p.id_suscripcion=s.id_suscripcion AND p.estado='COMPLETED')) ORDER BY s.id_suscripcion DESC",
       [user],
     ),
   provider: (id) =>
@@ -22,7 +22,7 @@ export const subscriptionsRepo = {
   },
   payments: (user) =>
     q(
-      "SELECT p.* FROM pagos p JOIN suscripciones s USING(id_suscripcion) WHERE s.id_usuario=? ORDER BY p.fecha DESC",
+      "SELECT p.* FROM pagos p JOIN suscripciones s USING(id_suscripcion) WHERE s.id_usuario=? AND p.estado IN('COMPLETED','CANCELLED') ORDER BY p.fecha DESC",
       [user],
     ),
   payment: (sub, p) =>

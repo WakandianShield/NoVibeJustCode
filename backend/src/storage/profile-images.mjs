@@ -7,6 +7,7 @@ import { config } from "../config/index.js";
 import { assert } from "../domain.mjs";
 
 export const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
+export const MAX_IMAGE_PIXELS = 100000000;
 const IMAGE_NAME = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.webp$/i;
 const missing = (error) => error.code === "ENOENT" || error.name === "NoSuchKey" || error.$metadata?.httpStatusCode === 404;
 
@@ -15,13 +16,17 @@ export async function normalizeProfileImage(type, file) {
   assert(file && Buffer.isBuffer(file.buffer) && ["image/jpeg", "image/png", "image/webp"].includes(file.mimetype), 422, "Selecciona una imagen JPEG, PNG o WebP.");
   assert(file.buffer.length <= MAX_IMAGE_BYTES, 422, "La imagen no debe superar los 10 MB.");
   try {
-    const image = sharp(file.buffer, { limitInputPixels: 24000000 });
+    const image = sharp(file.buffer, { limitInputPixels: MAX_IMAGE_PIXELS, failOn: "error", sequentialRead: true });
     const metadata = await image.metadata();
     assert(["jpeg", "png", "webp"].includes(metadata.format), 422, "Selecciona una imagen JPEG, PNG o WebP.");
     const banner = type === "banner";
     return await image.rotate().resize(banner ? 1600 : 400, banner ? 500 : 400, { fit: "cover" }).webp({ quality: 85 }).toBuffer();
   } catch (error) {
     if (error.status) throw error;
+    if (/pixel limit/i.test(error.message || "")) {
+      assert(false, 422, "La imagen tiene demasiada resolución. Usa una imagen de hasta 100 megapíxeles.");
+    }
+    console.error("No se pudo procesar una imagen de perfil:", error.message);
     assert(false, 422, "No se pudo leer la imagen.");
   }
 }

@@ -8,36 +8,36 @@
     <h2>Información pública</h2>
     <p>Fotos y banners: JPEG, PNG o WebP, hasta 10 MB por imagen.</p>
     <div class="settings-profile-preview">
-      <div
-        class="settings-profile-banner"
+      <label
+        class="settings-profile-banner settings-banner-picker"
         [style.background-image]="session.user()?.banner_url ? 'url(' + session.user()?.banner_url + ')' : ''"
       >
-        <label class="settings-image-control settings-banner-control">
-          Cambiar banner
-          <input
-            type="file"
-            accept="image/jpeg,image/png,image/webp"
-            aria-label="Cambiar banner"
-            (change)="image($event, 'banner')"
-          />
-        </label>
-        <div class="settings-photo-wrap">
-          <img
-            class="settings-profile-avatar"
-            [src]="session.user()?.foto_url || '/avatar.svg'"
-            alt="Foto de perfil"
-          />
-          <label class="settings-image-control settings-photo-control">
-            Cambiar foto
-            <input
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              aria-label="Cambiar foto de perfil"
-              (change)="image($event, 'foto')"
-            />
-          </label>
-        </div>
-      </div>
+        <input
+          class="settings-file-input"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          aria-label="Cambiar banner"
+          [disabled]="busy()"
+          (change)="image($event, 'banner')"
+        />
+        <span class="settings-image-caption" aria-hidden="true">Cambiar banner</span>
+      </label>
+      <label class="settings-photo-wrap settings-photo-picker">
+        <img
+          class="settings-profile-avatar"
+          [src]="session.user()?.foto_url || '/avatar.svg'"
+          alt="Foto de perfil"
+        />
+        <input
+          class="settings-file-input"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          aria-label="Cambiar foto de perfil"
+          [disabled]="busy()"
+          (change)="image($event, 'foto')"
+        />
+        <span class="settings-image-caption" aria-hidden="true">Cambiar foto</span>
+      </label>
     </div>
     <div class="settings-profile-fields">
       <label

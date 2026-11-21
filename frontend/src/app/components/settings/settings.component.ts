@@ -1,11 +1,11 @@
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { RouterLink, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { SettingsService } from "./settings.service";
 import { AuthService } from "../auth/auth.service";
 import { Page } from "../../shared/page-state";
-const common = [CommonModule, FormsModule, RouterLink];
+const common = [CommonModule, FormsModule];
 
 @Component({
   standalone: true,
@@ -44,7 +44,9 @@ export class SettingsComponent extends Page implements OnInit, OnDestroy {
     });
   }
   async image(event: Event, type: string) {
-    const f = (event.target as HTMLInputElement).files?.[0];
+    const input = event.target as HTMLInputElement;
+    const f = input.files?.[0];
+    input.value = "";
     if (!f) return;
     if (f.size > 10 * 1024 * 1024) {
       this.error.set("La imagen no debe superar los 10 MB.");

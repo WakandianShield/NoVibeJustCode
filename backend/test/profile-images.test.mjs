@@ -39,6 +39,16 @@ test("rechaza más de 10 MB y contenido que no es una imagen admitida", async ()
   await assert.rejects(normalizeProfileImage("foto", file(await fixture(), "image/gif")), /JPEG, PNG o WebP/);
 });
 
+test("un banner válido de más de 24 megapíxeles ya no se rechaza por su resolución", async () => {
+  const input = await sharp({ create: { width: 5000, height: 5000, channels: 3, background: "#35bec9" } }).png().toBuffer();
+  assert.ok(input.length < MAX_IMAGE_BYTES);
+  const output = await normalizeProfileImage("banner", file(input));
+  const meta = await sharp(output).metadata();
+  assert.equal(meta.width, 1600);
+  assert.equal(meta.height, 500);
+  assert.equal(meta.format, "webp");
+});
+
 test("una imagen del bucket sigue disponible en otra instancia y se puede reemplazar", async () => {
   const { client, objects } = fakeBucket();
   const store = createImageStore({ bucket: "test", client });

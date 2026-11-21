@@ -8,36 +8,52 @@
     <h2>Información pública</h2>
     <p>Fotos y banners: JPEG, PNG o WebP, hasta 10 MB por imagen.</p>
     <div class="settings-profile-preview">
-      <label
+      <input
+        #bannerPicker
+        class="settings-file-input"
+        type="file"
+        hidden
+        accept="image/jpeg,image/png,image/webp"
+        [disabled]="busy()"
+        (change)="image($event, 'banner')"
+      />
+      <div
         class="settings-profile-banner settings-banner-picker"
-        [style.background-image]="session.user()?.banner_url ? 'url(' + session.user()?.banner_url + ')' : ''"
+        role="button"
+        tabindex="0"
+        aria-label="Seleccionar imagen del banner"
+        [attr.aria-disabled]="busy()"
+        [style.background-image]="bannerPreview ? 'url(' + bannerPreview + ')' : ''"
+        (click)="!busy() && bannerPicker.click()"
+        (keydown.enter)="!busy() && bannerPicker.click()"
+        (keydown.space)="$event.preventDefault(); !busy() && bannerPicker.click()"
       >
-        <input
-          class="settings-file-input"
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          aria-label="Cambiar banner"
-          [disabled]="busy()"
-          (change)="image($event, 'banner')"
-        />
-        <span class="settings-image-caption" aria-hidden="true">Cambiar banner</span>
-      </label>
-      <label class="settings-photo-wrap settings-photo-picker">
+      </div>
+      <input
+        #photoPicker
+        class="settings-file-input"
+        type="file"
+        hidden
+        accept="image/jpeg,image/png,image/webp"
+        [disabled]="busy()"
+        (change)="image($event, 'foto')"
+      />
+      <div
+        class="settings-photo-wrap settings-photo-picker"
+        role="button"
+        tabindex="0"
+        aria-label="Seleccionar foto de perfil"
+        [attr.aria-disabled]="busy()"
+        (click)="!busy() && photoPicker.click()"
+        (keydown.enter)="!busy() && photoPicker.click()"
+        (keydown.space)="$event.preventDefault(); !busy() && photoPicker.click()"
+      >
         <img
           class="settings-profile-avatar"
-          [src]="session.user()?.foto_url || '/avatar.svg'"
+          [src]="photoPreview"
           alt="Foto de perfil"
         />
-        <input
-          class="settings-file-input"
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          aria-label="Cambiar foto de perfil"
-          [disabled]="busy()"
-          (change)="image($event, 'foto')"
-        />
-        <span class="settings-image-caption" aria-hidden="true">Cambiar foto</span>
-      </label>
+      </div>
     </div>
     <div class="settings-profile-fields">
       <label

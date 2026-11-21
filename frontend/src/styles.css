@@ -4133,6 +4133,17 @@ progress::-webkit-progress-value {
 
 body {
   background-color: #081624;
+  background-image: none;
+  isolation: isolate;
+}
+/* Keep the scene sized to the viewport, including on mobile browsers. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #081624;
   background-image:
     linear-gradient(
       90deg,
@@ -4146,7 +4157,6 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 .hero {
   background: transparent;

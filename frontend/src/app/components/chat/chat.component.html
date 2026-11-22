@@ -1,33 +1,34 @@
 <div class="chat-layout" [class.conversation-open]="current()">
   <aside class="panel conversations">
     <h2>Conversaciones</h2>
-    @for (f of friends(); track f.id_amistad) {
-      <button
-        class="conversation quiet"
-        [class.selected]="current()?.id_amistad === f.id_amistad"
-        (click)="open(f)"
-      >
-        <img
-          class="avatar small"
-          [src]="f.foto_url || '/avatar.svg'"
-          alt=""
-        /><span
-          ><strong>{{ f.nombre }}</strong
-          ><small>{{
-            f.no_leidos ? f.no_leidos + " sin leer" : "Amigos"
-          }}</small></span
+    <div class="conversation-list">
+      @for (f of friends(); track f.id_amistad) {
+        <button
+          class="conversation quiet"
+          [class.selected]="current()?.id_amistad === f.id_amistad"
+          (click)="open(f)"
         >
-      </button>
-    } @empty {
-      <p>Añade un amigo para comenzar.</p>
-      <a routerLink="/comunidad">Explorar comunidad</a>
-    }
+          <img
+            class="avatar small"
+            [src]="f.foto_url || '/avatar.svg'"
+            alt=""
+          /><span
+            ><strong>{{ f.nombre }}</strong
+            ><small>{{
+              f.no_leidos ? f.no_leidos + " sin leer" : "Amigos"
+            }}</small></span
+          >
+        </button>
+      } @empty {
+        <p>Añade un amigo para comenzar.</p>
+        <a routerLink="/comunidad">Explorar comunidad</a>
+      }
+    </div>
   </aside>
   <section class="panel chat-panel">
     @if (current(); as f) {
       <header>
-        <button class="quiet mobile-only" (click)="current.set(null)">
-          ←</button
+        <button class="quiet mobile-only" (click)="current.set(null)">←</button
         ><img
           class="avatar small"
           [src]="f.foto_url || '/avatar.svg'"

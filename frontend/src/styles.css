@@ -5265,3 +5265,12 @@ nv-app {
     justify-content: center;
   }
 }
+
+/* Keep the message workspace inside the viewport while its lists scroll. */
+body:has(nv-app.messaging-page) {
+  overflow: hidden;
+}
+
+.messaging-page .site-header {
+  flex-shrink: 0;
+}

@@ -9,17 +9,11 @@
   background: transparent;
   box-shadow: none;
   transform: none;
-  perspective: 900px;
   cursor: pointer;
 }
 
 .badge-spin-control.is-spinning .badge-art {
-  animation: badge-full-turn 800ms ease-in-out;
-}
-
-@keyframes badge-full-turn {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
+  animation: course-logo-spin 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 1;
 }
 
 @media (prefers-reduced-motion: reduce) {

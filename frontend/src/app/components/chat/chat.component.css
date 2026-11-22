@@ -1,1 +1,105 @@
-/* Component styles are kept in src/styles.css to preserve the current shared design. */
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chat-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  flex: 1 1 0;
+  min-height: 0;
+  margin: 24px 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.chat-layout > .panel {
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.chat-layout > .conversations {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.conversations h2 {
+  flex: 0 0 auto;
+}
+
+.conversation-list {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+.conversation span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.chat-panel > header,
+.message-form {
+  flex: 0 0 auto;
+}
+
+.chat-panel > header strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message-history {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+.message-history > * {
+  flex-shrink: 0;
+}
+
+.message-form input {
+  min-width: 0;
+}
+
+:host > .alert {
+  flex: 0 0 auto;
+  margin: 0 0 16px;
+}
+
+@media (max-width: 767px) {
+  .chat-layout {
+    display: block;
+    margin-block: 16px;
+  }
+
+  .chat-layout > .chat-panel {
+    display: none;
+  }
+
+  .chat-layout.conversation-open > .chat-panel {
+    display: flex;
+  }
+
+  .chat-layout.conversation-open > .conversations {
+    display: none;
+  }
+
+  .chat-panel .mobile-only {
+    display: inline-flex;
+  }
+}

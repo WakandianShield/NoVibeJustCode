@@ -2,4 +2,6 @@
 <main id="contenido" class="container">
   <router-outlet></router-outlet>
 </main>
-<nv-footer></nv-footer>
+@if (!messaging()) {
+  <nv-footer></nv-footer>
+}

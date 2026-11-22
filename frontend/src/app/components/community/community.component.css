@@ -1,1 +1,10 @@
-/* Component styles are kept in src/styles.css to preserve the current shared design. */
+@media (min-width: 1100px) {
+  .people-grid {
+    max-width: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .people-grid > .empty {
+    grid-column: 1 / -1;
+  }
+}

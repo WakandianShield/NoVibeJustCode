@@ -7,8 +7,12 @@
     [class.with-practice]="!!lesson()?.ejercicios?.length"
   >
     @if (lesson(); as l) {
-        <article class="panel reading">
-          <h2>{{ l.titulo }}</h2>
+        <section class="reading-column" aria-labelledby="reading-title">
+          <h2 id="reading-title" class="workspace-title">{{ l.titulo }}</h2>
+          <article class="panel reading" tabindex="0" aria-labelledby="reading-title">
+          @for (e of l.ejercicios; track e.id_ejercicio) {
+            <div class="reading-instructions">{{ e.enunciado }}</div>
+          }
           <div class="lesson-content">{{ l.contenido }}</div>
           <div class="resources">
             @for (r of l.recursos; track r.id_recurso) {
@@ -30,11 +34,12 @@
             </button>
           }
         </article>
+        </section>
         @if (l.ejercicios.length) {
           <div class="practice-column">
             @for (e of l.ejercicios; track e.id_ejercicio) {
           <section class="practice">
-            <h2>Tu práctica</h2>
+            <h2 class="workspace-title">Tu práctica</h2>
             @if (files()) {
               <nv-editor
                 [files]="files()!"

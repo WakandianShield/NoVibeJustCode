@@ -34,7 +34,7 @@
         "leccion": {
           "id": 1020,
           "titulo": "Primera práctica",
-          "contenido": "Devuelve «Hola, {nombre}» usando el nombre recibido.",
+          "contenido": "Objetivo de la práctica\nDevuelve «Hola, {nombre}» usando el nombre recibido.\n\nDiccionarios y cadenas\nEn Python, un diccionario guarda valores asociados a claves. Puedes leer una propiedad con datos[\"nombre\"]. Las cadenas pueden combinar texto fijo y variables mediante una f-string, como f\"Bienvenido, {usuario}\".\n\nCómo abordarla\nIdentifica el nombre en los datos recibidos. Construye el saludo respetando la coma, el espacio y las mayúsculas del enunciado. Devuelve una cadena desde resolver: la plantilla ya se encarga de convertirla a JSON e imprimirla.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -78,7 +78,7 @@
         "leccion": {
           "id": 1030,
           "titulo": "Práctica guiada",
-          "contenido": "Calcula precio × cantidad con descuento (entre 0 y 1) y redondea a 2 decimales.",
+          "contenido": "Objetivo de la práctica\nCalcula precio × cantidad con descuento (entre 0 y 1) y redondea a 2 decimales.\n\nOperaciones y redondeo\nEl subtotal se obtiene multiplicando el precio por la cantidad. Un descuento fraccionario representa la parte que se resta: 0.15 significa 15 %. Los paréntesis permiten decidir qué operación se resuelve primero. round(valor, 2) redondea un número a dos decimales.\n\nCómo abordarla\nLee los tres campos, calcula el subtotal y aplica el descuento sobre ese importe. Redondea al final para evitar acumular errores. Devuelve un número, sin símbolos de moneda. Comprueba qué ocurre con descuento cero y con cantidad cero.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -122,7 +122,7 @@
         "leccion": {
           "id": 1040,
           "titulo": "Práctica intermedia",
-          "contenido": "Devuelve, en orden, los títulos de las tareas no completadas.",
+          "contenido": "Objetivo de la práctica\nDevuelve, en orden, los títulos de las tareas no completadas.\n\nListas, recorridos y condiciones\nUna lista conserva el orden de sus elementos. Un bucle for permite revisar cada tarea; una condición if decide cuáles conservar. En Python, not invierte un valor booleano. append añade un elemento al final de una lista.\n\nCómo abordarla\nPrepara una lista de resultados. Recorre las tareas en el orden recibido y revisa completada. Añade solo el título de las pendientes. Devuelve la lista de títulos, no los objetos completos. Una lista sin tareas pendientes debe producir una lista vacía.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -166,7 +166,7 @@
         "leccion": {
           "id": 1050,
           "titulo": "Reto complejo de fundamentos",
-          "contenido": "Busca el producto por nombre y devuelve su cantidad; si no existe, devuelve 0.",
+          "contenido": "Objetivo de la práctica\nBusca el producto por nombre y devuelve su cantidad; si no existe, devuelve 0.\n\nBúsqueda por una propiedad\nBuscar no siempre significa ordenar: puedes recorrer una colección y comparar una propiedad con la consulta. == comprueba igualdad; return termina la función al encontrar un resultado. El valor de respaldo debe devolverse después del recorrido.\n\nCómo abordarla\nLocaliza la colección de productos y el nombre consultado. Compara los nombres tal como llegan, sin transformar las mayúsculas. Si hay coincidencia, recupera su cantidad. Si termina el recorrido sin encontrarla, usa el valor indicado en el enunciado. No confundas cantidad cero con producto inexistente.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -210,7 +210,7 @@
         "leccion": {
           "id": 1060,
           "titulo": "Persistencia aplicada",
-          "contenido": "Serializa los registros a JSON, recupéralos con json.loads y devuelve cuántos son, conservando sus caracteres.",
+          "contenido": "Objetivo de la práctica\nSerializa los registros a JSON, recupéralos con json.loads y devuelve cuántos son, conservando sus caracteres.\n\nSerializar y recuperar JSON\njson.dumps convierte estructuras de Python en texto JSON. json.loads realiza la operación inversa. ensure_ascii=False mantiene los caracteres Unicode legibles al serializar. len permite contar los elementos de la lista recuperada.\n\nCómo abordarla\nTrabaja con los registros recibidos: primero serialízalos y después analiza ese texto. Cuenta los registros recuperados, no la longitud del texto JSON. No escribas archivos ni añadas mensajes a la salida. Revisa también registros vacíos y nombres con acentos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -254,7 +254,7 @@
         "leccion": {
           "id": 1070,
           "titulo": "Aplicación con datos",
-          "contenido": "Crea clientes(id, nombre) en SQLite en memoria; inserta con parámetros y devuelve los nombres en orden alfabético.",
+          "contenido": "Objetivo de la práctica\nCrea clientes(id, nombre) en SQLite en memoria; inserta con parámetros y devuelve los nombres en orden alfabético.\n\nSQLite en memoria y consultas\nsqlite3 forma parte de la biblioteca estándar. Una conexión a \":memory:\" crea una base temporal. Los marcadores ? permiten insertar datos como parámetros sin concatenarlos al SQL. ORDER BY ordena los resultados de una consulta.\n\nCómo abordarla\nImporta sqlite3 y crea la tabla con las columnas indicadas. Inserta cada nombre mediante parámetros. Consulta los nombres en orden alfabético y convierte las filas de la consulta en una lista de textos. Cierra la conexión al terminar y devuelve esa lista.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -298,7 +298,7 @@
         "leccion": {
           "id": 1080,
           "titulo": "Integración de servicios",
-          "contenido": "Devuelve cuerpo.items si estado es 200; en otro caso, devuelve una lista vacía.",
+          "contenido": "Objetivo de la práctica\nDevuelve cuerpo.items si estado es 200; en otro caso, devuelve una lista vacía.\n\nAdaptar una respuesta de servicio\nUn adaptador transforma la respuesta de otro sistema al formato que necesita tu aplicación. El código de estado informa del resultado y el cuerpo contiene los datos. En esta práctica recibes esa respuesta como datos: no necesitas hacer una petición de red.\n\nCómo abordarla\nComprueba el estado antes de acceder a los elementos del cuerpo. Para una respuesta correcta, recupera la lista de items. Para los demás estados, devuelve una lista vacía. Mantén el orden y el contenido de los elementos y evita imprimir diagnósticos adicionales.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -342,7 +342,7 @@
         "leccion": {
           "id": 1090,
           "titulo": "Sistema integrador",
-          "contenido": "Si algún precio o cantidad es negativo, devuelve {\"error\":\"datos invalidos\"}; si no, devuelve {\"total\": importe}.",
+          "contenido": "Objetivo de la práctica\nSi algún precio o cantidad es negativo, devuelve {\"error\":\"datos invalidos\"}; si no, devuelve {\"total\": importe}.\n\nValidar antes de calcular\nLa validación protege el cálculo de datos que no cumplen las reglas. Puedes separar una primera revisión de los productos y un segundo recorrido para acumular los importes. Un diccionario permite devolver un resultado con claves como total o error.\n\nCómo abordarla\nComprueba precio y cantidad de todos los productos. Un solo valor negativo debe interrumpir el cálculo y producir el error exacto del enunciado. Si todo es válido, suma los importes y devuelve el objeto esperado. El cero está permitido: no lo trates como negativo.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -440,7 +440,7 @@
         "leccion": {
           "id": 2020,
           "titulo": "Primera práctica",
-          "contenido": "Crea button#sumar y output#valor (inicia en 0); al pulsar, muestra 1.",
+          "contenido": "Objetivo de la práctica\nCrea button#sumar y output#valor (inicia en 0); al pulsar, muestra 1.\n\nElementos del DOM y eventos\nHTML define los elementos y JavaScript modifica su comportamiento. document.getElementById permite localizar un elemento por su id. addEventListener registra una función que se ejecuta cuando ocurre un evento, como click. textContent permite actualizar el texto visible.\n\nCómo abordarla\nCrea el botón y la salida con los identificadores pedidos en index.html. En app.js guarda un contador que empiece en cero y conecta el evento del botón. Actualiza el contador y la salida en cada pulsación. Comprueba el estado inicial y después un clic.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
             "autor": "Documentación oficial de JavaScript",
@@ -484,7 +484,7 @@
         "leccion": {
           "id": 2030,
           "titulo": "Práctica guiada",
-          "contenido": "Crea input#nombre, button#validar y p#resultado. Si el nombre está vacío, muestra «Nombre requerido».",
+          "contenido": "Objetivo de la práctica\nCrea input#nombre, button#validar y p#resultado. Si el nombre está vacío, muestra «Nombre requerido».\n\nLeer y validar un campo\nLa propiedad value de un input contiene texto. trim() elimina espacios en los extremos y ayuda a detectar entradas vacías. Una condición permite mostrar una respuesta distinta según el valor. Los identificadores conectan el HTML con el código de app.js.\n\nCómo abordarla\nCrea el campo, el botón y el párrafo del enunciado. Escucha el clic, lee el valor y comprueba si está vacío. Escribe el mensaje requerido con textContent respetando exactamente su texto. Evita que un envío de formulario recargue la página e impida ver el resultado.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
             "autor": "Documentación oficial de JavaScript",
@@ -528,7 +528,7 @@
         "leccion": {
           "id": 2040,
           "titulo": "Práctica intermedia",
-          "contenido": "Crea input#tarea, button#agregar y ul#tareas. Al agregar «Estudiar», muestra ese texto en un li.",
+          "contenido": "Objetivo de la práctica\nCrea input#tarea, button#agregar y ul#tareas. Al agregar «Estudiar», muestra ese texto en un li.\n\nCrear elementos de una lista\ndocument.createElement permite construir un nodo nuevo. Asignar textContent añade texto sin interpretarlo como HTML. append o appendChild incorporan ese nodo a otro elemento. Cada tarea de una lista debe representarse con su propio li.\n\nCómo abordarla\nConecta el input, el botón y la lista mediante sus ids. Al pulsar agregar, lee el texto, crea un li y añádelo a la lista. Usa el valor escrito, sin fijar siempre una tarea en el código. Prueba con Estudiar y después con otra tarea.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
             "autor": "Documentación oficial de JavaScript",
@@ -572,7 +572,7 @@
         "leccion": {
           "id": 2050,
           "titulo": "Reto complejo de fundamentos",
-          "contenido": "Crea button#filtrar y ul#productos. Al pulsarlo, muestra solo los productos con precio menor a 100.",
+          "contenido": "Objetivo de la práctica\nCrea button#filtrar y ul#productos. Al pulsarlo, muestra solo los productos con precio menor a 100.\n\nFiltrar y representar datos\nfilter crea una nueva lista con los elementos que cumplen una condición. No modifica la lista original. Después puedes recorrer el resultado y crear un li por producto. Separa la selección de datos de la creación de elementos del DOM.\n\nCómo abordarla\nDefine los productos que aparecen en el enunciado. Al pulsar filtrar, conserva los que tengan precio estrictamente menor a 100. Limpia la lista antes de volver a mostrar los resultados para evitar duplicados. Revisa los nombres visibles y que no aparezcan los productos excluidos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
             "autor": "Documentación oficial de JavaScript",
@@ -622,7 +622,7 @@
         "leccion": {
           "id": 2060,
           "titulo": "Persistencia aplicada",
-          "contenido": "Crea button#guardar y p#estado. Guarda tema=oscuro en localStorage y muestra «Guardado: oscuro» usando el valor guardado.",
+          "contenido": "Objetivo de la práctica\nCrea button#guardar y p#estado. Guarda tema=oscuro en localStorage y muestra «Guardado: oscuro» usando el valor guardado.\n\nGuardar preferencias en el navegador\nlocalStorage conserva pares de clave y valor como cadenas. setItem guarda un valor y getItem lo recupera; si la clave no existe, devuelve null. Este almacenamiento pertenece al origen de la página.\n\nCómo abordarla\nConecta el botón guardar. Dentro del evento guarda la preferencia con la clave y el valor pedidos. Recupera el valor desde localStorage y úsalo para construir el mensaje de estado. No muestres únicamente un texto fijo: el resultado debe reflejar el dato recuperado.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
             "autor": "Documentación oficial de JavaScript",
@@ -666,7 +666,7 @@
         "leccion": {
           "id": 2070,
           "titulo": "Datos y asincronía",
-          "contenido": "Crea button#cargar y p#estado. Muestra mensaje de datos.json; si falla, muestra «Sin conexión».",
+          "contenido": "Objetivo de la práctica\nCrea button#cargar y p#estado. Muestra mensaje de datos.json; si falla, muestra «Sin conexión».\n\nPeticiones asíncronas y errores\nfetch solicita un recurso y devuelve una promesa. await permite esperar su respuesta dentro de una función async. response.json() interpreta el cuerpo JSON. Un bloque try/catch permite mostrar un estado útil cuando falla la carga o el análisis.\n\nCómo abordarla\nUsa datos.json como recurso de la práctica. Tras pulsar cargar, solicita el archivo y muestra su propiedad mensaje. Comprueba response.ok antes de analizar el cuerpo y maneja los errores con el texto indicado. No sustituyas la carga por un mensaje fijo.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
             "autor": "Documentación oficial de JavaScript",
@@ -710,7 +710,7 @@
         "leccion": {
           "id": 2080,
           "titulo": "Organización de aplicaciones",
-          "contenido": "Crea Servicio.listar() para devolver Ana y Luis. Al pulsar button#cargar, muéstralos en ul#clientes sin innerHTML.",
+          "contenido": "Objetivo de la práctica\nCrea Servicio.listar() para devolver Ana y Luis. Al pulsar button#cargar, muéstralos en ul#clientes sin innerHTML.\n\nSeparar el servicio y la interfaz\nUna clase agrupa comportamiento relacionado. Un servicio puede entregar datos mientras otra función se ocupa de mostrarlos. Para representar texto externo, crea elementos y asigna textContent en lugar de insertar cadenas con innerHTML.\n\nCómo abordarla\nDefine Servicio y su método listar con los nombres indicados. Al pulsar cargar, pide los datos al servicio y crea un li por nombre dentro de la lista. Vacía los resultados anteriores si vuelves a cargar. Revisa que se muestren ambos clientes en el orden recibido.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
             "autor": "Documentación oficial de JavaScript",
@@ -754,7 +754,7 @@
         "leccion": {
           "id": 2090,
           "titulo": "Sistema integrador",
-          "contenido": "Con precio 25, calcula el total desde input#cantidad y muestra 75 para cantidad 3. Rechaza negativos con «Cantidad inválida».",
+          "contenido": "Objetivo de la práctica\nCon precio 25, calcula el total desde input#cantidad y muestra 75 para cantidad 3. Rechaza negativos con «Cantidad inválida».\n\nConvertir y comprobar números\nEl valor de un input suele ser texto aunque su tipo sea number. Number convierte ese texto a número y Number.isFinite ayuda a descartar valores no numéricos. La validación debe ejecutarse antes del cálculo.\n\nCómo abordarla\nCrea los controles con sus ids y conecta el botón. Convierte la cantidad, rechaza los valores negativos con el mensaje exacto y calcula el importe con el precio fijo. Muestra el resultado en output. Prueba una cantidad válida y después una negativa para revisar ambas ramas.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide",
             "autor": "Documentación oficial de JavaScript",
@@ -859,7 +859,7 @@
         "leccion": {
           "id": 3020,
           "titulo": "Primera práctica",
-          "contenido": "Crea article.tarjeta con h1 «Mi perfil» y un párrafo. Dale fondo azul.",
+          "contenido": "Objetivo de la práctica\nCrea article.tarjeta con h1 «Mi perfil» y un párrafo. Dale fondo azul.\n\nEstructura de una tarjeta y selectores\narticle representa contenido que puede entenderse por sí mismo. class permite identificar elementos para aplicar estilos: el selector .tarjeta coincide con class=\"tarjeta\". La propiedad background-color establece el color de fondo.\n\nCómo abordarla\nEdita index.html para crear la tarjeta con el título y el párrafo solicitados. En estilos.css selecciona la clase y asigna el fondo azul. Comprueba que el archivo CSS está enlazado y que el estilo se aplica a la tarjeta, no a toda la página.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
             "autor": "Documentación oficial de HTML y CSS",
@@ -905,7 +905,7 @@
         "leccion": {
           "id": 3030,
           "titulo": "Práctica guiada",
-          "contenido": "Crea header, nav, main y footer. En main, añade un formulario con label e input#nombre.",
+          "contenido": "Objetivo de la práctica\nCrea header, nav, main y footer. En main, añade un formulario con label e input#nombre.\n\nOrganizar una página con HTML semántico\nheader presenta el encabezado, nav agrupa enlaces, main contiene el contenido principal y footer cierra la página. Un label se asocia a un input cuando su atributo for coincide con el id del campo.\n\nCómo abordarla\nConstruye los cuatro bloques como partes de la misma página. Sitúa el formulario dentro de main y añade la etiqueta asociada al campo nombre. Conserva una sola región main. Revisa el cierre y la anidación de las etiquetas antes de comprobar el aspecto visual.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
             "autor": "Documentación oficial de HTML y CSS",
@@ -951,7 +951,7 @@
         "leccion": {
           "id": 3040,
           "titulo": "Práctica intermedia",
-          "contenido": "Crea .rejilla con tres article y display:grid; en móviles, usa una columna.",
+          "contenido": "Objetivo de la práctica\nCrea .rejilla con tres article y display:grid; en móviles, usa una columna.\n\nCSS Grid y adaptación móvil\ndisplay: grid convierte un contenedor en una cuadrícula. grid-template-columns define sus columnas; repeat y minmax permiten distribuir el espacio. Una media query aplica reglas únicamente cuando se cumple una condición de ancho.\n\nCómo abordarla\nCrea el contenedor rejilla y sus tres artículos. Define sus columnas para pantallas amplias y añade una regla móvil con una única columna. Mantén los artículos dentro del mismo contenedor y evita anchos fijos que provoquen desplazamiento horizontal.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
             "autor": "Documentación oficial de HTML y CSS",
@@ -997,7 +997,7 @@
         "leccion": {
           "id": 3050,
           "titulo": "Reto complejo de fundamentos",
-          "contenido": "Crea nav con enlaces a inicio.html, cursos.html y contacto.html.",
+          "contenido": "Objetivo de la práctica\nCrea nav con enlaces a inicio.html, cursos.html y contacto.html.\n\nEnlaces y estilos compartidos\nEl atributo href indica el destino de un enlace. Una dirección relativa, como contacto.html, se resuelve desde la página actual. Un mismo archivo CSS puede enlazarse desde varias páginas para conservar colores, tipografía y navegación.\n\nCómo abordarla\nOrganiza los tres enlaces dentro de nav y escribe los destinos exactos del enunciado. Utiliza un archivo de estilos compartido. En esta práctica se comprueba la portada: revisa sus enlaces y su estructura sin reemplazar los destinos por #.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
             "autor": "Documentación oficial de HTML y CSS",
@@ -1043,7 +1043,7 @@
         "leccion": {
           "id": 3060,
           "titulo": "Sistema visual aplicado",
-          "contenido": "Define --accion en :root y crea button.primario con padding de 16px y borde visible.",
+          "contenido": "Objetivo de la práctica\nDefine --accion en :root y crea button.primario con padding de 16px y borde visible.\n\nVariables CSS y componentes reutilizables\n:root permite declarar variables disponibles en toda la página. Las propiedades personalizadas empiezan con dos guiones y se consultan con var(). padding crea espacio interior y border define un borde visible.\n\nCómo abordarla\nDeclara --accion en :root. Crea el botón con la clase primario y utiliza la variable en su estilo. Aplica los 16px de relleno solicitados y un borde con grosor, estilo y color. Comprueba que el selector corresponde a la clase del botón.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
             "autor": "Documentación oficial de HTML y CSS",
@@ -1089,7 +1089,7 @@
         "leccion": {
           "id": 3070,
           "titulo": "Formularios accesibles",
-          "contenido": "Crea un formulario con email requerido, label asociado, botón submit y enlace para saltar a main.",
+          "contenido": "Objetivo de la práctica\nCrea un formulario con email requerido, label asociado, botón submit y enlace para saltar a main.\n\nFormularios y navegación accesible\ntype=\"email\" activa la validación básica de correo y required exige un valor. El par for/id asocia una etiqueta a su control. Un enlace a una sección de la propia página usa # seguido del id de destino.\n\nCómo abordarla\nCrea el formulario con un campo de correo, su etiqueta y un botón de envío. Añade un id al main y un enlace que permita saltar a él. Comprueba que el navegador detecta el campo vacío y que pulsar la etiqueta enfoca el input.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
             "autor": "Documentación oficial de HTML y CSS",
@@ -1141,7 +1141,7 @@
         "leccion": {
           "id": 3080,
           "titulo": "Interfaz de un sistema",
-          "contenido": "Crea aside con navegación y main con h1 y una tabla con thead, tbody y dos filas.",
+          "contenido": "Objetivo de la práctica\nCrea aside con navegación y main con h1 y una tabla con thead, tbody y dos filas.\n\nNavegación lateral y tablas\naside contiene información complementaria y puede incluir navegación. Una tabla utiliza thead para sus encabezados y tbody para los datos. Cada tr agrupa una fila y cada th o td ocupa una celda.\n\nCómo abordarla\nOrganiza la navegación lateral y el contenido principal. Dentro de main añade el título y una tabla con encabezado y dos filas de datos. Mantén la misma cantidad de columnas en todas las filas. Usa una tabla para los registros y CSS para distribuir los bloques.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
             "autor": "Documentación oficial de HTML y CSS",
@@ -1187,7 +1187,7 @@
         "leccion": {
           "id": 3090,
           "titulo": "Sistema integrador",
-          "contenido": "Integra nav, main, section.resumen con tres article y formulario con buscador. Usa grid en el resumen.",
+          "contenido": "Objetivo de la práctica\nIntegra nav, main, section.resumen con tres article y formulario con buscador. Usa grid en el resumen.\n\nIntegrar estructura, tarjetas y búsqueda\nLas secciones agrupan contenido relacionado y article sirve para cada tarjeta independiente. Una clase permite aplicar Grid a un conjunto específico. Un formulario de búsqueda necesita un campo identificable y una etiqueta que explique su propósito.\n\nCómo abordarla\nConstruye nav y main, y dentro organiza el resumen y el formulario. Añade exactamente las tres tarjetas solicitadas al resumen y activa Grid en su contenedor. Comprueba la estructura y la adaptación al ancho disponible antes de pulir los colores.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://developer.mozilla.org/es/docs/Learn_web_development",
             "autor": "Documentación oficial de HTML y CSS",
@@ -1294,7 +1294,7 @@
         "leccion": {
           "id": 4020,
           "titulo": "Primera práctica",
-          "contenido": "Define Entrada con a y b numéricos; crea una función que devuelva su suma.",
+          "contenido": "Objetivo de la práctica\nDefine Entrada con a y b numéricos; crea una función que devuelva su suma.\n\nInterfaces y funciones tipadas\nUna interfaz describe los campos de un objeto y el tipo de cada uno. number representa valores numéricos. La anotación de un parámetro conecta la función con ese contrato; la del retorno describe el resultado que entrega.\n\nCómo abordarla\nRevisa la interfaz Entrada y los dos operandos recibidos. Implementa el cálculo dentro de resolver y devuelve el resultado numérico. Conserva el adaptador de lectura JSON de la plantilla: no necesitas solicitar datos con prompt ni imprimir mensajes adicionales.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1338,7 +1338,7 @@
         "leccion": {
           "id": 4030,
           "titulo": "Práctica guiada",
-          "contenido": "Con una interfaz, valida nombre no vacío y edad ≥ 18; devuelve true si cumple.",
+          "contenido": "Objetivo de la práctica\nCon una interfaz, valida nombre no vacío y edad ≥ 18; devuelve true si cumple.\n\nContratos y expresiones booleanas\nLos tipos describen la forma de los datos, pero las reglas de negocio se comprueban con condiciones. trim() permite revisar si una cadena contiene texto útil. El operador && exige que dos condiciones sean verdaderas.\n\nCómo abordarla\nDefine el contrato con nombre y edad. Comprueba por separado el contenido del nombre y el límite de edad; después combina ambas condiciones. Devuelve un booleano, no las cadenas \"true\" o \"false\". Prueba el valor exacto del límite y también un nombre vacío.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1382,7 +1382,7 @@
         "leccion": {
           "id": 4040,
           "titulo": "Práctica intermedia",
-          "contenido": "Busca el id en los registros y devuelve su nombre o null.",
+          "contenido": "Objetivo de la práctica\nBusca el id en los registros y devuelve su nombre o null.\n\nBúsquedas con resultados opcionales\nUn arreglo tipado conserva el contrato de sus elementos. find busca el primero que cumple una condición y puede devolver undefined si no encuentra ninguno. Una función puede declarar un retorno con unión, como string | null.\n\nCómo abordarla\nCompara el id solicitado con el de cada registro. Si encuentras una coincidencia, devuelve únicamente su nombre. Si no existe, devuelve null de forma explícita. No devuelvas el registro completo ni una cadena vacía como sustituto.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1426,7 +1426,7 @@
         "leccion": {
           "id": 4050,
           "titulo": "Reto complejo de fundamentos",
-          "contenido": "Implementa unicos<T> para quitar duplicados sin cambiar el orden.",
+          "contenido": "Objetivo de la práctica\nImplementa unicos<T> para quitar duplicados sin cambiar el orden.\n\nFunciones genéricas y orden\nUn parámetro genérico T permite reutilizar una función con distintos tipos sin perder información. Un Set registra valores ya vistos y un arreglo permite mantener el orden de la primera aparición. Evitar duplicados no requiere ordenar los datos.\n\nCómo abordarla\nDeclara unicos<T> para recibir y devolver arreglos del mismo tipo. Recorre los valores y añade al resultado solo los que todavía no se hayan incluido. Invoca esa función desde resolver. Comprueba una lista vacía y otra con valores repetidos intercalados.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1470,7 +1470,7 @@
         "leccion": {
           "id": 4060,
           "titulo": "Arquitectura tipada",
-          "contenido": "Crea ServicioPedidos.total() para sumar los importes de los pedidos.",
+          "contenido": "Objetivo de la práctica\nCrea ServicioPedidos.total() para sumar los importes de los pedidos.\n\nClases y responsabilidad de un servicio\nUna clase de servicio concentra una operación de negocio y recibe los datos que necesita mediante métodos. Una interfaz puede describir cada pedido. Un acumulador o reduce permite sumar importes partiendo de cero.\n\nCómo abordarla\nDefine ServicioPedidos con un método total. Delega en ese método la suma y utiliza resolver para conectar la entrada con el servicio. Devuelve un número y revisa que una lista de pedidos vacía produzca cero. Evita mezclar la lectura de consola con el cálculo.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1514,7 +1514,7 @@
         "leccion": {
           "id": 4070,
           "titulo": "Servicios y asincronía",
-          "contenido": "Devuelve datos.items si ok y existe; si no, devuelve []. Usa tipos opcionales.",
+          "contenido": "Objetivo de la práctica\nDevuelve datos.items si ok y existe; si no, devuelve []. Usa tipos opcionales.\n\nPropiedades opcionales\nEl signo ? en una interfaz indica que una propiedad puede no estar presente. El encadenamiento opcional ?. evita acceder a una propiedad de un valor ausente. ?? permite usar un respaldo cuando el valor es null o undefined.\n\nCómo abordarla\nDescribe datos como opcional y revisa primero el indicador ok. Solo devuelve los items cuando la respuesta sea correcta y estén presentes. Usa una lista vacía en los demás casos. Comprueba tanto una respuesta fallida como una entrada que no incluya datos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1558,7 +1558,7 @@
         "leccion": {
           "id": 4080,
           "titulo": "Estado y pruebas",
-          "contenido": "Devuelve el mensaje en error, «Listo» en listo y «Cargando» en carga.",
+          "contenido": "Objetivo de la práctica\nDevuelve el mensaje en error, «Listo» en listo y «Cargando» en carga.\n\nUniones de valores y estados\nUna unión de literales limita una propiedad a valores conocidos, como \"carga\" | \"listo\" | \"error\". Un if o switch permite asignar un comportamiento a cada estado. El mensaje opcional no debe utilizarse indiscriminadamente en todas las ramas.\n\nCómo abordarla\nResuelve por separado los tres estados indicados. Usa el mensaje recibido únicamente para el estado de error y los textos exactos para los otros dos. Comprueba que cada rama termina devolviendo una cadena y que no cae accidentalmente en la siguiente.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1608,7 +1608,7 @@
         "leccion": {
           "id": 4090,
           "titulo": "Sistema integrador",
-          "contenido": "Calcula el total del carrito con los productos existentes e ignora ids desconocidos.",
+          "contenido": "Objetivo de la práctica\nCalcula el total del carrito con los productos existentes e ignora ids desconocidos.\n\nRelacionar colecciones por identificador\nLos ids relacionan productos y líneas del carrito sin depender de su posición. find o un Map permiten recuperar el producto asociado a cada línea. Cuando no hay coincidencia, primero debes comprobar esa ausencia antes de leer su precio.\n\nCómo abordarla\nRecorre el carrito, localiza cada producto y acumula su importe usando la cantidad. Omite los ids desconocidos sin detener el resto del cálculo. Conserva los tipos de ambas colecciones y devuelve el total numérico. Revisa también un carrito vacío.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1706,7 +1706,7 @@
         "leccion": {
           "id": 5020,
           "titulo": "Primera práctica",
-          "contenido": "Crea una función que reciba nombre y devuelva un saludo; lee los datos JSON de consola.",
+          "contenido": "Objetivo de la práctica\nCrea una función que reciba nombre y devuelva un saludo; lee los datos JSON de consola.\n\nFunciones y entrada JSON en Node.js\nNode.js ejecuta JavaScript fuera del navegador. En esta plantilla, fs lee la entrada estándar y JSON.parse la convierte en un objeto. resolver recibe ese objeto y entrega un valor; el código final se encarga de imprimirlo como JSON.\n\nCómo abordarla\nLocaliza la propiedad nombre y construye el saludo pedido. Devuelve el texto desde la función sin añadir otra impresión en consola. Respeta espacios y puntuación, y conserva la lectura de entrada que ya incluye main.js.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1750,7 +1750,7 @@
         "leccion": {
           "id": 5030,
           "titulo": "Práctica guiada",
-          "contenido": "Filtra los correos que tengan @ y un punto después de @.",
+          "contenido": "Objetivo de la práctica\nFiltra los correos que tengan @ y un punto después de @.\n\nFiltrar cadenas con una regla\nfilter construye una lista con los elementos que cumplen un predicado. indexOf devuelve la posición de un carácter o -1 si no existe. Para comprobar un punto después de @, la búsqueda del punto debe empezar después de la posición de la arroba.\n\nCómo abordarla\nRevisa cada correo aplicando la regla didáctica indicada. Conserva el texto original y el orden de los aceptados. No basta con comprobar que hay un punto en cualquier posición. Esta actividad no pretende implementar toda la especificación real de correos electrónicos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1794,7 +1794,7 @@
         "leccion": {
           "id": 5040,
           "titulo": "Práctica intermedia",
-          "contenido": "Analiza textoJSON y devuelve la longitud de la lista; si no es JSON válido, devuelve -1.",
+          "contenido": "Objetivo de la práctica\nAnaliza textoJSON y devuelve la longitud de la lista; si no es JSON válido, devuelve -1.\n\nAnalizar JSON y manejar excepciones\nJSON.parse convierte texto JSON en un valor y lanza una excepción cuando el texto tiene una sintaxis inválida. try/catch permite tratar ese error de forma controlada. La longitud de un arreglo se obtiene con length, después de analizar el texto.\n\nCómo abordarla\nAnaliza la propiedad textoJSON dentro del bloque protegido. Para una lista válida, devuelve su cantidad de elementos. Para un error de sintaxis, devuelve el valor de respaldo del enunciado. No confundas los caracteres de la cadena con los elementos de la lista.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1838,7 +1838,7 @@
         "leccion": {
           "id": 5050,
           "titulo": "Reto complejo de fundamentos",
-          "contenido": "Busca el id en los registros y devuelve el registro o null.",
+          "contenido": "Objetivo de la práctica\nBusca el id en los registros y devuelve el registro o null.\n\nBuscar registros completos\nfind devuelve el primer objeto que cumple una comparación y undefined cuando no hay coincidencias. === compara valores sin convertir sus tipos. El contrato de esta práctica pide devolver el registro completo, no solo su nombre.\n\nCómo abordarla\nRevisa el id recibido y compara con cada registro de la colección. Devuelve el objeto encontrado o null de forma explícita cuando no exista. Conserva las propiedades del objeto. Prueba una coincidencia y una búsqueda sin resultados.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1882,7 +1882,7 @@
         "leccion": {
           "id": 5060,
           "titulo": "Servidor aplicado",
-          "contenido": "Modela GET /salud como {status:200,body:\"ok\"}; cualquier otra ruta devuelve 404 y «no encontrado».",
+          "contenido": "Objetivo de la práctica\nModela GET /salud como {status:200,body:\"ok\"}; cualquier otra ruta devuelve 404 y «no encontrado».\n\nModelar un router HTTP\nUn router selecciona un comportamiento usando el método y la ruta. Una respuesta puede representarse con un objeto que contenga status y body. Aquí modelas ese contrato con datos: no necesitas abrir un servidor ni escuchar un puerto.\n\nCómo abordarla\nComprueba conjuntamente el método y la ruta indicados. Construye el objeto de éxito solo cuando ambos coincidan; usa la respuesta alternativa para cualquier otra combinación. Mantén los nombres de las propiedades, los tipos y los textos exactos del enunciado.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1926,7 +1926,7 @@
         "leccion": {
           "id": 5070,
           "titulo": "Persistencia de un sistema",
-          "contenido": "Filtra las filas del repositorio cuyo valor activo coincida con el solicitado.",
+          "contenido": "Objetivo de la práctica\nFiltra las filas del repositorio cuyo valor activo coincida con el solicitado.\n\nSeparar repositorio y servicio\nEl repositorio obtiene filas y el servicio aplica reglas sobre esos datos. Una función pura recibe información y devuelve un resultado sin modificar la entrada. filter permite seleccionar registros a partir de una propiedad booleana.\n\nCómo abordarla\nTrabaja con las filas recibidas y compara activo con el valor solicitado. Conserva cada fila completa, su orden y su contenido. Evita convertir false en ausencia de filtro: tanto true como false son criterios válidos. No necesitas una conexión real a base de datos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1970,7 +1970,7 @@
         "leccion": {
           "id": 5080,
           "titulo": "Acceso y validaciones",
-          "contenido": "Devuelve 401 si no hay sesión, 403 si no es propietario y 200 si coincide.",
+          "contenido": "Objetivo de la práctica\nDevuelve 401 si no hay sesión, 403 si no es propietario y 200 si coincide.\n\nAutenticación y autorización\nLa autenticación determina si existe una identidad y la autorización decide si puede acceder al recurso. El orden es relevante: primero se comprueba la sesión y después la propiedad del recurso. Un código de estado numérico representa cada resultado.\n\nCómo abordarla\nRevisa autenticado antes de comparar propietario e idSolicitado. Si hay identidad, decide si los identificadores coinciden. Devuelve únicamente el código indicado para cada situación. Prueba también una sesión ausente con ids iguales para comprobar la prioridad de las reglas.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -2020,7 +2020,7 @@
         "leccion": {
           "id": 5090,
           "titulo": "Sistema integrador",
-          "contenido": "Si alguna cantidad no es positiva, devuelve {status:422}; si todas lo son, devuelve {status:201,total: importe}.",
+          "contenido": "Objetivo de la práctica\nSi alguna cantidad no es positiva, devuelve {status:422}; si todas lo son, devuelve {status:201,total: importe}.\n\nValidar un pedido antes de responder\nUn controller transforma la entrada en una respuesta coherente. La validación debe cubrir todos los elementos antes de confirmar el pedido. every permite comprobar una condición en una colección y reduce o un acumulador permite calcular un total.\n\nCómo abordarla\nRechaza el pedido si alguna cantidad es cero o negativa. Si todas son positivas, acumula precio por cantidad y construye la respuesta de creación. No devuelvas un éxito parcial si un elemento falla. Respeta los campos y códigos numéricos solicitados.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",

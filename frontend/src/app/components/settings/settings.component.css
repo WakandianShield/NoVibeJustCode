@@ -1,3 +1,15 @@
 .settings-grid {
   margin-top: 32px;
 }
+
+.settings-grid > .profile-editor {
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  justify-self: center;
+}
+
+.profile-editor-actions {
+  width: max-content;
+  max-width: 100%;
+}

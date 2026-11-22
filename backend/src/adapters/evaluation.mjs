@@ -27,9 +27,25 @@ export async function worker(path, body) {
 }
 const encode = (s) => Buffer.from(s).toString("base64");
 const decode = (s) => (s ? Buffer.from(s, "base64").toString("utf8") : "");
+function checkJudgeResponse(response) {
+  assert(
+    ![401, 403].includes(response.status),
+    503,
+    "El servicio de ejecución no tiene acceso autorizado. Contacta con soporte.",
+  );
+  assert(
+    response.status !== 429,
+    503,
+    "El servicio de ejecución alcanzó su límite de uso. Inténtalo más tarde.",
+  );
+  assert(response.ok, 503, "El ejecutor no está disponible.");
+}
 async function judge(tecnologia, files, c, runOnly, stdin) {
   const url = process.env.JUDGE0_URL;
   assert(url, 503, "Configura Judge0 para ejecutar prácticas de consola.");
+  const onlineCompiler = new URL(url).hostname === "api.onlinecompiler.io";
+  const nativeTypeScript =
+    tecnologia === "TypeScript" && process.env.JUDGE0_TYPESCRIPT_ID;
   const headers = { "Content-Type": "application/json" };
   if (process.env.JUDGE0_KEY)
     headers[process.env.JUDGE0_AUTH_HEADER || "X-RapidAPI-Key"] =
@@ -40,10 +56,17 @@ async function judge(tecnologia, files, c, runOnly, stdin) {
     .filter(([n]) => /\.(py|js|ts|mjs)$/.test(n))
     .map(([, s]) => s)
     .join("\n");
-  if (tecnologia === "TypeScript") {
+  if (tecnologia === "TypeScript" && !nativeTypeScript) {
     const r = await worker("/transpile", { archivos: files });
     if (!r.valido) return { ok: false, detalle: r.detalle };
     source = r.codigo;
+  }
+  if (onlineCompiler && nativeTypeScript) {
+    // Its TypeScript runtime is Deno; course templates use Node's require().
+    source =
+      'import { createRequire as __nvjcCreateRequire } from "node:module";\n' +
+      'var require = __nvjcCreateRequire(import.meta.url);\n' +
+      source;
   }
   // El código de la práctica se ejecuta únicamente en Judge0, nunca en el API.
   const body = {
@@ -51,13 +74,14 @@ async function judge(tecnologia, files, c, runOnly, stdin) {
     language_id: Number(
       tecnologia === "Python"
         ? process.env.JUDGE0_PYTHON_ID || 71
-        : process.env.JUDGE0_NODE_ID || 63,
+        : nativeTypeScript || process.env.JUDGE0_NODE_ID || 63,
     ),
     stdin: encode(runOnly ? String(stdin) : c.entrada),
     cpu_time_limit: 2,
     memory_limit: 131072,
     wall_time_limit: 5,
-    enable_network: false,
+    // OnlineCompiler always disables network access and rejects this option.
+    ...(onlineCompiler ? {} : { enable_network: false }),
   };
   const r = await fetch(
     url.replace(/\/$/, "") + "/submissions?base64_encoded=true&wait=false",
@@ -68,7 +92,7 @@ async function judge(tecnologia, files, c, runOnly, stdin) {
       signal: AbortSignal.timeout(10000),
     },
   );
-  assert(r.ok, 503, "El ejecutor no está disponible.");
+  checkJudgeResponse(r);
   const { token } = await r.json();
   assert(typeof token === "string", 503, "Respuesta inválida del ejecutor.");
   for (let n = 0; n < 30; n++) {
@@ -80,9 +104,14 @@ async function judge(tecnologia, files, c, runOnly, stdin) {
         "?base64_encoded=true",
       { headers, signal: AbortSignal.timeout(5000) },
     );
-    assert(r.ok, 503, "No fue posible consultar la ejecución.");
+    checkJudgeResponse(r);
     const x = await r.json();
     if (x.status?.id > 2) {
+      assert(
+        ![13, 14].includes(x.status.id),
+        503,
+        "El servicio de ejecución no pudo procesar el programa. Inténtalo más tarde.",
+      );
       const out = decode(x.stdout),
         errors = decode(x.compile_output) || decode(x.stderr);
       return {

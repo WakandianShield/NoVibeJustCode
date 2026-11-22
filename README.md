@@ -70,7 +70,9 @@ Pruebas de imágenes: `node --test backend/test/profile-images.test.mjs`.
 
 La ejecución de prácticas de consola usa Judge0. Configura `JUDGE0_URL` y, si tu instancia lo requiere, `JUDGE0_KEY`, `JUDGE0_AUTH_HEADER`, `JUDGE0_HOST`, `JUDGE0_PYTHON_ID` y `JUDGE0_NODE_ID`.
 
-La validación de TypeScript y proyectos web requiere un servicio de evaluación independiente. Configura su dirección en `WORKER_URL` y comparte el mismo secreto en `WORKER_SECRET` en ambos servicios.
+En producción se utiliza la API compatible de OnlineCompiler.io con su plan Free. Configura `JUDGE0_URL=https://api.onlinecompiler.io/api/judge0`, `JUDGE0_AUTH_HEADER=X-Auth-Token` y la clave privada en `JUDGE0_KEY`. Deja `JUDGE0_HOST` vacío. Los lenguajes actuales son `JUDGE0_PYTHON_ID=113`, `JUDGE0_NODE_ID=102` y `JUDGE0_TYPESCRIPT_ID=101`; deben verificarse en `/languages` si el proveedor los actualiza. Las prácticas TypeScript se ejecutan directamente en ese servicio y admiten el `require()` de las plantillas. La clave permanece exclusivamente en el backend.
+
+La evaluación de prácticas web y la validación de proyectos finales requieren un servicio de evaluación independiente. Configura su dirección en `WORKER_URL` y comparte el mismo secreto en `WORKER_SECRET` en ambos servicios. Si el ejecutor de consola no ofrece TypeScript nativo (`JUDGE0_TYPESCRIPT_ID`), también se utiliza este servicio para transpilarlo.
 
 Para activar pagos Pro, configura `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`, `PAYPAL_PLAN_ID` y `PAYPAL_WEBHOOK_ID`. El endpoint de notificaciones es `/api/notificaciones/paypal`. `PAYPAL_API` usa el entorno comercial por defecto.
 

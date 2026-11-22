@@ -92,11 +92,12 @@ export class LessonComponent extends Page implements OnInit {
     );
     if (!r) this.result.set(this.error() || "No se pudo ejecutar la práctica.");
     if (r) {
+      if (evaluate && r.estado === "aprobado") {
+        this.result.set("");
+        await this.markRead();
+        return;
+      }
       this.result.set(r.estado + "\n" + r.detalle);
-      if (r.estado === "aprobado")
-        this.notice.set(
-          "Práctica aprobada. Tu progreso e insignias se actualizaron.",
-        );
     }
   }
   async markRead() {

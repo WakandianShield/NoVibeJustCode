@@ -68,11 +68,19 @@ Las imágenes anteriores que todavía estén en `UPLOAD_DIR` se copian al bucket
 
 Pruebas de imágenes: `node --test backend/test/profile-images.test.mjs`.
 
-La ejecución de prácticas de consola usa Judge0. Configura `JUDGE0_URL` y, si tu instancia lo requiere, `JUDGE0_KEY`, `JUDGE0_AUTH_HEADER`, `JUDGE0_HOST`, `JUDGE0_PYTHON_ID` y `JUDGE0_NODE_ID`.
+Las prácticas de consola utilizan directamente la API nativa de OnlineCompiler.io (`POST /api/run-code-sync/`), con su plan Free. La clave permanece exclusivamente en el backend. Configura estas variables en Railway:
 
-En producción se utiliza la API compatible de OnlineCompiler.io con su plan Free. Configura `JUDGE0_URL=https://api.onlinecompiler.io/api/judge0`, `JUDGE0_AUTH_HEADER=X-Auth-Token` y la clave privada en `JUDGE0_KEY`. Deja `JUDGE0_HOST` vacío. Los lenguajes actuales son `JUDGE0_PYTHON_ID=113`, `JUDGE0_NODE_ID=102` y `JUDGE0_TYPESCRIPT_ID=101`; deben verificarse en `/languages` si el proveedor los actualiza. Las prácticas TypeScript se ejecutan directamente en ese servicio y admiten el `require()` de las plantillas. La clave permanece exclusivamente en el backend.
+```text
+ONLINECOMPILER_API_URL=https://api.onlinecompiler.io
+ONLINECOMPILER_API_KEY=<clave privada del proveedor>
+ONLINECOMPILER_PYTHON_COMPILER=python-3.14
+ONLINECOMPILER_NODE_COMPILER=nodejs-24
+ONLINECOMPILER_TYPESCRIPT_COMPILER=typescript-deno
+```
 
-La evaluación de prácticas web y la validación de proyectos finales requieren un servicio de evaluación independiente. Configura su dirección en `WORKER_URL` y comparte el mismo secreto en `WORKER_SECRET` en ambos servicios. Si el ejecutor de consola no ofrece TypeScript nativo (`JUDGE0_TYPESCRIPT_ID`), también se utiliza este servicio para transpilarlo.
+Las prácticas TypeScript se ejecutan directamente en el servicio y admiten el `require()` de las plantillas mediante compatibilidad de Node en Deno. Cada ejecución tiene un límite de 2 segundos y 128 MB; se conservan los mensajes de error y la privacidad de los casos ocultos. No se ejecuta código de estudiantes en el backend.
+
+La evaluación de prácticas web y la validación de proyectos finales requieren un servicio de evaluación independiente. Configura su dirección en `WORKER_URL` y comparte el mismo secreto en `WORKER_SECRET` en ambos servicios.
 
 Para activar pagos Pro, configura `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`, `PAYPAL_PLAN_ID` y `PAYPAL_WEBHOOK_ID`. El endpoint de notificaciones es `/api/notificaciones/paypal`. `PAYPAL_API` usa el entorno comercial por defecto.
 
@@ -88,7 +96,7 @@ Sin configurar estos proveedores, las demás funciones de la aplicación pueden 
 - `backend/src/app.js`: configuración de Express, rutas, middleware, Socket.IO y arranque de la API.
 - `backend/src/config/`: configuración de entorno y conexión MySQL.
 - `backend/src/modules/`: módulos de cuentas, aprendizaje, comunidad, mensajes, privacidad, proyectos y suscripciones.
-- `backend/src/adapters/`: integración con Judge0, el servicio de evaluación y PayPal.
+- `backend/src/adapters/`: integración con OnlineCompiler.io, el servicio de evaluación y PayPal.
 - `database/schema.sql`: estructura de la base de datos.
 - `database/curriculum.json`: catálogo y contenido de cursos.
 

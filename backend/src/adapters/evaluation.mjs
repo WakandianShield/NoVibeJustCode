@@ -25,104 +25,69 @@ export async function worker(path, body) {
     );
   }
 }
-const encode = (s) => Buffer.from(s).toString("base64");
-const decode = (s) => (s ? Buffer.from(s, "base64").toString("utf8") : "");
-function checkJudgeResponse(response) {
-  assert(
-    ![401, 403].includes(response.status),
-    503,
-    "El servicio de ejecución no tiene acceso autorizado. Contacta con soporte.",
-  );
-  assert(
-    response.status !== 429,
-    503,
-    "El servicio de ejecución alcanzó su límite de uso. Inténtalo más tarde.",
-  );
+function checkExecutorResponse(response) {
+  assert(![401, 403].includes(response.status), 503,
+    "El servicio de ejecución no tiene acceso autorizado. Contacta con soporte.");
+  assert(response.status !== 429, 503,
+    "El servicio de ejecución alcanzó su límite de uso. Inténtalo más tarde.");
   assert(response.ok, 503, "El ejecutor no está disponible.");
 }
-async function judge(tecnologia, files, c, runOnly, stdin) {
-  const url = process.env.JUDGE0_URL;
-  assert(url, 503, "Configura Judge0 para ejecutar prácticas de consola.");
-  const onlineCompiler = new URL(url).hostname === "api.onlinecompiler.io";
-  const nativeTypeScript =
-    tecnologia === "TypeScript" && process.env.JUDGE0_TYPESCRIPT_ID;
-  const headers = { "Content-Type": "application/json" };
-  if (process.env.JUDGE0_KEY)
-    headers[process.env.JUDGE0_AUTH_HEADER || "X-RapidAPI-Key"] =
-      process.env.JUDGE0_KEY;
-  if (process.env.JUDGE0_HOST)
-    headers["X-RapidAPI-Host"] = process.env.JUDGE0_HOST;
+async function executeConsole(tecnologia, files, c, runOnly, stdin) {
+  const base = process.env.ONLINECOMPILER_API_URL || "https://api.onlinecompiler.io";
+  const key = process.env.ONLINECOMPILER_API_KEY;
+  assert(key, 503, "El servicio de ejecución aún no está configurado.");
+  const compilers = {
+    Python: process.env.ONLINECOMPILER_PYTHON_COMPILER || "python-3.14",
+    "Node.js": process.env.ONLINECOMPILER_NODE_COMPILER || "nodejs-24",
+    JavaScript: process.env.ONLINECOMPILER_NODE_COMPILER || "nodejs-24",
+    TypeScript: process.env.ONLINECOMPILER_TYPESCRIPT_COMPILER || "typescript-deno",
+  };
+  assert(compilers[tecnologia], 422, "Lenguaje de ejecución no compatible.");
   let source = Object.entries(files)
     .filter(([n]) => /\.(py|js|ts|mjs)$/.test(n))
     .map(([, s]) => s)
     .join("\n");
-  if (tecnologia === "TypeScript" && !nativeTypeScript) {
-    const r = await worker("/transpile", { archivos: files });
-    if (!r.valido) return { ok: false, detalle: r.detalle };
-    source = r.codigo;
-  }
-  if (onlineCompiler && nativeTypeScript) {
-    // Its TypeScript runtime is Deno; course templates use Node's require().
+  if (tecnologia === "TypeScript") {
+    // Deno's TypeScript runtime needs Node compatibility for course templates.
     source =
       'import { createRequire as __nvjcCreateRequire } from "node:module";\n' +
-      'var require = __nvjcCreateRequire(import.meta.url);\n' +
-      source;
+      'var require = __nvjcCreateRequire(import.meta.url);\n' + source;
   }
-  // El código de la práctica se ejecuta únicamente en Judge0, nunca en el API.
-  const body = {
-    source_code: encode(source),
-    language_id: Number(
-      tecnologia === "Python"
-        ? process.env.JUDGE0_PYTHON_ID || 71
-        : nativeTypeScript || process.env.JUDGE0_NODE_ID || 63,
-    ),
-    stdin: encode(runOnly ? String(stdin) : c.entrada),
-    cpu_time_limit: 2,
-    memory_limit: 131072,
-    wall_time_limit: 5,
-    // OnlineCompiler always disables network access and rejects this option.
-    ...(onlineCompiler ? {} : { enable_network: false }),
-  };
-  const r = await fetch(
-    url.replace(/\/$/, "") + "/submissions?base64_encoded=true&wait=false",
-    {
+  // Student programs run only in OnlineCompiler's isolated service.
+  let response;
+  try {
+    response = await fetch(base.replace(/\/$/, "") + "/api/run-code-sync/", {
       method: "POST",
-      headers,
-      body: JSON.stringify(body),
-      signal: AbortSignal.timeout(10000),
-    },
-  );
-  checkJudgeResponse(r);
-  const { token } = await r.json();
-  assert(typeof token === "string", 503, "Respuesta inválida del ejecutor.");
-  for (let n = 0; n < 30; n++) {
-    await new Promise((r) => setTimeout(r, 300));
-    const r = await fetch(
-      url.replace(/\/$/, "") +
-        "/submissions/" +
-        encodeURIComponent(token) +
-        "?base64_encoded=true",
-      { headers, signal: AbortSignal.timeout(5000) },
-    );
-    checkJudgeResponse(r);
-    const x = await r.json();
-    if (x.status?.id > 2) {
-      assert(
-        ![13, 14].includes(x.status.id),
-        503,
-        "El servicio de ejecución no pudo procesar el programa. Inténtalo más tarde.",
-      );
-      const out = decode(x.stdout),
-        errors = decode(x.compile_output) || decode(x.stderr);
-      return {
-        ok:
-          x.status.id === 3 &&
-          (runOnly || out.trim() === c.salida_esperada.trim()),
-        detalle: errors || out || x.status.description,
-      };
-    }
+      headers: { "Content-Type": "application/json", Authorization: key },
+      body: JSON.stringify({
+        compiler: compilers[tecnologia],
+        code: source,
+        input: String(runOnly ? stdin : (c.entrada ?? "")),
+        time_limit: 2,
+        memory_limit: 128,
+      }),
+      signal: AbortSignal.timeout(40000),
+    });
+  } catch {
+    throw new AppError(503, "No se pudo contactar con el servicio de ejecución. Inténtalo más tarde.");
   }
-  throw new AppError(503, "La ejecución sigue pendiente. Vuelve a intentarlo.");
+  checkExecutorResponse(response);
+  let result;
+  try { result = await response.json(); } catch {
+    throw new AppError(503, "Respuesta inválida del ejecutor.");
+  }
+  assert(result && ["success", "error"].includes(result.status) &&
+    Number.isInteger(result.exit_code) && typeof result.output === "string",
+    503, "Respuesta inválida del ejecutor.");
+  const completed = result.status === "success" && result.exit_code === 0 && !result.truncated;
+  const fallback = result.exit_code === 124 ? "Tiempo límite de ejecución excedido." :
+    result.exit_code === 137 ? "Límite de memoria excedido." :
+    result.truncated ? "La salida excede el límite permitido." :
+    completed ? "Ejecución completada." : "El programa terminó con errores.";
+  return {
+    ok: completed && (runOnly || result.output.trim() === String(c.salida_esperada ?? "").trim()),
+    detalle: result.error || (completed ? result.output : "") || fallback,
+  };
 }
 export async function evaluate(
   tech,
@@ -142,7 +107,7 @@ export async function evaluate(
   let approved = 0;
   const feedback = [];
   for (const c of cases) {
-    const r = await judge(tech, files, c, runOnly, stdin);
+    const r = await executeConsole(tech, files, c, runOnly, stdin);
     if (r.ok) approved++;
     feedback.push(
       c.es_publico

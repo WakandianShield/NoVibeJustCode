@@ -1,78 +1,50 @@
-import test from "node:test";
-import assert from "node:assert/strict";
-import { evaluate } from "../src/adapters/evaluation.mjs";
-
-const cases = [{ entrada: "21", salida_esperada: "42", es_publico: true }];
-const b64 = (s) => Buffer.from(s).toString("base64");
-function setup(t, host = "api.onlinecompiler.io") {
-  for (const [name, value] of Object.entries({
-    JUDGE0_URL: `https://${host}/api/judge0`,
-    JUDGE0_AUTH_HEADER: "X-Auth-Token",
-    JUDGE0_KEY: "test-key",
-    JUDGE0_HOST: "",
-    JUDGE0_TYPESCRIPT_ID: "101",
-  })) {
-    const old = process.env[name];
-    process.env[name] = value;
-    t.after(() => old === undefined ? delete process.env[name] : process.env[name] = old);
-  }
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { evaluate } from '../src/adapters/evaluation.mjs';
+const cases=[{entrada:'21',salida_esperada:'42',es_publico:true}];
+function setup(t) {
+ for(const [name,value] of Object.entries({ONLINECOMPILER_API_URL:'https://api.onlinecompiler.io',ONLINECOMPILER_API_KEY:'native-test-key'})) {
+  const old=process.env[name];process.env[name]=value;
+  t.after(()=>old===undefined?delete process.env[name]:process.env[name]=old);
+ }
 }
-
-test("compatible API omits unsupported network option and preserves private-case feedback", async (t) => {
-  setup(t);
-  t.mock.method(globalThis, "fetch", async (url, options) => {
-    assert.equal(options.headers["X-Auth-Token"], "test-key");
-    if (options.method === "POST") {
-      const body = JSON.parse(options.body);
-      assert.equal("enable_network" in body, false);
-      assert.equal(body.cpu_time_limit, 2);
-      return Response.json({ token: "example" }, { status: 201 });
-    }
-    return Response.json({ status: { id: 3 }, stdout: b64("42\n") });
-  });
-  const result = await evaluate("Python", "consola", { "main.py": "print(42)" }, [
-    ...cases, { ...cases[0], es_publico: false },
-  ]);
-  assert.equal(result.estado, "aprobado");
-  assert.equal(result.detalle, "42\n\nCaso privado aprobado.");
+const success=(output='42\n')=>({status:'success',exit_code:0,output,error:'',truncated:false});
+test('native request uses Authorization and keeps hidden-case feedback private',async t=>{
+ setup(t);let count=0;
+ t.mock.method(globalThis,'fetch',async(url,options)=>{
+  count++;assert.equal(url,'https://api.onlinecompiler.io/api/run-code-sync/');
+  assert.deepEqual(options.headers,{'Content-Type':'application/json',Authorization:'native-test-key'});
+  const b=JSON.parse(options.body);assert.equal(b.compiler,'python-3.14');assert.equal(b.input,'21');assert.equal(b.code,'print(42)');assert.equal(b.time_limit,2);assert.equal(b.memory_limit,128);assert.equal('language_id' in b,false);
+  return Response.json(success());
+ });
+ const r=await evaluate('Python','consola',{'main.py':'print(42)'},[...cases,{...cases[0],es_publico:false}]);
+ assert.equal(count,2);assert.equal(r.estado,'aprobado');assert.equal(r.detalle,'42\n\nCaso privado aprobado.');
 });
-
-test("regular Judge0 still explicitly disables network access", async (t) => {
-  setup(t, "judge.example.com");
-  t.mock.method(globalThis, "fetch", async (url, options) => {
-    if (options.method === "POST") {
-      assert.equal(JSON.parse(options.body).enable_network, false);
-      return Response.json({ token: "example" });
-    }
-    return Response.json({ status: { id: 3 }, stdout: b64("wrong") });
-  });
-  assert.equal((await evaluate("Python", "consola", { "main.py": "print('wrong')" }, cases)).estado, "con errores");
+test('wrong output, runtime errors, timeouts and truncation do not approve a practice',async t=>{
+ setup(t);
+ for(const result of [success('wrong'),{...success(),status:'error',exit_code:1,error:'SyntaxError'}, {...success(),status:'error',exit_code:124}, {...success(),truncated:true}]) {
+  const m=t.mock.method(globalThis,'fetch',async()=>Response.json(result));
+  assert.equal((await evaluate('Python','consola',{'main.py':'print(42)'},cases)).estado,'con errores');m.mock.restore();
+ }
 });
-
-test("native TypeScript includes Node compatibility without calling the worker", async (t) => {
-  setup(t);
-  t.mock.method(globalThis, "fetch", async (url, options) => {
-    assert.match(url, /^https:\/\/api\.onlinecompiler\.io\//);
-    if (options.method === "POST") {
-      const body = JSON.parse(options.body);
-      assert.equal(body.language_id, 101);
-      assert.match(Buffer.from(body.source_code, "base64").toString(), /createRequire/);
-      return Response.json({ token: "example" });
-    }
-    return Response.json({ status: { id: 3 }, stdout: b64("42") });
-  });
-  assert.equal((await evaluate("TypeScript", "consola", { "main.ts": "console.log(42)" }, cases)).estado, "aprobado");
+test('TypeScript uses its native compiler and Node compatibility, with no worker call',async t=>{
+ setup(t);
+ t.mock.method(globalThis,'fetch',async(url,options)=>{
+  assert.equal(url,'https://api.onlinecompiler.io/api/run-code-sync/');const b=JSON.parse(options.body);assert.equal(b.compiler,'typescript-deno');assert.match(b.code,/createRequire/);return Response.json(success());
+ });
+ assert.equal((await evaluate('TypeScript','consola',{'main.ts':'console.log(42)'},cases)).estado,'aprobado');
 });
-
-test("provider failures are not mistaken for failed student solutions", async (t) => {
-  setup(t);
-  for (const status of [401, 403, 429, 500]) {
-    const mock = t.mock.method(globalThis, "fetch", async () => new Response("{}", { status }));
-    await assert.rejects(evaluate("Python", "consola", { "main.py": "print(42)" }, cases), (e) => e.status === 503);
-    mock.mock.restore();
-  }
-  t.mock.method(globalThis, "fetch", async (url, options) => Response.json(
-    options.method === "POST" ? { token: "example" } : { status: { id: 13 } },
-  ));
-  await assert.rejects(evaluate("Python", "consola", { "main.py": "print(42)" }, cases), (e) => e.status === 503);
+test('authorization, quota, malformed responses and network errors remain service errors',async t=>{
+ setup(t);
+ for(const status of [401,403,429,500]) {
+  const m=t.mock.method(globalThis,'fetch',async()=>new Response('{}',{status}));
+  await assert.rejects(evaluate('Python','consola',{'main.py':'print(42)'},cases),e=>e.status===503);m.mock.restore();
+ }
+ for(const fn of [async()=>Response.json({status:'success'}),async()=>new Response('not json'),async()=>{throw Error('network');}]) {
+  const m=t.mock.method(globalThis,'fetch',fn);await assert.rejects(evaluate('Python','consola',{'main.py':'print(42)'},cases),e=>e.status===503);m.mock.restore();
+ }
+});
+test('running uses the supplied stdin instead of the exercise input',async t=>{
+ setup(t);t.mock.method(globalThis,'fetch',async(url,options)=>{assert.equal(JSON.parse(options.body).input,'99');return Response.json(success('198'));});
+ const r=await evaluate('Node.js','consola',{'main.js':'console.log(198)'},cases,true,'99');assert.equal(r.estado,'ejecutado');assert.equal(r.detalle,'198');
 });

@@ -5111,6 +5111,50 @@ nv-app {
   flex: 0 0 auto;
 }
 
+.editor-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.editor-shell [hidden] {
+  display: none !important;
+}
+
+.editor-preview {
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+  background: white;
+}
+
+.editor-terminal {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  border-top: 1px solid var(--border);
+  background: #0b1320;
+  color: #d2dbe5;
+}
+
+.editor-terminal summary {
+  padding: 10px 16px;
+  cursor: pointer;
+  color: var(--cyan);
+  font: 16px "VT323", monospace;
+}
+
+.editor-terminal pre {
+  height: 130px;
+  margin: 0;
+  padding: 0 16px 16px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 13px/1.6 monospace;
+}
+
 .lesson-workspace .monaco,
 .lesson-workspace .code-fallback {
   flex: 1 1 0;

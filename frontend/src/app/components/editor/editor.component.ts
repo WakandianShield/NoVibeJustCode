@@ -6,11 +6,13 @@ import {
   AfterViewInit,
   OnDestroy,
   OnChanges,
+  SimpleChanges,
   ElementRef,
   ViewChild,
   signal,
   inject,
 } from "@angular/core";
+import { SafeHtml } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 
 import { EditorService } from "./editor.service";
@@ -28,6 +30,13 @@ export class EditorComponent implements AfterViewInit, OnDestroy, OnChanges {
   editorService = inject(EditorService);
   @Input() readOnly = false;
   @Input() files: Record<string, string> = {};
+  @Input() terminalEnabled = false;
+  @Input() terminalOutput = "";
+  @Input() previewEnabled = false;
+  @Input() previewDocument: SafeHtml | null = null;
+  @Output() previewRequest = new EventEmitter<void>();
+  terminalOpen = false;
+  activePane: "code" | "preview" = "code";
   @Output() filesChange = new EventEmitter<Record<string, string>>();
   @ViewChild("host") host!: ElementRef;
   active = "";
@@ -84,6 +93,8 @@ export class EditorComponent implements AfterViewInit, OnDestroy, OnChanges {
     return this.editorService.language(name);
   }
   select(name: string) {
+    this.activePane = "code";
+    setTimeout(() => this.editor?.layout(), 0);
     this.active = name;
     if (this.editor) {
       this.switching = true;
@@ -99,7 +110,16 @@ export class EditorComponent implements AfterViewInit, OnDestroy, OnChanges {
     this.files = { ...this.files, [this.active]: value };
     this.filesChange.emit(this.files);
   }
-  ngOnChanges() {
+  showPreview() {
+    this.activePane = "preview";
+    this.previewRequest.emit();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes["terminalOutput"] && this.terminalOutput) {
+      this.terminalOpen = true;
+      setTimeout(() => this.editor?.layout(), 0);
+    }
+
     this.names;
     this.editor?.updateOptions({ readOnly: this.readOnly });
     if (

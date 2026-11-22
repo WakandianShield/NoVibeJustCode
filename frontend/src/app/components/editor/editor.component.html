@@ -3,17 +3,24 @@
     @for (name of names; track name) {
       <button
         type="button"
-        [class.selected]="active === name"
+        [class.selected]="activePane === 'code' && active === name"
+        [attr.aria-pressed]="activePane === 'code' && active === name"
         (click)="select(name)"
       >
         {{ name }}
       </button>
     }
+    @if (previewEnabled) {
+      <button type="button" [class.selected]="activePane === 'preview'"
+        [attr.aria-pressed]="activePane === 'preview'" (click)="showPreview()">Vista previa</button>
+    }
   </div>
-  <div #host class="monaco" [hidden]="!enhanced()"></div>
+  <div class="editor-body">
+  <div #host class="monaco" [hidden]="!enhanced() || activePane !== 'code'"></div>
   @if (!enhanced()) {
     <label class="sr-only" for="codigo">Código de {{ active }}</label
     ><textarea
+      [hidden]="activePane !== 'code'"
       id="codigo"
       class="code-fallback"
       spellcheck="false"
@@ -21,5 +28,17 @@
       [ngModel]="files[active] || ''"
       (ngModelChange)="changed($event)"
     ></textarea>
+  }
+  @if (previewEnabled && activePane === 'preview') {
+    <iframe title="Vista previa aislada" sandbox="allow-scripts"
+      [srcdoc]="previewDocument" class="editor-preview"></iframe>
+  }
+  </div>
+  @if (terminalEnabled) {
+    <details class="editor-terminal" #terminal [open]="terminalOpen"
+      (toggle)="terminalOpen = terminal.open">
+      <summary>Terminal</summary>
+      <pre aria-live="polite" aria-atomic="true">{{ terminalOutput || "Ejecuta o evalúa tu solución para ver la salida." }}</pre>
+    </details>
   }
 </section>

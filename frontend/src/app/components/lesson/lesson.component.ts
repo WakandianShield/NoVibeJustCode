@@ -49,6 +49,8 @@ export class LessonComponent extends Page implements OnInit {
   async open(id: number) {
     const l = await this.task(() => this.service.getLesson(id));
     if (l) {
+      this.result.set("");
+      this.previewDoc.set(null);
       this.lesson.set(l);
       const e = l.ejercicios[0];
       if (e) {
@@ -82,11 +84,13 @@ export class LessonComponent extends Page implements OnInit {
     }
   }
   async run(id: number, evaluate: boolean) {
+    this.result.set("Ejecutando…");
     const r = await this.task(() =>
       evaluate
         ? this.service.evaluate(id, this.files())
         : this.service.run(id, this.files(), this.stdin),
     );
+    if (!r) this.result.set(this.error() || "No se pudo ejecutar la práctica.");
     if (r) {
       this.result.set(r.estado + "\n" + r.detalle);
       if (r.estado === "aprobado")

@@ -43,6 +43,11 @@
             @if (files()) {
               <nv-editor
                 [files]="files()!"
+                [terminalEnabled]="true"
+                [terminalOutput]="result()"
+                [previewEnabled]="e.modo_evaluacion === 'web'"
+                [previewDocument]="previewDoc()"
+                (previewRequest)="preview()"
                 (filesChange)="setFiles($event)"
               ></nv-editor>
             }
@@ -65,24 +70,6 @@
                 class="pixel-practice-cta"
                 (click)="reset(e)"
               ><span class="pixel-button-label">Restablecer</span></button>
-              @if (e.modo_evaluacion === "web") {
-                <button class="quiet" (click)="preview()">Vista previa</button>
-              }
-            </div>
-            @if (previewDoc()) {
-              <iframe
-                title="Vista previa aislada"
-                sandbox="allow-scripts"
-                [srcdoc]="previewDoc()"
-                class="preview"
-              ></iframe>
-            }
-            <div class="panel result" aria-live="polite">
-              <h3>Resultados</h3>
-              <pre>{{
-                result() ||
-                  "Ejecuta o evalúa tu solución para ver los resultados."
-              }}</pre>
             </div>
           </section>
             }

@@ -2,7 +2,7 @@ import { projectsRepo as repo } from "./repository.mjs";
 import { learning } from "../aprendizaje/service.mjs";
 import { assert, cleanFiles } from "../../domain.mjs";
 import { tx, parseJson } from "../../config/db.js";
-import { worker } from "../../adapters/evaluation.mjs";
+import { compileProjectLocally } from "../../evaluation/runner.mjs";
 import { z } from "zod";
 const edit = z.object({
   titulo: z.string().trim().min(2).max(100),
@@ -90,10 +90,10 @@ export const projects = {
     });
     let result;
     try {
-      result = await worker("/compile", {
-        tecnologia: p.tecnologia,
-        archivos: parseJson(p.archivos_borrador),
-      });
+      result = await compileProjectLocally(
+        p.tecnologia,
+        parseJson(p.archivos_borrador),
+      );
       await tx(async (cx) => {
         if (!result.valido && p.estado_compilacion === "valido")
           await repo.restore(id, p, result.detalle, cx);

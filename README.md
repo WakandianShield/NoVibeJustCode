@@ -78,9 +78,15 @@ ONLINECOMPILER_NODE_COMPILER=nodejs-24
 ONLINECOMPILER_TYPESCRIPT_COMPILER=typescript-deno
 ```
 
-Las prácticas TypeScript se ejecutan directamente en el servicio y admiten el `require()` de las plantillas mediante compatibilidad de Node en Deno. Cada ejecución tiene un límite de 2 segundos y 128 MB; se conservan los mensajes de error y la privacidad de los casos ocultos. No se ejecuta código de estudiantes en el backend.
+Las prácticas TypeScript se ejecutan directamente en el servicio y admiten el `require()` de las plantillas mediante compatibilidad de Node en Deno. Cada ejecución tiene un límite de 2 segundos y 128 MB; se conservan los mensajes de error y la privacidad de los casos ocultos. El código de consola se ejecuta en el proveedor; no se ejecuta en Node del backend. Las plantillas exponen solo resolver(datos). La entrada JSON y la impresión del resultado se añaden de forma interna; los borradores anteriores que ya incluyen ese adaptador siguen funcionando.
 
-La evaluación de prácticas web y la validación de proyectos finales requieren un servicio de evaluación independiente. Configura su dirección en `WORKER_URL` y comparte el mismo secreto en `WORKER_SECRET` en ambos servicios.
+Las prácticas web se califican dentro de la aplicación, sin un servicio adicional ni variables WORKER. Un intérprete QuickJS en WebAssembly ejecuta el JavaScript sobre un DOM de práctica, comprueba selectores, texto, clics, campos y las propiedades CSS usadas por el catálogo. Puede leer archivos locales de la práctica con fetch y usar localStorage temporal. No expone archivos, red ni variables del servidor al código del alumno. Cada criterio recibe un entorno nuevo, un límite de 2 segundos y 32 MB; la evaluación completa tiene un límite de 15 segundos y un máximo de dos comprobaciones simultáneas.
+
+Esta evaluación verifica el comportamiento definido por los criterios del catálogo; no es una comparación visual de píxeles ni reproduce todas las API de un navegador. La pestaña Vista previa sigue disponible para revisar el resultado visual.
+
+La finalización de proyectos analiza la sintaxis HTML, CSS y JavaScript y los tipos de TypeScript dentro de la aplicación, sin ejecutar el proyecto. Python utiliza ast.parse en OnlineCompiler, también sin ejecutar el programa. Los análisis locales tienen tiempo y memoria limitados.
+
+Pruebas del evaluador: `node --test backend/test/evaluation.test.mjs backend/test/web-evaluation.test.mjs backend/test/console-templates.test.mjs`.
 
 Para activar pagos Pro, configura `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`, `PAYPAL_PLAN_ID` y `PAYPAL_WEBHOOK_ID`. El endpoint de notificaciones es `/api/notificaciones/paypal`. `PAYPAL_API` usa el entorno comercial por defecto.
 

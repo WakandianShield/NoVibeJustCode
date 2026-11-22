@@ -34,7 +34,7 @@
         "leccion": {
           "id": 1020,
           "titulo": "Primera práctica",
-          "contenido": "Objetivo de la práctica\nDevuelve «Hola, {nombre}» usando el nombre recibido.\n\nDiccionarios y cadenas\nEn Python, un diccionario guarda valores asociados a claves. Puedes leer una propiedad con datos[\"nombre\"]. Las cadenas pueden combinar texto fijo y variables mediante una f-string, como f\"Bienvenido, {usuario}\".\n\nCómo abordarla\nIdentifica el nombre en los datos recibidos. Construye el saludo respetando la coma, el espacio y las mayúsculas del enunciado. Devuelve una cadena desde resolver: la plantilla ya se encarga de convertirla a JSON e imprimirla.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nDevuelve «Hola, {nombre}» usando el nombre recibido.\n\nDiccionarios y cadenas\nEn Python, un diccionario guarda valores asociados a claves. Puedes leer una propiedad con datos[\"nombre\"]. Las cadenas pueden combinar texto fijo y variables mediante una f-string, como f\"Bienvenido, {usuario}\".\n\nCómo abordarla\nIdentifica el nombre en los datos recibidos. Construye el saludo respetando la coma, el espacio y las mayúsculas del enunciado. Devuelve una cadena desde resolver: el evaluador se encarga de convertirla a JSON e imprimirla.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -46,7 +46,7 @@
           "id": 1020,
           "enunciado": "Saludo con entradas\n\nLee el nombre y devuelve un saludo. La función recibe un objeto con la propiedad nombre y devuelve un texto.",
           "plantilla": {
-            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+            "main.py": "def resolver(datos):\n    # Escribe tu solución aquí\n    pass\n"
           },
           "solucion_referencia": {
             "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return \"Hola, \" + datos[\"nombre\"]\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
@@ -78,7 +78,7 @@
         "leccion": {
           "id": 1030,
           "titulo": "Práctica guiada",
-          "contenido": "Objetivo de la práctica\nCalcula precio × cantidad con descuento (entre 0 y 1) y redondea a 2 decimales.\n\nOperaciones y redondeo\nEl subtotal se obtiene multiplicando el precio por la cantidad. Un descuento fraccionario representa la parte que se resta: 0.15 significa 15 %. Los paréntesis permiten decidir qué operación se resuelve primero. round(valor, 2) redondea un número a dos decimales.\n\nCómo abordarla\nLee los tres campos, calcula el subtotal y aplica el descuento sobre ese importe. Redondea al final para evitar acumular errores. Devuelve un número, sin símbolos de moneda. Comprueba qué ocurre con descuento cero y con cantidad cero.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nCalcula precio × cantidad con descuento (entre 0 y 1) y redondea a 2 decimales.\n\nOperaciones y redondeo\nEl subtotal se obtiene multiplicando el precio por la cantidad. Un descuento fraccionario representa la parte que se resta: 0.15 significa 15 %. Los paréntesis permiten decidir qué operación se resuelve primero. round(valor, 2) redondea un número a dos decimales.\n\nCómo abordarla\nLee los tres campos, calcula el subtotal y aplica el descuento sobre ese importe. Redondea al final para evitar acumular errores. Devuelve un número, sin símbolos de moneda. Comprueba qué ocurre con descuento cero y con cantidad cero.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -90,7 +90,7 @@
           "id": 1030,
           "enunciado": "Calculadora de precios\n\nRecibe precio, cantidad y descuento (fracción entre 0 y 1). Devuelve el importe con descuento, redondeado a dos decimales.",
           "plantilla": {
-            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+            "main.py": "def resolver(datos):\n    # Escribe tu solución aquí\n    pass\n"
           },
           "solucion_referencia": {
             "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return round(datos[\"precio\"] * datos[\"cantidad\"] * (1-datos[\"descuento\"]), 2)\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
@@ -122,7 +122,7 @@
         "leccion": {
           "id": 1040,
           "titulo": "Práctica intermedia",
-          "contenido": "Objetivo de la práctica\nDevuelve, en orden, los títulos de las tareas no completadas.\n\nListas, recorridos y condiciones\nUna lista conserva el orden de sus elementos. Un bucle for permite revisar cada tarea; una condición if decide cuáles conservar. En Python, not invierte un valor booleano. append añade un elemento al final de una lista.\n\nCómo abordarla\nPrepara una lista de resultados. Recorre las tareas en el orden recibido y revisa completada. Añade solo el título de las pendientes. Devuelve la lista de títulos, no los objetos completos. Una lista sin tareas pendientes debe producir una lista vacía.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nDevuelve, en orden, los títulos de las tareas no completadas.\n\nListas, recorridos y condiciones\nUna lista conserva el orden de sus elementos. Un bucle for permite revisar cada tarea; una condición if decide cuáles conservar. En Python, not invierte un valor booleano. append añade un elemento al final de una lista.\n\nCómo abordarla\nPrepara una lista de resultados. Recorre las tareas en el orden recibido y revisa completada. Añade solo el título de las pendientes. Devuelve la lista de títulos, no los objetos completos. Una lista sin tareas pendientes debe producir una lista vacía.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -134,7 +134,7 @@
           "id": 1040,
           "enunciado": "Organizador de tareas\n\nRecibe tareas con titulo y completada. Devuelve los títulos de las tareas pendientes, en el orden original.",
           "plantilla": {
-            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+            "main.py": "def resolver(datos):\n    # Escribe tu solución aquí\n    pass\n"
           },
           "solucion_referencia": {
             "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return [t[\"titulo\"] for t in datos[\"tareas\"] if not t[\"completada\"]]\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
@@ -166,7 +166,7 @@
         "leccion": {
           "id": 1050,
           "titulo": "Reto complejo de fundamentos",
-          "contenido": "Objetivo de la práctica\nBusca el producto por nombre y devuelve su cantidad; si no existe, devuelve 0.\n\nBúsqueda por una propiedad\nBuscar no siempre significa ordenar: puedes recorrer una colección y comparar una propiedad con la consulta. == comprueba igualdad; return termina la función al encontrar un resultado. El valor de respaldo debe devolverse después del recorrido.\n\nCómo abordarla\nLocaliza la colección de productos y el nombre consultado. Compara los nombres tal como llegan, sin transformar las mayúsculas. Si hay coincidencia, recupera su cantidad. Si termina el recorrido sin encontrarla, usa el valor indicado en el enunciado. No confundas cantidad cero con producto inexistente.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nBusca el producto por nombre y devuelve su cantidad; si no existe, devuelve 0.\n\nBúsqueda por una propiedad\nBuscar no siempre significa ordenar: puedes recorrer una colección y comparar una propiedad con la consulta. == comprueba igualdad; return termina la función al encontrar un resultado. El valor de respaldo debe devolverse después del recorrido.\n\nCómo abordarla\nLocaliza la colección de productos y el nombre consultado. Compara los nombres tal como llegan, sin transformar las mayúsculas. Si hay coincidencia, recupera su cantidad. Si termina el recorrido sin encontrarla, usa el valor indicado en el enunciado. No confundas cantidad cero con producto inexistente.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -178,7 +178,7 @@
           "id": 1050,
           "enunciado": "Inventario por nombre\n\nRecibe productos (nombre, cantidad) y una consulta. Devuelve la cantidad correspondiente o 0 si no existe.",
           "plantilla": {
-            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+            "main.py": "def resolver(datos):\n    # Escribe tu solución aquí\n    pass\n"
           },
           "solucion_referencia": {
             "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return next((p[\"cantidad\"] for p in datos[\"productos\"] if p[\"nombre\"] == datos[\"consulta\"]), 0)\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
@@ -210,7 +210,7 @@
         "leccion": {
           "id": 1060,
           "titulo": "Persistencia aplicada",
-          "contenido": "Objetivo de la práctica\nSerializa los registros a JSON, recupéralos con json.loads y devuelve cuántos son, conservando sus caracteres.\n\nSerializar y recuperar JSON\njson.dumps convierte estructuras de Python en texto JSON. json.loads realiza la operación inversa. ensure_ascii=False mantiene los caracteres Unicode legibles al serializar. len permite contar los elementos de la lista recuperada.\n\nCómo abordarla\nTrabaja con los registros recibidos: primero serialízalos y después analiza ese texto. Cuenta los registros recuperados, no la longitud del texto JSON. No escribas archivos ni añadas mensajes a la salida. Revisa también registros vacíos y nombres con acentos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nSerializa los registros a JSON, recupéralos con json.loads y devuelve cuántos son, conservando sus caracteres.\n\nSerializar y recuperar JSON\njson.dumps convierte estructuras de Python en texto JSON. json.loads realiza la operación inversa. ensure_ascii=False mantiene los caracteres Unicode legibles al serializar. len permite contar los elementos de la lista recuperada.\n\nCómo abordarla\nTrabaja con los registros recibidos: primero serialízalos y después analiza ese texto. Cuenta los registros recuperados, no la longitud del texto JSON. No escribas archivos ni añadas mensajes a la salida. Revisa también registros vacíos y nombres con acentos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -222,7 +222,7 @@
           "id": 1060,
           "enunciado": "Persistencia JSON\n\nRecibe registros. Conviértelos a texto JSON, recupéralos con json.loads y devuelve cuántos registros fueron recuperados. Conserva caracteres de texto al serializar.",
           "plantilla": {
-            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+            "main.py": "import json\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    pass\n"
           },
           "solucion_referencia": {
             "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    texto = json.dumps(datos[\"registros\"], ensure_ascii=False)\n    recuperados = json.loads(texto)\n    return len(recuperados)\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
@@ -254,7 +254,7 @@
         "leccion": {
           "id": 1070,
           "titulo": "Aplicación con datos",
-          "contenido": "Objetivo de la práctica\nCrea clientes(id, nombre) en SQLite en memoria; inserta con parámetros y devuelve los nombres en orden alfabético.\n\nSQLite en memoria y consultas\nsqlite3 forma parte de la biblioteca estándar. Una conexión a \":memory:\" crea una base temporal. Los marcadores ? permiten insertar datos como parámetros sin concatenarlos al SQL. ORDER BY ordena los resultados de una consulta.\n\nCómo abordarla\nImporta sqlite3 y crea la tabla con las columnas indicadas. Inserta cada nombre mediante parámetros. Consulta los nombres en orden alfabético y convierte las filas de la consulta en una lista de textos. Cierra la conexión al terminar y devuelve esa lista.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nCrea clientes(id, nombre) en SQLite en memoria; inserta con parámetros y devuelve los nombres en orden alfabético.\n\nSQLite en memoria y consultas\nsqlite3 forma parte de la biblioteca estándar. Una conexión a \":memory:\" crea una base temporal. Los marcadores ? permiten insertar datos como parámetros sin concatenarlos al SQL. ORDER BY ordena los resultados de una consulta.\n\nCómo abordarla\nImporta sqlite3 y crea la tabla con las columnas indicadas. Inserta cada nombre mediante parámetros. Consulta los nombres en orden alfabético y convierte las filas de la consulta en una lista de textos. Cierra la conexión al terminar y devuelve esa lista.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -266,7 +266,7 @@
           "id": 1070,
           "enunciado": "Registros con SQLite\n\nCrea SQLite en memoria con tabla clientes(id INTEGER, nombre TEXT), inserta los nombres con parámetros y devuelve sus nombres ordenados alfabéticamente. Usa sqlite3 de la biblioteca estándar.",
           "plantilla": {
-            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+            "main.py": "import sqlite3\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    pass\n"
           },
           "solucion_referencia": {
             "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    import sqlite3\n    with sqlite3.connect(\":memory:\") as db:\n        db.execute(\"CREATE TABLE clientes(id INTEGER PRIMARY KEY, nombre TEXT)\")\n        db.executemany(\"INSERT INTO clientes(nombre) VALUES(?)\", [(n,) for n in datos[\"nombres\"]])\n        return [r[0] for r in db.execute(\"SELECT nombre FROM clientes ORDER BY nombre\")]\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
@@ -298,7 +298,7 @@
         "leccion": {
           "id": 1080,
           "titulo": "Integración de servicios",
-          "contenido": "Objetivo de la práctica\nDevuelve cuerpo.items si estado es 200; en otro caso, devuelve una lista vacía.\n\nAdaptar una respuesta de servicio\nUn adaptador transforma la respuesta de otro sistema al formato que necesita tu aplicación. El código de estado informa del resultado y el cuerpo contiene los datos. En esta práctica recibes esa respuesta como datos: no necesitas hacer una petición de red.\n\nCómo abordarla\nComprueba el estado antes de acceder a los elementos del cuerpo. Para una respuesta correcta, recupera la lista de items. Para los demás estados, devuelve una lista vacía. Mantén el orden y el contenido de los elementos y evita imprimir diagnósticos adicionales.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nDevuelve cuerpo.items si estado es 200; en otro caso, devuelve una lista vacía.\n\nAdaptar una respuesta de servicio\nUn adaptador transforma la respuesta de otro sistema al formato que necesita tu aplicación. El código de estado informa del resultado y el cuerpo contiene los datos. En esta práctica recibes esa respuesta como datos: no necesitas hacer una petición de red.\n\nCómo abordarla\nComprueba el estado antes de acceder a los elementos del cuerpo. Para una respuesta correcta, recupera la lista de items. Para los demás estados, devuelve una lista vacía. Mantén el orden y el contenido de los elementos y evita imprimir diagnósticos adicionales.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -310,7 +310,7 @@
           "id": 1080,
           "enunciado": "Adaptador de respuestas\n\nModela el consumo de un servicio sin conexión real: recibe estado y cuerpo. Si estado es 200, devuelve cuerpo.items; ante otro estado, devuelve una lista vacía.",
           "plantilla": {
-            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+            "main.py": "def resolver(datos):\n    # Escribe tu solución aquí\n    pass\n"
           },
           "solucion_referencia": {
             "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    return datos[\"cuerpo\"].get(\"items\", []) if datos[\"estado\"] == 200 else []\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
@@ -342,7 +342,7 @@
         "leccion": {
           "id": 1090,
           "titulo": "Sistema integrador",
-          "contenido": "Objetivo de la práctica\nSi algún precio o cantidad es negativo, devuelve {\"error\":\"datos invalidos\"}; si no, devuelve {\"total\": importe}.\n\nValidar antes de calcular\nLa validación protege el cálculo de datos que no cumplen las reglas. Puedes separar una primera revisión de los productos y un segundo recorrido para acumular los importes. Un diccionario permite devolver un resultado con claves como total o error.\n\nCómo abordarla\nComprueba precio y cantidad de todos los productos. Un solo valor negativo debe interrumpir el cálculo y producir el error exacto del enunciado. Si todo es válido, suma los importes y devuelve el objeto esperado. El cero está permitido: no lo trates como negativo.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nSi algún precio o cantidad es negativo, devuelve {\"error\":\"datos invalidos\"}; si no, devuelve {\"total\": importe}.\n\nValidar antes de calcular\nLa validación protege el cálculo de datos que no cumplen las reglas. Puedes separar una primera revisión de los productos y un segundo recorrido para acumular los importes. Un diccionario permite devolver un resultado con claves como total o error.\n\nCómo abordarla\nComprueba precio y cantidad de todos los productos. Un solo valor negativo debe interrumpir el cálculo y producir el error exacto del enunciado. Si todo es válido, suma los importes y devuelve el objeto esperado. El cero está permitido: no lo trates como negativo.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://docs.python.org/es/3/tutorial/",
             "autor": "Documentación oficial de Python",
@@ -354,7 +354,7 @@
           "id": 1090,
           "enunciado": "Servicio de pedidos\n\nIntegra validación y cálculo: recibe productos con precio y cantidad. Si alguno es negativo, devuelve {\"error\":\"datos invalidos\"}; si todo es válido devuelve {\"total\": importe}.",
           "plantilla": {
-            "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    # Escribe tu solución aquí\n    return None\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
+            "main.py": "def resolver(datos):\n    # Escribe tu solución aquí\n    pass\n"
           },
           "solucion_referencia": {
             "main.py": "import json\nimport sys\n\ndef resolver(datos):\n    if any(p[\"precio\"] < 0 or p[\"cantidad\"] < 0 for p in datos[\"productos\"]):\n        return {\"error\": \"datos invalidos\"}\n    return {\"total\": round(sum(p[\"precio\"] * p[\"cantidad\"] for p in datos[\"productos\"]), 2)}\n\nif __name__ == \"__main__\":\n    datos = json.loads(sys.stdin.read())\n    print(json.dumps(resolver(datos), ensure_ascii=False, separators=(\",\", \":\")))\n"
@@ -452,10 +452,9 @@
           "id": 2020,
           "enunciado": "Contador con eventos\n\nCrea button#sumar y output#valor con valor inicial 0. Al pulsar sumar incrementa a 1.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Contador con eventos</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
-            "estilos.css": "/* Escribe los estilos */",
-            "app.js": "// Escribe tus eventos y funciones\n",
-            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Contador con eventos</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n    <script src=\"app.js\"></script>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n",
+            "app.js": "// Escribe aquí tus eventos y funciones.\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Contador con eventos</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"sumar\">Sumar</button><output id=\"valor\">0</output><script src=\"app.js\"></script></body></html>",
@@ -496,10 +495,9 @@
           "id": 2030,
           "enunciado": "Validación de formulario\n\nCrea input#nombre, button#validar y p#resultado. Si el campo está vacío al pulsar validar muestra \"Nombre requerido\".",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Validación de formulario</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
-            "estilos.css": "/* Escribe los estilos */",
-            "app.js": "// Escribe tus eventos y funciones\n",
-            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Validación de formulario</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n    <script src=\"app.js\"></script>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n",
+            "app.js": "// Escribe aquí tus eventos y funciones.\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Validación de formulario</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><input id=\"nombre\"><button id=\"validar\">Validar</button><p id=\"resultado\"></p><script src=\"app.js\"></script></body></html>",
@@ -540,10 +538,9 @@
           "id": 2040,
           "enunciado": "Lista de tareas\n\nCrea input#tarea, button#agregar y ul#tareas. Al escribir Estudiar y pulsar agregar aparece un li con ese texto.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Lista de tareas</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
-            "estilos.css": "/* Escribe los estilos */",
-            "app.js": "// Escribe tus eventos y funciones\n",
-            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Lista de tareas</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n    <script src=\"app.js\"></script>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n",
+            "app.js": "// Escribe aquí tus eventos y funciones.\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Lista de tareas</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><input id=\"tarea\"><button id=\"agregar\">Agregar</button><ul id=\"tareas\"></ul><script src=\"app.js\"></script></body></html>",
@@ -584,10 +581,9 @@
           "id": 2050,
           "enunciado": "Catálogo filtrable\n\nCrea button#filtrar y ul#productos. Al pulsarlo muestra solo productos con precio menor a 100 de [{nombre:\"Libro\",precio:80},{nombre:\"Teclado\",precio:200}].",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Catálogo filtrable</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
-            "estilos.css": "/* Escribe los estilos */",
-            "app.js": "// Escribe tus eventos y funciones\n",
-            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Catálogo filtrable</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n    <script src=\"app.js\"></script>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n",
+            "app.js": "// Escribe aquí tus eventos y funciones.\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Catálogo filtrable</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"filtrar\">Menos de $100</button><ul id=\"productos\"></ul><script src=\"app.js\"></script></body></html>",
@@ -604,7 +600,7 @@
               "es_publico": true
             },
             {
-              "entrada": "{\"selector\": \"#productos li\"}",
+              "entrada": "{\"selector\":\"#productos li\",\"click\":\"#filtrar\"}",
               "salida_esperada": "1",
               "tipo_criterio": "selector",
               "es_publico": true
@@ -634,10 +630,9 @@
           "id": 2060,
           "enunciado": "Persistencia de preferencias\n\nCrea button#guardar y p#estado. Al pulsar guarda tema=oscuro en localStorage y muestra \"Guardado: oscuro\" usando el valor recuperado.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Persistencia de preferencias</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
-            "estilos.css": "/* Escribe los estilos */",
-            "app.js": "// Escribe tus eventos y funciones\n",
-            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Persistencia de preferencias</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n    <script src=\"app.js\"></script>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n",
+            "app.js": "// Escribe aquí tus eventos y funciones.\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Persistencia de preferencias</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"guardar\">Guardar tema</button><p id=\"estado\"></p><script src=\"app.js\"></script></body></html>",
@@ -678,10 +673,10 @@
           "id": 2070,
           "enunciado": "Servicio asíncrono\n\nCrea button#cargar y p#estado. Consume datos.json y muestra su propiedad mensaje. Maneja errores con texto \"Sin conexión\". El archivo de datos forma parte del proyecto.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Servicio asíncrono</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
-            "estilos.css": "/* Escribe los estilos */",
-            "app.js": "// Escribe tus eventos y funciones\n",
-            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Servicio asíncrono</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n    <script src=\"app.js\"></script>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n",
+            "app.js": "// Escribe aquí tus eventos y funciones.\n",
+            "datos.json": "{\n  \"mensaje\": \"Datos listos\"\n}\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Servicio asíncrono</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"cargar\">Cargar datos</button><p id=\"estado\"></p><script src=\"app.js\"></script></body></html>",
@@ -722,10 +717,9 @@
           "id": 2080,
           "enunciado": "Componente y servicio\n\nDefine class Servicio con listar() que devuelve [\"Ana\",\"Luis\"]. Crea button#cargar y ul#clientes que renderice los dos nombres sin usar innerHTML con datos externos.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Componente y servicio</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
-            "estilos.css": "/* Escribe los estilos */",
-            "app.js": "// Escribe tus eventos y funciones\n",
-            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Componente y servicio</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n    <script src=\"app.js\"></script>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n",
+            "app.js": "// Escribe aquí tus eventos y funciones.\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Componente y servicio</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button id=\"cargar\">Clientes</button><ul id=\"clientes\"></ul><script src=\"app.js\"></script></body></html>",
@@ -766,10 +760,9 @@
           "id": 2090,
           "enunciado": "Tablero de pedidos\n\nCrea input#cantidad con type=number, button#calcular y output#total. El precio es 25; al ingresar 3 y calcular debe verse 75. Rechaza cantidades negativas con \"Cantidad inválida\".",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Tablero de pedidos</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main><script src=\"app.js\"></script></body></html>",
-            "estilos.css": "/* Escribe los estilos */",
-            "app.js": "// Escribe tus eventos y funciones\n",
-            "datos.json": "{\"mensaje\":\"Datos listos\"}"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Tablero de pedidos</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n    <script src=\"app.js\"></script>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n",
+            "app.js": "// Escribe aquí tus eventos y funciones.\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Tablero de pedidos</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><input id=\"cantidad\" type=\"number\"><button id=\"calcular\">Calcular</button><output id=\"total\"></output><script src=\"app.js\"></script></body></html>",
@@ -871,8 +864,8 @@
           "id": 3020,
           "enunciado": "Tarjeta de presentación\n\nCrea un article.tarjeta con un h1 que contenga \"Mi perfil\" y un p. Añade fondo azul a la tarjeta.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Tarjeta de presentación</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
-            "estilos.css": "/* Escribe los estilos */"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Tarjeta de presentación</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Tarjeta de presentación</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><article class=\"tarjeta\"><h1>Mi perfil</h1><p>Aprendo creando.</p></article></body></html>",
@@ -917,8 +910,8 @@
           "id": 3030,
           "enunciado": "Estructura semántica\n\nCrea header, nav, main y footer. Dentro de main añade un formulario con label y un input con id nombre.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Estructura semántica</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
-            "estilos.css": "/* Escribe los estilos */"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Estructura semántica</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Estructura semántica</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><header><nav><a href=\"#contenido\">Inicio</a></nav></header><main id=\"contenido\"><form><label for=\"nombre\">Nombre</label><input id=\"nombre\"></form></main><footer>Contacto</footer></body></html>",
@@ -963,8 +956,8 @@
           "id": 3040,
           "enunciado": "Distribución flexible\n\nCrea .rejilla con tres article y aplica display:grid. Añade una regla para una columna en móviles.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Distribución flexible</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
-            "estilos.css": "/* Escribe los estilos */"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Distribución flexible</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Distribución flexible</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main class=\"rejilla\"><article>Uno</article><article>Dos</article><article>Tres</article></main></body></html>",
@@ -1009,8 +1002,8 @@
           "id": 3050,
           "enunciado": "Navegación de un sitio\n\nCrea nav con tres enlaces a inicio.html, cursos.html y contacto.html. Todas las páginas compartirán el estilo visual. En esta práctica valida la portada.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Navegación de un sitio</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
-            "estilos.css": "/* Escribe los estilos */"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Navegación de un sitio</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Navegación de un sitio</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><nav><a href=\"inicio.html\">Inicio</a><a href=\"cursos.html\">Cursos</a><a href=\"contacto.html\">Contacto</a></nav><main><h1>Mi sitio</h1></main></body></html>",
@@ -1055,8 +1048,8 @@
           "id": 3060,
           "enunciado": "Sistema de componentes\n\nDefine variable --accion en :root y crea button.primario. Usa padding de 16px y borde visible.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Sistema de componentes</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
-            "estilos.css": "/* Escribe los estilos */"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Sistema de componentes</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Sistema de componentes</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><button class=\"primario\">Guardar</button></body></html>",
@@ -1101,8 +1094,8 @@
           "id": 3070,
           "enunciado": "Formulario accesible\n\nCrea un formulario con email requerido y label asociado. Incluye botón submit y un enlace para saltar a main.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Formulario accesible</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
-            "estilos.css": "/* Escribe los estilos */"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Formulario accesible</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Formulario accesible</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><a href=\"#contenido\">Saltar al contenido</a><main id=\"contenido\"><form><label for=\"correo\">Correo</label><input id=\"correo\" type=\"email\" required><button type=\"submit\">Enviar</button></form></main></body></html>",
@@ -1153,8 +1146,8 @@
           "id": 3080,
           "enunciado": "Panel de registros\n\nCrea aside con navegación, main con h1 y una tabla con thead, tbody y dos filas de datos.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Panel de registros</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
-            "estilos.css": "/* Escribe los estilos */"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Panel de registros</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Panel de registros</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><aside><nav>Registros</nav></aside><main><h1>Clientes</h1><table><thead><tr><th>Nombre</th></tr></thead><tbody><tr><td>Ana</td></tr><tr><td>Luis</td></tr></tbody></table></main></body></html>",
@@ -1199,8 +1192,8 @@
           "id": 3090,
           "enunciado": "Interfaz integradora\n\nIntegra nav, main, section.resumen con tres article y un formulario con input buscador. Usa display:grid en resumen.",
           "plantilla": {
-            "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Interfaz integradora</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><main><h1>Tu práctica</h1><!-- Escribe aquí --></main></body></html>",
-            "estilos.css": "/* Escribe los estilos */"
+            "index.html": "<!doctype html>\n<html lang=\"es\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Interfaz integradora</title>\n    <link rel=\"stylesheet\" href=\"estilos.css\" />\n  </head>\n  <body>\n    <main><!-- Escribe aquí tu HTML --></main>\n  </body>\n</html>\n",
+            "estilos.css": "/* Escribe aquí tus estilos. */\n"
           },
           "solucion_referencia": {
             "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>Interfaz integradora</title><link rel=\"stylesheet\" href=\"estilos.css\"></head><body><nav><a href=\"#resumen\">Resumen</a></nav><main><section id=\"resumen\" class=\"resumen\"><article>Ventas</article><article>Clientes</article><article>Pedidos</article></section><form><label for=\"buscador\">Buscar</label><input id=\"buscador\"></form></main></body></html>",
@@ -1294,7 +1287,7 @@
         "leccion": {
           "id": 4020,
           "titulo": "Primera práctica",
-          "contenido": "Objetivo de la práctica\nDefine Entrada con a y b numéricos; crea una función que devuelva su suma.\n\nInterfaces y funciones tipadas\nUna interfaz describe los campos de un objeto y el tipo de cada uno. number representa valores numéricos. La anotación de un parámetro conecta la función con ese contrato; la del retorno describe el resultado que entrega.\n\nCómo abordarla\nRevisa la interfaz Entrada y los dos operandos recibidos. Implementa el cálculo dentro de resolver y devuelve el resultado numérico. Conserva el adaptador de lectura JSON de la plantilla: no necesitas solicitar datos con prompt ni imprimir mensajes adicionales.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nDefine Entrada con a y b numéricos; crea una función que devuelva su suma.\n\nInterfaces y funciones tipadas\nUna interfaz describe los campos de un objeto y el tipo de cada uno. number representa valores numéricos. La anotación de un parámetro conecta la función con ese contrato; la del retorno describe el resultado que entrega.\n\nCómo abordarla\nRevisa la interfaz Entrada y los dos operandos recibidos. Implementa el cálculo dentro de resolver y devuelve el resultado numérico. El evaluador proporciona los datos y muestra el resultado: no necesitas usar prompt, leer JSON ni imprimir mensajes adicionales.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1306,7 +1299,7 @@
           "id": 4020,
           "enunciado": "Funciones tipadas\n\nRecibe a y b numéricos. Devuelve su suma y define una interfaz Entrada con esos campos.",
           "plantilla": {
-            "main.ts": "interface Entrada { a: number; b: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.ts": "interface Entrada {\n  a: number;\n  b: number;\n}\n\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.ts": "interface Entrada { a: number; b: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.a + datos.b;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1338,7 +1331,7 @@
         "leccion": {
           "id": 4030,
           "titulo": "Práctica guiada",
-          "contenido": "Objetivo de la práctica\nCon una interfaz, valida nombre no vacío y edad ≥ 18; devuelve true si cumple.\n\nContratos y expresiones booleanas\nLos tipos describen la forma de los datos, pero las reglas de negocio se comprueban con condiciones. trim() permite revisar si una cadena contiene texto útil. El operador && exige que dos condiciones sean verdaderas.\n\nCómo abordarla\nDefine el contrato con nombre y edad. Comprueba por separado el contenido del nombre y el límite de edad; después combina ambas condiciones. Devuelve un booleano, no las cadenas \"true\" o \"false\". Prueba el valor exacto del límite y también un nombre vacío.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nCon una interfaz, valida nombre no vacío y edad ≥ 18; devuelve true si cumple.\n\nContratos y expresiones booleanas\nLos tipos describen la forma de los datos, pero las reglas de negocio se comprueban con condiciones. trim() permite revisar si una cadena contiene texto útil. El operador && exige que dos condiciones sean verdaderas.\n\nCómo abordarla\nDefine el contrato con nombre y edad. Comprueba por separado el contenido del nombre y el límite de edad; después combina ambas condiciones. Devuelve un booleano, no las cadenas \"true\" o \"false\". Prueba el valor exacto del límite y también un nombre vacío.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1350,7 +1343,7 @@
           "id": 4030,
           "enunciado": "Contrato de formulario\n\nRecibe nombre y edad. Devuelve true si nombre no está vacío y edad es al menos 18. Usa una interfaz para el contrato.",
           "plantilla": {
-            "main.ts": "interface Entrada { nombre: string; edad: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.ts": "interface Entrada {\n  nombre: string;\n  edad: number;\n}\n\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.ts": "interface Entrada { nombre: string; edad: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.nombre.trim().length > 0 && datos.edad >= 18;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1382,7 +1375,7 @@
         "leccion": {
           "id": 4040,
           "titulo": "Práctica intermedia",
-          "contenido": "Objetivo de la práctica\nBusca el id en los registros y devuelve su nombre o null.\n\nBúsquedas con resultados opcionales\nUn arreglo tipado conserva el contrato de sus elementos. find busca el primero que cumple una condición y puede devolver undefined si no encuentra ninguno. Una función puede declarar un retorno con unión, como string | null.\n\nCómo abordarla\nCompara el id solicitado con el de cada registro. Si encuentras una coincidencia, devuelve únicamente su nombre. Si no existe, devuelve null de forma explícita. No devuelvas el registro completo ni una cadena vacía como sustituto.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nBusca el id en los registros y devuelve su nombre o null.\n\nBúsquedas con resultados opcionales\nUn arreglo tipado conserva el contrato de sus elementos. find busca el primero que cumple una condición y puede devolver undefined si no encuentra ninguno. Una función puede declarar un retorno con unión, como string | null.\n\nCómo abordarla\nCompara el id solicitado con el de cada registro. Si encuentras una coincidencia, devuelve únicamente su nombre. Si no existe, devuelve null de forma explícita. No devuelvas el registro completo ni una cadena vacía como sustituto.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1394,7 +1387,7 @@
           "id": 4040,
           "enunciado": "Gestor de registros\n\nRecibe registros tipados e id. Devuelve el nombre correspondiente o null.",
           "plantilla": {
-            "main.ts": "interface Registro { id: number; nombre: string }\ninterface Entrada { registros: Registro[]; id: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.ts": "interface Registro {\n  id: number;\n  nombre: string;\n}\ninterface Entrada {\n  registros: Registro[];\n  id: number;\n}\n\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.ts": "interface Registro { id: number; nombre: string }\ninterface Entrada { registros: Registro[]; id: number }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.registros.find(x => x.id === datos.id)?.nombre ?? null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1426,7 +1419,7 @@
         "leccion": {
           "id": 4050,
           "titulo": "Reto complejo de fundamentos",
-          "contenido": "Objetivo de la práctica\nImplementa unicos<T> para quitar duplicados sin cambiar el orden.\n\nFunciones genéricas y orden\nUn parámetro genérico T permite reutilizar una función con distintos tipos sin perder información. Un Set registra valores ya vistos y un arreglo permite mantener el orden de la primera aparición. Evitar duplicados no requiere ordenar los datos.\n\nCómo abordarla\nDeclara unicos<T> para recibir y devolver arreglos del mismo tipo. Recorre los valores y añade al resultado solo los que todavía no se hayan incluido. Invoca esa función desde resolver. Comprueba una lista vacía y otra con valores repetidos intercalados.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nImplementa unicos<T> para quitar duplicados sin cambiar el orden.\n\nFunciones genéricas y orden\nUn parámetro genérico T permite reutilizar una función con distintos tipos sin perder información. Un Set registra valores ya vistos y un arreglo permite mantener el orden de la primera aparición. Evitar duplicados no requiere ordenar los datos.\n\nCómo abordarla\nDeclara unicos<T> para recibir y devolver arreglos del mismo tipo. Recorre los valores y añade al resultado solo los que todavía no se hayan incluido. Invoca esa función desde resolver. Comprueba una lista vacía y otra con valores repetidos intercalados.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1438,7 +1431,7 @@
           "id": 4050,
           "enunciado": "Genéricos y resultados\n\nRecibe valores numéricos y devuelve una lista sin repetidos conservando orden. Implementa una función genérica unicos<T>.",
           "plantilla": {
-            "main.ts": "interface Entrada { valores: number[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.ts": "interface Entrada {\n  valores: number[];\n}\n\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.ts": "interface Entrada { valores: number[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  function unicos<T>(items: T[]): T[] { return [...new Set(items)]; }\n  return unicos(datos.valores);\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1470,7 +1463,7 @@
         "leccion": {
           "id": 4060,
           "titulo": "Arquitectura tipada",
-          "contenido": "Objetivo de la práctica\nCrea ServicioPedidos.total() para sumar los importes de los pedidos.\n\nClases y responsabilidad de un servicio\nUna clase de servicio concentra una operación de negocio y recibe los datos que necesita mediante métodos. Una interfaz puede describir cada pedido. Un acumulador o reduce permite sumar importes partiendo de cero.\n\nCómo abordarla\nDefine ServicioPedidos con un método total. Delega en ese método la suma y utiliza resolver para conectar la entrada con el servicio. Devuelve un número y revisa que una lista de pedidos vacía produzca cero. Evita mezclar la lectura de consola con el cálculo.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nCrea ServicioPedidos.total() para sumar los importes de los pedidos.\n\nClases y responsabilidad de un servicio\nUna clase de servicio concentra una operación de negocio y recibe los datos que necesita mediante métodos. Una interfaz puede describir cada pedido. Un acumulador o reduce permite sumar importes partiendo de cero.\n\nCómo abordarla\nDefine ServicioPedidos con un método total. Delega en ese método la suma y utiliza resolver para conectar la entrada con el servicio. Devuelve un número y revisa que una lista de pedidos vacía produzca cero. Evita mezclar la lectura de consola con el cálculo.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1482,7 +1475,7 @@
           "id": 4060,
           "enunciado": "Contrato de servicio\n\nRecibe pedidos con importe. Devuelve la suma; separa el cálculo en una clase ServicioPedidos con método total.",
           "plantilla": {
-            "main.ts": "interface Entrada { pedidos: {importe:number}[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.ts": "interface Entrada {\n  pedidos: { importe: number }[];\n}\n\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.ts": "interface Entrada { pedidos: {importe:number}[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  class ServicioPedidos { total(items: {importe:number}[]):number { return items.reduce((s,x)=>s+x.importe,0); } }\n  return new ServicioPedidos().total(datos.pedidos);\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1514,7 +1507,7 @@
         "leccion": {
           "id": 4070,
           "titulo": "Servicios y asincronía",
-          "contenido": "Objetivo de la práctica\nDevuelve datos.items si ok y existe; si no, devuelve []. Usa tipos opcionales.\n\nPropiedades opcionales\nEl signo ? en una interfaz indica que una propiedad puede no estar presente. El encadenamiento opcional ?. evita acceder a una propiedad de un valor ausente. ?? permite usar un respaldo cuando el valor es null o undefined.\n\nCómo abordarla\nDescribe datos como opcional y revisa primero el indicador ok. Solo devuelve los items cuando la respuesta sea correcta y estén presentes. Usa una lista vacía en los demás casos. Comprueba tanto una respuesta fallida como una entrada que no incluya datos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nDevuelve datos.items si ok y existe; si no, devuelve []. Usa tipos opcionales.\n\nPropiedades opcionales\nEl signo ? en una interfaz indica que una propiedad puede no estar presente. El encadenamiento opcional ?. evita acceder a una propiedad de un valor ausente. ?? permite usar un respaldo cuando el valor es null o undefined.\n\nCómo abordarla\nDescribe datos como opcional y revisa primero el indicador ok. Solo devuelve los items cuando la respuesta sea correcta y estén presentes. Usa una lista vacía en los demás casos. Comprueba tanto una respuesta fallida como una entrada que no incluya datos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1526,7 +1519,7 @@
           "id": 4070,
           "enunciado": "Respuesta de un adaptador\n\nRecibe ok y datos opcional con items. Devuelve items si ok y están presentes; si no, devuelve una lista vacía. Valida el contrato con tipos opcionales.",
           "plantilla": {
-            "main.ts": "interface Entrada { ok: boolean; datos?: {items:string[]} }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.ts": "interface Entrada {\n  ok: boolean;\n  datos?: { items: string[] };\n}\n\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.ts": "interface Entrada { ok: boolean; datos?: {items:string[]} }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.ok ? datos.datos?.items ?? [] : [];\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1558,7 +1551,7 @@
         "leccion": {
           "id": 4080,
           "titulo": "Estado y pruebas",
-          "contenido": "Objetivo de la práctica\nDevuelve el mensaje en error, «Listo» en listo y «Cargando» en carga.\n\nUniones de valores y estados\nUna unión de literales limita una propiedad a valores conocidos, como \"carga\" | \"listo\" | \"error\". Un if o switch permite asignar un comportamiento a cada estado. El mensaje opcional no debe utilizarse indiscriminadamente en todas las ramas.\n\nCómo abordarla\nResuelve por separado los tres estados indicados. Usa el mensaje recibido únicamente para el estado de error y los textos exactos para los otros dos. Comprueba que cada rama termina devolviendo una cadena y que no cae accidentalmente en la siguiente.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nDevuelve el mensaje en error, «Listo» en listo y «Cargando» en carga.\n\nUniones de valores y estados\nUna unión de literales limita una propiedad a valores conocidos, como \"carga\" | \"listo\" | \"error\". Un if o switch permite asignar un comportamiento a cada estado. El mensaje opcional no debe utilizarse indiscriminadamente en todas las ramas.\n\nCómo abordarla\nResuelve por separado los tres estados indicados. Usa el mensaje recibido únicamente para el estado de error y los textos exactos para los otros dos. Comprueba que cada rama termina devolviendo una cadena y que no cae accidentalmente en la siguiente.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1570,7 +1563,7 @@
           "id": 4080,
           "enunciado": "Estado con uniones\n\nRecibe estado y mensaje. Devuelve el texto del mensaje solo si estado es error; si estado es listo devuelve \"Listo\"; en carga devuelve \"Cargando\".",
           "plantilla": {
-            "main.ts": "interface Entrada { estado: \"carga\" | \"listo\" | \"error\"; mensaje?: string }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.ts": "interface Entrada {\n  estado: \"carga\" | \"listo\" | \"error\";\n  mensaje?: string;\n}\n\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.ts": "interface Entrada { estado: \"carga\" | \"listo\" | \"error\"; mensaje?: string }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.estado === \"error\" ? datos.mensaje ?? \"Error\" : datos.estado === \"listo\" ? \"Listo\" : \"Cargando\";\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1608,7 +1601,7 @@
         "leccion": {
           "id": 4090,
           "titulo": "Sistema integrador",
-          "contenido": "Objetivo de la práctica\nCalcula el total del carrito con los productos existentes e ignora ids desconocidos.\n\nRelacionar colecciones por identificador\nLos ids relacionan productos y líneas del carrito sin depender de su posición. find o un Map permiten recuperar el producto asociado a cada línea. Cuando no hay coincidencia, primero debes comprobar esa ausencia antes de leer su precio.\n\nCómo abordarla\nRecorre el carrito, localiza cada producto y acumula su importe usando la cantidad. Omite los ids desconocidos sin detener el resto del cálculo. Conserva los tipos de ambas colecciones y devuelve el total numérico. Revisa también un carrito vacío.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nCalcula el total del carrito con los productos existentes e ignora ids desconocidos.\n\nRelacionar colecciones por identificador\nLos ids relacionan productos y líneas del carrito sin depender de su posición. find o un Map permiten recuperar el producto asociado a cada línea. Cuando no hay coincidencia, primero debes comprobar esa ausencia antes de leer su precio.\n\nCómo abordarla\nRecorre el carrito, localiza cada producto y acumula su importe usando la cantidad. Omite los ids desconocidos sin detener el resto del cálculo. Conserva los tipos de ambas colecciones y devuelve el total numérico. Revisa también un carrito vacío.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://www.typescriptlang.org/docs/handbook/intro.html",
             "autor": "Documentación oficial de TypeScript",
@@ -1620,7 +1613,7 @@
           "id": 4090,
           "enunciado": "Aplicación tipada\n\nRecibe productos (id,precio) y carrito (id,cantidad). Devuelve el total de productos existentes; ignora ids desconocidos. Mantén comprobación estricta.",
           "plantilla": {
-            "main.ts": "interface Entrada { productos:{id:number;precio:number}[]; carrito:{id:number;cantidad:number}[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.ts": "interface Entrada {\n  productos: { id: number; precio: number }[];\n  carrito: { id: number; cantidad: number }[];\n}\n\nfunction resolver(datos: Entrada): unknown {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.ts": "interface Entrada { productos:{id:number;precio:number}[]; carrito:{id:number;cantidad:number}[] }\ndeclare function require(name: string): any;\nfunction resolver(datos: Entrada): unknown {\n  return datos.carrito.reduce((s,item) => s + (datos.productos.find(p=>p.id===item.id)?.precio ?? 0) * item.cantidad, 0);\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1706,7 +1699,7 @@
         "leccion": {
           "id": 5020,
           "titulo": "Primera práctica",
-          "contenido": "Objetivo de la práctica\nCrea una función que reciba nombre y devuelva un saludo; lee los datos JSON de consola.\n\nFunciones y entrada JSON en Node.js\nNode.js ejecuta JavaScript fuera del navegador. En esta plantilla, fs lee la entrada estándar y JSON.parse la convierte en un objeto. resolver recibe ese objeto y entrega un valor; el código final se encarga de imprimirlo como JSON.\n\nCómo abordarla\nLocaliza la propiedad nombre y construye el saludo pedido. Devuelve el texto desde la función sin añadir otra impresión en consola. Respeta espacios y puntuación, y conserva la lectura de entrada que ya incluye main.js.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nCrea una función que reciba nombre y devuelva un saludo; lee los datos JSON de consola.\n\nFunciones y entrada JSON en Node.js\nNode.js ejecuta JavaScript fuera del navegador. resolver recibe los datos como un objeto y devuelve un valor. El evaluador lee la entrada y muestra el resultado por ti.\n\nCómo abordarla\nLocaliza la propiedad nombre y construye el saludo pedido. Devuelve el texto desde la función sin añadir otra impresión en consola. Respeta los espacios y la puntuación del saludo pedido.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1718,7 +1711,7 @@
           "id": 5020,
           "enunciado": "Argumentos de una utilidad\n\nRecibe nombre y devuelve un saludo utilizando una función. El adaptador de entrada convierte el JSON de consola en datos.",
           "plantilla": {
-            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.js": "function resolver(datos) {\n  return \"Hola, \" + datos.nombre;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1750,7 +1743,7 @@
         "leccion": {
           "id": 5030,
           "titulo": "Práctica guiada",
-          "contenido": "Objetivo de la práctica\nFiltra los correos que tengan @ y un punto después de @.\n\nFiltrar cadenas con una regla\nfilter construye una lista con los elementos que cumplen un predicado. indexOf devuelve la posición de un carácter o -1 si no existe. Para comprobar un punto después de @, la búsqueda del punto debe empezar después de la posición de la arroba.\n\nCómo abordarla\nRevisa cada correo aplicando la regla didáctica indicada. Conserva el texto original y el orden de los aceptados. No basta con comprobar que hay un punto en cualquier posición. Esta actividad no pretende implementar toda la especificación real de correos electrónicos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nFiltra los correos que tengan @ y un punto después de @.\n\nFiltrar cadenas con una regla\nfilter construye una lista con los elementos que cumplen un predicado. indexOf devuelve la posición de un carácter o -1 si no existe. Para comprobar un punto después de @, la búsqueda del punto debe empezar después de la posición de la arroba.\n\nCómo abordarla\nRevisa cada correo aplicando la regla didáctica indicada. Conserva el texto original y el orden de los aceptados. No basta con comprobar que hay un punto en cualquier posición. Esta actividad no pretende implementar toda la especificación real de correos electrónicos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1762,7 +1755,7 @@
           "id": 5030,
           "enunciado": "Módulo de validación\n\nRecibe una lista de correos y devuelve únicamente los que contienen @ y un punto después de @. Esta validación es una primera aproximación didáctica.",
           "plantilla": {
-            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.js": "function resolver(datos) {\n  return datos.correos.filter(x => /^[^@]+@[^@]+\\.[^@]+$/.test(x));\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1794,7 +1787,7 @@
         "leccion": {
           "id": 5040,
           "titulo": "Práctica intermedia",
-          "contenido": "Objetivo de la práctica\nAnaliza textoJSON y devuelve la longitud de la lista; si no es JSON válido, devuelve -1.\n\nAnalizar JSON y manejar excepciones\nJSON.parse convierte texto JSON en un valor y lanza una excepción cuando el texto tiene una sintaxis inválida. try/catch permite tratar ese error de forma controlada. La longitud de un arreglo se obtiene con length, después de analizar el texto.\n\nCómo abordarla\nAnaliza la propiedad textoJSON dentro del bloque protegido. Para una lista válida, devuelve su cantidad de elementos. Para un error de sintaxis, devuelve el valor de respaldo del enunciado. No confundas los caracteres de la cadena con los elementos de la lista.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nAnaliza textoJSON y devuelve la longitud de la lista; si no es JSON válido, devuelve -1.\n\nAnalizar JSON y manejar excepciones\nJSON.parse convierte texto JSON en un valor y lanza una excepción cuando el texto tiene una sintaxis inválida. try/catch permite tratar ese error de forma controlada. La longitud de un arreglo se obtiene con length, después de analizar el texto.\n\nCómo abordarla\nAnaliza la propiedad textoJSON dentro del bloque protegido. Para una lista válida, devuelve su cantidad de elementos. Para un error de sintaxis, devuelve el valor de respaldo del enunciado. No confundas los caracteres de la cadena con los elementos de la lista.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1806,7 +1799,7 @@
           "id": 5040,
           "enunciado": "Lectura de datos\n\nRecibe textoJSON con una lista. Analiza JSON y devuelve su longitud; si el JSON es inválido devuelve -1. El siguiente paso del curso conecta este análisis con fs.readFile.",
           "plantilla": {
-            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.js": "function resolver(datos) {\n  try { return JSON.parse(datos.textoJSON).length; } catch { return -1; }\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1838,7 +1831,7 @@
         "leccion": {
           "id": 5050,
           "titulo": "Reto complejo de fundamentos",
-          "contenido": "Objetivo de la práctica\nBusca el id en los registros y devuelve el registro o null.\n\nBuscar registros completos\nfind devuelve el primer objeto que cumple una comparación y undefined cuando no hay coincidencias. === compara valores sin convertir sus tipos. El contrato de esta práctica pide devolver el registro completo, no solo su nombre.\n\nCómo abordarla\nRevisa el id recibido y compara con cada registro de la colección. Devuelve el objeto encontrado o null de forma explícita cuando no exista. Conserva las propiedades del objeto. Prueba una coincidencia y una búsqueda sin resultados.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nBusca el id en los registros y devuelve el registro o null.\n\nBuscar registros completos\nfind devuelve el primer objeto que cumple una comparación y undefined cuando no hay coincidencias. === compara valores sin convertir sus tipos. El contrato de esta práctica pide devolver el registro completo, no solo su nombre.\n\nCómo abordarla\nRevisa el id recibido y compara con cada registro de la colección. Devuelve el objeto encontrado o null de forma explícita cuando no exista. Conserva las propiedades del objeto. Prueba una coincidencia y una búsqueda sin resultados.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1850,7 +1843,7 @@
           "id": 5050,
           "enunciado": "Registros de consola\n\nRecibe registros (id,nombre) y un id. Devuelve el registro coincidente, o null cuando no existe.",
           "plantilla": {
-            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.js": "function resolver(datos) {\n  return datos.registros.find(x => x.id === datos.id) ?? null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1882,7 +1875,7 @@
         "leccion": {
           "id": 5060,
           "titulo": "Servidor aplicado",
-          "contenido": "Objetivo de la práctica\nModela GET /salud como {status:200,body:\"ok\"}; cualquier otra ruta devuelve 404 y «no encontrado».\n\nModelar un router HTTP\nUn router selecciona un comportamiento usando el método y la ruta. Una respuesta puede representarse con un objeto que contenga status y body. Aquí modelas ese contrato con datos: no necesitas abrir un servidor ni escuchar un puerto.\n\nCómo abordarla\nComprueba conjuntamente el método y la ruta indicados. Construye el objeto de éxito solo cuando ambos coincidan; usa la respuesta alternativa para cualquier otra combinación. Mantén los nombres de las propiedades, los tipos y los textos exactos del enunciado.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nModela GET /salud como {status:200,body:\"ok\"}; cualquier otra ruta devuelve 404 y «no encontrado».\n\nModelar un router HTTP\nUn router selecciona un comportamiento usando el método y la ruta. Una respuesta puede representarse con un objeto que contenga status y body. Aquí modelas ese contrato con datos: no necesitas abrir un servidor ni escuchar un puerto.\n\nCómo abordarla\nComprueba conjuntamente el método y la ruta indicados. Construye el objeto de éxito solo cuando ambos coincidan; usa la respuesta alternativa para cualquier otra combinación. Mantén los nombres de las propiedades, los tipos y los textos exactos del enunciado.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1894,7 +1887,7 @@
           "id": 5060,
           "enunciado": "Router de servicio HTTP\n\nModela una petición a un servicio Express: recibe metodo y ruta. GET /salud produce {status:200,body:\"ok\"}; las demás rutas producen {status:404,body:\"no encontrado\"}. Se valida el contrato del router sin dejar un servidor abierto.",
           "plantilla": {
-            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.js": "function resolver(datos) {\n  return datos.metodo === \"GET\" && datos.ruta === \"/salud\" ? {status:200,body:\"ok\"} : {status:404,body:\"no encontrado\"};\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1926,7 +1919,7 @@
         "leccion": {
           "id": 5070,
           "titulo": "Persistencia de un sistema",
-          "contenido": "Objetivo de la práctica\nFiltra las filas del repositorio cuyo valor activo coincida con el solicitado.\n\nSeparar repositorio y servicio\nEl repositorio obtiene filas y el servicio aplica reglas sobre esos datos. Una función pura recibe información y devuelve un resultado sin modificar la entrada. filter permite seleccionar registros a partir de una propiedad booleana.\n\nCómo abordarla\nTrabaja con las filas recibidas y compara activo con el valor solicitado. Conserva cada fila completa, su orden y su contenido. Evita convertir false en ausencia de filtro: tanto true como false son criterios válidos. No necesitas una conexión real a base de datos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nFiltra las filas del repositorio cuyo valor activo coincida con el solicitado.\n\nSeparar repositorio y servicio\nEl repositorio obtiene filas y el servicio aplica reglas sobre esos datos. Una función pura recibe información y devuelve un resultado sin modificar la entrada. filter permite seleccionar registros a partir de una propiedad booleana.\n\nCómo abordarla\nTrabaja con las filas recibidas y compara activo con el valor solicitado. Conserva cada fila completa, su orden y su contenido. Evita convertir false en ausencia de filtro: tanto true como false son criterios válidos. No necesitas una conexión real a base de datos.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1938,7 +1931,7 @@
           "id": 5070,
           "enunciado": "Repositorio de clientes\n\nRecibe filas devueltas por un repositorio y activo. Devuelve las filas cuyo valor activo coincide. Usa funciones puras para separar la consulta del servicio.",
           "plantilla": {
-            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.js": "function resolver(datos) {\n  return datos.filas.filter(x => x.activo === datos.activo);\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -1970,7 +1963,7 @@
         "leccion": {
           "id": 5080,
           "titulo": "Acceso y validaciones",
-          "contenido": "Objetivo de la práctica\nDevuelve 401 si no hay sesión, 403 si no es propietario y 200 si coincide.\n\nAutenticación y autorización\nLa autenticación determina si existe una identidad y la autorización decide si puede acceder al recurso. El orden es relevante: primero se comprueba la sesión y después la propiedad del recurso. Un código de estado numérico representa cada resultado.\n\nCómo abordarla\nRevisa autenticado antes de comparar propietario e idSolicitado. Si hay identidad, decide si los identificadores coinciden. Devuelve únicamente el código indicado para cada situación. Prueba también una sesión ausente con ids iguales para comprobar la prioridad de las reglas.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nDevuelve 401 si no hay sesión, 403 si no es propietario y 200 si coincide.\n\nAutenticación y autorización\nLa autenticación determina si existe una identidad y la autorización decide si puede acceder al recurso. El orden es relevante: primero se comprueba la sesión y después la propiedad del recurso. Un código de estado numérico representa cada resultado.\n\nCómo abordarla\nRevisa autenticado antes de comparar propietario e idSolicitado. Si hay identidad, decide si los identificadores coinciden. Devuelve únicamente el código indicado para cada situación. Prueba también una sesión ausente con ids iguales para comprobar la prioridad de las reglas.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -1982,7 +1975,7 @@
           "id": 5080,
           "enunciado": "Política de acceso\n\nRecibe autenticado, propietario e idSolicitado. Devuelve 401 si no hay identidad, 403 si los identificadores no coinciden y 200 cuando corresponde al propietario.",
           "plantilla": {
-            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.js": "function resolver(datos) {\n  if (!datos.autenticado) return 401; return datos.propietario === datos.idSolicitado ? 200 : 403;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
@@ -2020,7 +2013,7 @@
         "leccion": {
           "id": 5090,
           "titulo": "Sistema integrador",
-          "contenido": "Objetivo de la práctica\nSi alguna cantidad no es positiva, devuelve {status:422}; si todas lo son, devuelve {status:201,total: importe}.\n\nValidar un pedido antes de responder\nUn controller transforma la entrada en una respuesta coherente. La validación debe cubrir todos los elementos antes de confirmar el pedido. every permite comprobar una condición en una colección y reduce o un acumulador permite calcular un total.\n\nCómo abordarla\nRechaza el pedido si alguna cantidad es cero o negativa. Si todas son positivas, acumula precio por cantidad y construye la respuesta de creación. No devuelvas un éxito parcial si un elemento falla. Respeta los campos y códigos numéricos solicitados.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.",
+          "contenido": "Objetivo de la práctica\nSi alguna cantidad no es positiva, devuelve {status:422}; si todas lo son, devuelve {status:201,total: importe}.\n\nValidar un pedido antes de responder\nUn controller transforma la entrada en una respuesta coherente. La validación debe cubrir todos los elementos antes de confirmar el pedido. every permite comprobar una condición en una colección y reduce o un acumulador permite calcular un total.\n\nCómo abordarla\nRechaza el pedido si alguna cantidad es cero o negativa. Si todas son positivas, acumula precio por cantidad y construye la respuesta de creación. No devuelvas un éxito parcial si un elemento falla. Respeta los campos y códigos numéricos solicitados.\n\nAntes de evaluar\nRevisa el enunciado y los nombres exactos de los campos o elementos. Ejecuta tu código, lee el resultado y corrige una causa a la vez. Usa la documentación oficial si necesitas consultar la sintaxis.\n\nEn el editor\nCompleta resolver(datos) y devuelve el resultado con return. Los datos llegan como un objeto; no añadas lectura de consola ni conviertas el resultado a JSON. Usa Ejecutar o Evaluar para comprobarlo.",
           "recurso": {
             "direccion": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
             "autor": "Documentación oficial de Node.js",
@@ -2032,7 +2025,7 @@
           "id": 5090,
           "enunciado": "Controller de pedidos\n\nRecibe items (precio,cantidad). Valida que las cantidades sean positivas y devuelve {status:422} si falla; en otro caso devuelve {status:201,total: importe}.",
           "plantilla": {
-            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"
+            "main.js": "function resolver(datos) {\n  // Escribe tu solución aquí\n  return null;\n}\n"
           },
           "solucion_referencia": {
             "main.js": "function resolver(datos) {\n  if (datos.items.some(x => x.cantidad <= 0 || x.precio < 0)) return {status:422}; return {status:201,total:datos.items.reduce((s,x)=>s+x.precio*x.cantidad,0)};\n}\nconst fs = require(\"fs\");\nconst datos = JSON.parse(fs.readFileSync(0,\"utf8\"));\nconsole.log(JSON.stringify(resolver(datos)));\n"

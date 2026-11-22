@@ -52,15 +52,16 @@
               ></nv-editor>
             }
             <div class="actions">
+              @if (e.modo_evaluacion !== "web") {
               <button
                 class="pixel-practice-cta"
                 (click)="run(e.id_ejercicio, false)"
                 [disabled]="busy()"
               >
-                <span class="pixel-button-label">{{
-                  e.modo_evaluacion === "web" ? "Evaluar vista web" : "Ejecutar"
-                }}</span></button
-              ><button
+                <span class="pixel-button-label">Ejecutar</span>
+              </button>
+              }
+              <button
                 class="pixel-practice-cta"
                 (click)="run(e.id_ejercicio, true)"
                 [disabled]="busy()"

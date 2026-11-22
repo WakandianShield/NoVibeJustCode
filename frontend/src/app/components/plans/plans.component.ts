@@ -73,7 +73,6 @@ export class PlansComponent extends Page implements OnInit, OnDestroy {
         this.error.set(
           "PayPal no completó la operación. Consulta el estado antes de reintentar.",
         ),
-      onCancel: () => this.notice.set("Contratación cancelada en PayPal."),
     });
     await this.buttons.render("#paypal-buttons");
   }
@@ -82,7 +81,6 @@ export class PlansComponent extends Page implements OnInit, OnDestroy {
       await this.service.confirmSubscription(id);
       await this.session.refresh();
       await this.load();
-      this.notice.set("Estado consultado con PayPal.");
     });
   }
   async cancel() {
@@ -95,7 +93,6 @@ export class PlansComponent extends Page implements OnInit, OnDestroy {
     await this.task(async () => {
       this.mine.set(await this.service.cancelSubscription());
       await this.session.refresh();
-      this.notice.set("Renovación cancelada.");
     });
   }
   ngOnDestroy() {

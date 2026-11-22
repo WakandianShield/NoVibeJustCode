@@ -19,6 +19,18 @@ export class ProfileComponent extends Page implements OnInit {
   route = inject(ActivatedRoute);
   profile = signal<any>(null);
   relation = signal<any>(null);
+  spinningBadges = signal(new Set<number>());
+  spinBadge(id: number, event?: PointerEvent) {
+    if (event && event.pointerType !== "mouse") return;
+    this.spinningBadges.update((ids) => new Set([...ids, id]));
+  }
+  finishBadgeSpin(id: number) {
+    this.spinningBadges.update((ids) => {
+      const next = new Set(ids);
+      next.delete(id);
+      return next;
+    });
+  }
   own() {
     return this.profile()?.id_usuario === this.session.user()?.id_usuario;
   }

@@ -60,16 +60,22 @@
     <h2>Insignias y aprendizajes</h2>
     <div class="badges-grid">
       @for (b of p.metas; track b.id_logro) {
-        <div
-          class="badge-card"
+        <button
+          type="button"
+          class="badge-card badge-spin-control"
           [class.locked]="!earned(b.id_logro)"
+          [class.is-spinning]="spinningBadges().has(b.id_logro)"
+          [attr.aria-label]="'Girar insignia de ' + b.tecnologia + (b.nivel === 'Completo' ? ', experto' : ', fundamentos')"
+          (pointerenter)="spinBadge(b.id_logro, $event)"
+          (click)="spinBadge(b.id_logro)"
         >
           <img
             class="badge-art"
             [src]="badgeImage(b)"
             [alt]="'Insignia de ' + b.tecnologia + (b.nivel === 'Completo' ? ', experto' : ', fundamentos')"
+            (animationend)="finishBadgeSpin(b.id_logro)"
           />
-        </div>
+        </button>
       }
     </div>
   </section>

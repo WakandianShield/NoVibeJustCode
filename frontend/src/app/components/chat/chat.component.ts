@@ -1,4 +1,14 @@
-import { Component, inject, signal, OnInit, OnDestroy } from "@angular/core";
+import {
+  Component,
+  inject,
+  signal,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef,
+  Injector,
+  afterNextRender,
+} from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterLink, ActivatedRoute } from "@angular/router";
@@ -24,6 +34,20 @@ export class ChatComponent extends Page implements OnInit, OnDestroy {
   text = "";
   draftKey = "";
   timer: any;
+  @ViewChild("messageHistory") messageHistory?: ElementRef<HTMLDivElement>;
+  private readonly injector = inject(Injector);
+
+  private scrollToLatest() {
+    const conversation = this.current()?.id_amistad;
+    afterNextRender(
+      () => {
+        if (conversation !== this.current()?.id_amistad) return;
+        const history = this.messageHistory?.nativeElement;
+        if (history) history.scrollTop = history.scrollHeight;
+      },
+      { injector: this.injector },
+    );
+  }
   async ngOnInit() {
     this.draftKey = "nvjc-mensajes-" + this.session.user().id_usuario;
     await this.loadFriends();
@@ -88,6 +112,7 @@ export class ChatComponent extends Page implements OnInit, OnDestroy {
     this.storePending(
       this.pending().filter((x: any) => x.id_cliente !== m.id_cliente),
     );
+    if (m.id_amistad === this.current()?.id_amistad) this.scrollToLatest();
   }
   async open(f: any) {
     this.current.set(f);
@@ -100,6 +125,7 @@ export class ChatComponent extends Page implements OnInit, OnDestroy {
       );
       this.messages.set([...r, ...pending]);
       this.hasOlder.set(r.length === 50);
+      this.scrollToLatest();
       this.chat.markRead(f.id_amistad);
     }
   }
@@ -126,6 +152,7 @@ export class ChatComponent extends Page implements OnInit, OnDestroy {
     };
     this.text = "";
     this.messages.update((ms) => [...ms, m]);
+    this.scrollToLatest();
     this.storePending([...this.pending(), m]);
     await this.retry(m);
   }

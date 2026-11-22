@@ -30,6 +30,7 @@ export class PlansComponent extends Page implements OnInit, OnDestroy {
     if (c?.clientId && !window.paypal) {
       await new Promise<void>((resolve) => {
         const script = document.createElement("script");
+        script.setAttribute("data-popups-disabled", "true");
         script.src =
           "https://www.paypal.com/sdk/js?client-id=" +
           encodeURIComponent(c.clientId) +

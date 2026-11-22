@@ -35,7 +35,7 @@
           alt=""
         /><strong>{{ f.nombre }}</strong>
       </header>
-      <div class="message-history" aria-live="polite">
+      <div #messageHistory class="message-history" aria-live="polite">
         <button class="quiet" (click)="older()" [disabled]="!hasOlder()">
           {{ hasOlder() ? "Cargar anteriores" : "Inicio de la conversación" }}
         </button>

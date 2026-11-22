@@ -5274,3 +5274,23 @@ body:has(nv-app.messaging-page) {
 .messaging-page .site-header {
   flex-shrink: 0;
 }
+
+/* The hero's 300 ms press, shared by every native site button. */
+.site-button-press {
+  animation: site-button-press 600ms ease !important;
+}
+
+@keyframes site-button-press {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 10%; }
+}
+
+nv-pixel-cta .container-btn-pixel-art {
+  --time-ms: 300ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-button-press {
+    animation: none !important;
+  }
+}

@@ -4,6 +4,7 @@ import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
 import { filter, map } from "rxjs";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { ButtonPressService } from "./services/button-press.service";
 
 @Component({
   selector: "nv-app",
@@ -14,6 +15,7 @@ import { FooterComponent } from "./components/footer/footer.component";
   host: { "[class.messaging-page]": "messaging()" },
 })
 export class AppComponent {
+  private readonly buttonPress = inject(ButtonPressService);
   private router = inject(Router);
   messaging = toSignal(
     this.router.events.pipe(
